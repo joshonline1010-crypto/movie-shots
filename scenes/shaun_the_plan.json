@@ -1,0 +1,195 @@
+{
+  "scene_id": "shaun_the_plan",
+  "name": "The Plan - Shaun of the Dead",
+  "description": "Shaun and Ed devise their survival plan during the zombie outbreak. Classic Edgar Wright comedy scene with rapid-fire dialogue and match cuts.",
+  "duration_estimate": 105,
+  "location": "Shaun's flat / suburban London streets",
+  "time_of_day": "day",
+  "mood": "comedic-tense",
+  "color_palette": "desaturated-cool",
+  "director": "Edgar Wright",
+  "year": 2004,
+
+  "characters": [
+    {
+      "id": "shaun",
+      "description": "man with short blonde hair, white shirt, red tie, dark jacket, blood on face",
+      "role": "The reluctant hero making the plan"
+    },
+    {
+      "id": "ed",
+      "description": "heavier man with dark hair, beige t-shirt, casual appearance",
+      "role": "Shaun's best friend, provides comic relief"
+    }
+  ],
+
+  "shots": [
+    {
+      "shot_id": "shaun_plan_01",
+      "order": 1,
+      "description": "Two-shot of Shaun and Ed in messy living room, discussing the plan",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_001.jpg",
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "dialog": "[ADD DIALOGUE - Shaun explains first part of plan]",
+      "dialog_voice": "shaun_british",
+      "dialog_speaker": "shaun",
+      "motion_prompt": "static shot, characters gesturing while talking, then settles",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "exposition",
+      "shot_type": "medium",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "shaun_plan_02",
+      "order": 2,
+      "description": "Close-up of Shaun thinking, processing information",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_003.jpg",
+      "end_frame": null,
+      "duration": 3,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "subtle head movement, character blinks and thinks, then holds",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "reaction",
+      "shot_type": "close-up",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "shaun_plan_03",
+      "order": 3,
+      "description": "Medium close-up of Shaun drinking tea while listening",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_005.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "character drinks from mug, slight nod, then lowers cup",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "reaction",
+      "shot_type": "medium-close",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "shaun_plan_04",
+      "order": 4,
+      "description": "Ed responds with enthusiasm",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_004.jpg",
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "dialog": "[ADD DIALOGUE - Ed's comedic response]",
+      "dialog_voice": "ed_british",
+      "dialog_speaker": "ed",
+      "motion_prompt": "character speaks animatedly, gestures with hands, then settles",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "comic-relief",
+      "shot_type": "medium",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "shaun_plan_05",
+      "order": 5,
+      "description": "Quick montage shot - car driving through suburban streets",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_010.jpg",
+      "end_frame": null,
+      "duration": 3,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "car drives forward down suburban street, camera follows from behind, then slows",
+      "transition_in": "match-cut",
+      "transition_out": "match-cut",
+      "narrative_beat": "action-montage",
+      "shot_type": "wide",
+      "camera_angle": "low-angle"
+    },
+    {
+      "shot_id": "shaun_plan_06",
+      "order": 6,
+      "description": "Back to living room - Shaun continues explaining",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_015.jpg",
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "dialog": "[ADD DIALOGUE - Shaun continues plan]",
+      "dialog_voice": "shaun_british",
+      "dialog_speaker": "shaun",
+      "motion_prompt": "character speaks urgently, makes pointing gesture, then pauses",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "rising-action",
+      "shot_type": "medium",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "shaun_plan_07",
+      "order": 7,
+      "description": "TV showing news broadcast - CRISIS WORSENS",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_020.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "TV screen shows news anchor speaking, slight camera push-in, then holds",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "exposition",
+      "shot_type": "insert",
+      "camera_angle": "over-shoulder"
+    },
+    {
+      "shot_id": "shaun_plan_08",
+      "order": 8,
+      "description": "Reaction shot - both characters react to news",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_017.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "seedance-1.5",
+      "dialog": "[ADD DIALOGUE - Reaction to news]",
+      "dialog_voice": "shaun_british",
+      "dialog_speaker": "shaun",
+      "motion_prompt": "characters turn to look at each other, worried expressions, then settles",
+      "transition_in": "cut",
+      "transition_out": "fade",
+      "narrative_beat": "climax",
+      "shot_type": "two-shot",
+      "camera_angle": "eye-level"
+    }
+  ],
+
+  "audio_layers": [
+    {
+      "type": "music",
+      "file": null,
+      "start": 0,
+      "volume": 0.2,
+      "note": "Queen - Don't Stop Me Now plays during montage sections"
+    },
+    {
+      "type": "ambience",
+      "file": null,
+      "start": 0,
+      "volume": 0.3,
+      "note": "Suburban quiet, occasional distant sounds"
+    }
+  ],
+
+  "production_notes": {
+    "style": "Edgar Wright signature rapid editing, match cuts, whip pans",
+    "comedy_timing": "Dialogue delivered quickly, deadpan reactions",
+    "visual_motif": "Repeated shots with slight variations showing different plans",
+    "how_to_get_transcript": "Use OpenAI Whisper API or FAL AI whisper endpoint to transcribe audio.wav"
+  },
+
+  "transcript_instructions": {
+    "step_1": "Upload audio.wav to OpenAI Whisper API or use: curl https://api.openai.com/v1/audio/transcriptions -F file=@audio.wav -F model=whisper-1",
+    "step_2": "Or use FAL AI: fal-ai/wizper with the audio file",
+    "step_3": "Replace [ADD DIALOGUE] placeholders with actual transcript",
+    "step_4": "Match dialogue to correct character and timestamp"
+  }
+}
