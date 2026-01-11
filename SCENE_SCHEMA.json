@@ -1,0 +1,181 @@
+{
+  "version": "1.0",
+  "description": "Schema for defining movie scenes as shot sequences with model selection",
+
+  "scene": {
+    "_description": "A scene is a collection of shots that form a complete sequence",
+    "required": ["scene_id", "name", "shots"],
+    "properties": {
+      "scene_id": "Unique identifier for the scene",
+      "name": "Human readable scene name",
+      "description": "What happens in this scene",
+      "duration_estimate": "Estimated total duration in seconds",
+      "location": "Where the scene takes place",
+      "time_of_day": "day, night, sunset, etc.",
+      "mood": "Overall emotional tone",
+      "music_cue": "Background music or score",
+      "shots": "Array of shot objects in sequence"
+    }
+  },
+
+  "shot": {
+    "_description": "A single shot within a scene",
+    "required": ["shot_id", "order"],
+    "properties": {
+      "shot_id": "Unique identifier for the shot",
+      "order": "Sequence number (1, 2, 3...)",
+      "reference_shot": "ID from movie-shots index to use as reference",
+      "start_frame": "URL or path to starting frame image",
+      "end_frame": "URL or path to ending frame (for transitions)",
+      "duration": "Shot duration in seconds (default 5)",
+      "model": "auto | seedance-1.5 | kling-o1 | kling-2.6",
+      "dialog": "Character dialog text (triggers TTS + lip sync)",
+      "dialog_voice": "Voice ID for TTS",
+      "motion_prompt": "Camera/character movement description",
+      "transition_in": "cut | fade | dissolve | wipe",
+      "transition_out": "cut | fade | dissolve | wipe",
+      "narrative_beat": "Story purpose of this shot",
+      "notes": "Production notes"
+    }
+  },
+
+  "modelSelection": {
+    "_description": "Rules for automatic model selection",
+    "rules": [
+      {
+        "condition": "has_dialog && subject_type == 'character'",
+        "model": "seedance-1.5",
+        "reason": "Seedance handles lip sync for talking characters"
+      },
+      {
+        "condition": "has_end_frame && camera_movement",
+        "model": "kling-o1",
+        "reason": "Kling O1 handles start-to-end transitions with camera moves"
+      },
+      {
+        "condition": "has_end_frame && !camera_movement",
+        "model": "kling-o1",
+        "reason": "Kling O1 for state/pose changes between frames"
+      },
+      {
+        "condition": "action_scene || environment_motion",
+        "model": "kling-2.6",
+        "reason": "Kling 2.6 for dynamic action and environment"
+      },
+      {
+        "condition": "default",
+        "model": "kling-2.6",
+        "reason": "Default to Kling 2.6 for general motion"
+      }
+    ]
+  },
+
+  "modelParams": {
+    "seedance-1.5": {
+      "endpoint": "fal-ai/seedance-1.5",
+      "image_param": "image_url",
+      "end_image_param": "end_image_url",
+      "supports_dialog": true,
+      "supports_end_frame": true,
+      "max_duration": 5,
+      "best_for": ["talking", "lip sync", "character dialog", "avatar"]
+    },
+    "kling-o1": {
+      "endpoint": "fal-ai/kling-video/o1",
+      "image_param": "start_image_url",
+      "end_image_param": "tail_image_url",
+      "supports_dialog": false,
+      "supports_end_frame": true,
+      "max_duration": 10,
+      "best_for": ["camera moves", "state changes", "zoom", "orbit", "transitions"]
+    },
+    "kling-2.6": {
+      "endpoint": "fal-ai/kling-video/v2.6",
+      "image_param": "image_url",
+      "end_image_param": null,
+      "supports_dialog": false,
+      "supports_end_frame": false,
+      "max_duration": 10,
+      "best_for": ["action", "environment", "general motion", "effects"]
+    }
+  },
+
+  "transitions": {
+    "cut": "Instant switch between shots",
+    "fade": "Fade to black, then fade in",
+    "dissolve": "Cross-dissolve between shots",
+    "wipe": "Wipe transition",
+    "match-cut": "Match action or shape between shots"
+  },
+
+  "exampleScene": {
+    "scene_id": "interrogation_01",
+    "name": "The Interrogation",
+    "description": "Detective confronts suspect in dark office",
+    "duration_estimate": 30,
+    "location": "police_interrogation_room",
+    "time_of_day": "night",
+    "mood": "tense",
+    "music_cue": "tension_underscore",
+    "shots": [
+      {
+        "shot_id": "interr_01_est",
+        "order": 1,
+        "reference_shot": "se7en_interrogation_001",
+        "start_frame": null,
+        "end_frame": null,
+        "duration": 4,
+        "model": "kling-2.6",
+        "dialog": null,
+        "motion_prompt": "slow dolly in through doorway, then holds",
+        "transition_in": "fade",
+        "transition_out": "cut",
+        "narrative_beat": "establishing"
+      },
+      {
+        "shot_id": "interr_01_detective",
+        "order": 2,
+        "reference_shot": "blade-runner_interrogation_005",
+        "start_frame": null,
+        "end_frame": null,
+        "duration": 5,
+        "model": "seedance-1.5",
+        "dialog": "I know what you did last Tuesday.",
+        "dialog_voice": "detective_gruff",
+        "motion_prompt": "subtle camera drift, character speaks directly",
+        "transition_in": "cut",
+        "transition_out": "cut",
+        "narrative_beat": "confrontation"
+      },
+      {
+        "shot_id": "interr_01_reaction",
+        "order": 3,
+        "reference_shot": "se7en_closeup_012",
+        "start_frame": null,
+        "end_frame": "suspect_nervous_closeup.jpg",
+        "duration": 4,
+        "model": "kling-o1",
+        "dialog": null,
+        "motion_prompt": "slow push in on face, eyes dart nervously, then settles",
+        "transition_in": "cut",
+        "transition_out": "cut",
+        "narrative_beat": "reaction"
+      },
+      {
+        "shot_id": "interr_01_suspect_speaks",
+        "order": 4,
+        "reference_shot": null,
+        "start_frame": "suspect_nervous_closeup.jpg",
+        "end_frame": null,
+        "duration": 4,
+        "model": "seedance-1.5",
+        "dialog": "I... I don't know what you're talking about.",
+        "dialog_voice": "suspect_nervous",
+        "motion_prompt": "character shifts uncomfortably, speaks",
+        "transition_in": "cut",
+        "transition_out": "fade",
+        "narrative_beat": "denial"
+      }
+    ]
+  }
+}

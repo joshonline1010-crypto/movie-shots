@@ -1,0 +1,189 @@
+{
+  "scene_id": "baseline_test_01",
+  "name": "The Baseline Test",
+  "description": "Replicant undergoes psychological baseline test in sterile interrogation room. Inspired by Blade Runner 2049.",
+  "duration_estimate": 35,
+  "location": "sterile white interrogation room",
+  "time_of_day": "artificial daylight",
+  "mood": "tense",
+  "color_palette": "desaturated-cold",
+  "music_cue": "baseline_drone",
+
+  "characters": [
+    {
+      "id": "subject",
+      "description": "stoic man in simple gray clothing",
+      "role": "The one being tested"
+    },
+    {
+      "id": "examiner",
+      "description": "unseen voice, clinical and robotic",
+      "role": "Administers the test"
+    }
+  ],
+
+  "shots": [
+    {
+      "shot_id": "baseline_01_establish",
+      "order": 1,
+      "description": "Wide establishing shot of sterile room with subject seated",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": null,
+      "duration": 4,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "slow dolly in towards seated figure in vast white room, then settles",
+      "transition_in": "fade",
+      "transition_out": "cut",
+      "narrative_beat": "establishing",
+      "shot_type": "extreme-long",
+      "camera_angle": "eye-level",
+      "lighting": "fluorescent"
+    },
+    {
+      "shot_id": "baseline_02_examiner_voice",
+      "order": 2,
+      "description": "Medium shot of subject, examiner voice begins",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "dialog": "Cells.",
+      "dialog_voice": "examiner_robotic",
+      "dialog_speaker": "examiner",
+      "motion_prompt": "static shot, subject stares forward unblinking",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "exposition",
+      "shot_type": "medium",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_03_response",
+      "order": 3,
+      "description": "Close-up of subject responding",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": "subject_slight_twitch.jpg",
+      "duration": 4,
+      "model": "kling-o1",
+      "dialog": null,
+      "motion_prompt": "slow push in on face, micro-expression of strain, then holds",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "reaction",
+      "shot_type": "close-up",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_04_subject_speaks",
+      "order": 4,
+      "description": "Subject delivers response",
+      "reference_shot": null,
+      "start_frame": "subject_slight_twitch.jpg",
+      "end_frame": null,
+      "duration": 3,
+      "model": "seedance-1.5",
+      "dialog": "Cells.",
+      "dialog_voice": "subject_monotone",
+      "dialog_speaker": "subject",
+      "motion_prompt": "lips move, eyes remain fixed forward",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "response",
+      "shot_type": "close-up",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_05_pressure",
+      "order": 5,
+      "description": "Rapid fire questions begin, intercut",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "dialog": "Interlinked.",
+      "dialog_voice": "examiner_robotic",
+      "dialog_speaker": "examiner",
+      "motion_prompt": "static, tension building",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "rising-action",
+      "shot_type": "medium-close",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_06_subject_strain",
+      "order": 6,
+      "description": "Extreme close-up shows cracks in composure",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": "subject_eye_twitch.jpg",
+      "duration": 4,
+      "model": "kling-o1",
+      "dialog": null,
+      "motion_prompt": "extreme slow push in on eyes, subtle twitch visible, then freezes",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "crisis",
+      "shot_type": "extreme-close",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_07_final_response",
+      "order": 7,
+      "description": "Subject delivers final strained response",
+      "reference_shot": null,
+      "start_frame": "subject_eye_twitch.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "seedance-1.5",
+      "dialog": "Interlinked.",
+      "dialog_voice": "subject_strained",
+      "dialog_speaker": "subject",
+      "motion_prompt": "lips barely move, eyes show strain",
+      "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "climax",
+      "shot_type": "extreme-close",
+      "camera_angle": "eye-level"
+    },
+    {
+      "shot_id": "baseline_08_pullback",
+      "order": 8,
+      "description": "Pull back to reveal isolation",
+      "reference_shot": null,
+      "start_frame": null,
+      "end_frame": null,
+      "duration": 6,
+      "model": "kling-2.6",
+      "dialog": null,
+      "motion_prompt": "slow dolly out, revealing subject alone in vast empty room, then settles",
+      "transition_in": "cut",
+      "transition_out": "fade",
+      "narrative_beat": "resolution",
+      "shot_type": "long",
+      "camera_angle": "high-angle"
+    }
+  ],
+
+  "audio_layers": [
+    {
+      "type": "music",
+      "file": "baseline_drone.mp3",
+      "start": 0,
+      "volume": 0.3
+    },
+    {
+      "type": "ambience",
+      "file": "fluorescent_hum.mp3",
+      "start": 0,
+      "volume": 0.2
+    }
+  ],
+
+  "notes": "Inspired by Blade Runner 2049 baseline test sequence. Key is the contrast between clinical environment and internal psychological pressure. Model selection: Seedance for dialog, Kling O1 for the slow push-ins with end frames, Kling 2.6 for the wide establishing/reveal shots."
+}

@@ -274,6 +274,87 @@ function handleAPI(req, res, parsedUrl) {
     return;
   }
 
+  // ==================== SCENE API ====================
+
+  // GET /api/scenes - List all scenes
+  if (pathname === '/api/scenes') {
+    const scenesDir = path.join(BASE_DIR, 'scenes');
+    let scenes = [];
+
+    if (fs.existsSync(scenesDir)) {
+      const files = fs.readdirSync(scenesDir).filter(f => f.endsWith('.json'));
+      scenes = files.map(f => {
+        try {
+          const data = JSON.parse(fs.readFileSync(path.join(scenesDir, f), 'utf8'));
+          return {
+            scene_id: data.scene_id,
+            name: data.name,
+            description: data.description,
+            shots: data.shots?.length || 0,
+            duration: data.duration_estimate,
+            file: f
+          };
+        } catch (err) {
+          return null;
+        }
+      }).filter(Boolean);
+    }
+
+    res.writeHead(200);
+    res.end(JSON.stringify({ count: scenes.length, scenes }));
+    return;
+  }
+
+  // GET /api/scene/:id - Get full scene definition
+  const sceneMatch = pathname.match(/^\/api\/scene\/([^/]+)$/);
+  if (sceneMatch) {
+    const sceneId = decodeURIComponent(sceneMatch[1]);
+    const scenePath = path.join(BASE_DIR, 'scenes', `${sceneId}.json`);
+
+    if (!fs.existsSync(scenePath)) {
+      res.writeHead(404);
+      res.end(JSON.stringify({ error: 'Scene not found' }));
+      return;
+    }
+
+    try {
+      const scene = JSON.parse(fs.readFileSync(scenePath, 'utf8'));
+      res.writeHead(200);
+      res.end(JSON.stringify(scene));
+    } catch (err) {
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: 'Failed to parse scene' }));
+    }
+    return;
+  }
+
+  // GET /api/scene/:id/build - Build execution plan for a scene
+  const buildMatch = pathname.match(/^\/api\/scene\/([^/]+)\/build$/);
+  if (buildMatch) {
+    const sceneId = decodeURIComponent(buildMatch[1]);
+    const scenePath = path.join(BASE_DIR, 'scenes', `${sceneId}.json`);
+
+    if (!fs.existsSync(scenePath)) {
+      res.writeHead(404);
+      res.end(JSON.stringify({ error: 'Scene not found' }));
+      return;
+    }
+
+    try {
+      const scene = JSON.parse(fs.readFileSync(scenePath, 'utf8'));
+      const sceneBuilder = require('./tools/scene-builder.js');
+      sceneBuilder.loadData();
+      const plan = sceneBuilder.buildExecutionPlan(scene);
+
+      res.writeHead(200);
+      res.end(JSON.stringify(plan));
+    } catch (err) {
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: err.message }));
+    }
+    return;
+  }
+
   // Unknown API endpoint
   res.writeHead(404);
   res.end(JSON.stringify({ error: 'Unknown API endpoint' }));
@@ -347,21 +428,25 @@ loadIndex();
 
 server.listen(PORT, () => {
   console.log(`
-  ╔═══════════════════════════════════════╗
-  ║         MOVIE SHOTS BROWSER           ║
-  ╠═══════════════════════════════════════╣
-  ║                                       ║
-  ║   Server running at:                  ║
-  ║   http://localhost:${PORT}                ║
-  ║                                       ║
-  ║   API Endpoints:                      ║
-  ║   /api/shots       - Get all shots    ║
-  ║   /api/shot/:id    - Get single shot  ║
-  ║   /api/prompt/:id  - Get prompt       ║
-  ║   /api/filters     - Get filter opts  ║
-  ║                                       ║
-  ║   Press Ctrl+C to stop                ║
-  ║                                       ║
-  ╚═══════════════════════════════════════╝
+  ╔═══════════════════════════════════════════╗
+  ║         MOVIE SHOTS BROWSER + SCENES      ║
+  ╠═══════════════════════════════════════════╣
+  ║                                           ║
+  ║   Server: http://localhost:${PORT}            ║
+  ║                                           ║
+  ║   SHOT API:                               ║
+  ║   /api/shots         - Get all shots      ║
+  ║   /api/shot/:id      - Get single shot    ║
+  ║   /api/prompt/:id    - Get prompt         ║
+  ║   /api/filters       - Get filter opts    ║
+  ║                                           ║
+  ║   SCENE API:                              ║
+  ║   /api/scenes        - List all scenes    ║
+  ║   /api/scene/:id     - Get scene def      ║
+  ║   /api/scene/:id/build - Build exec plan  ║
+  ║                                           ║
+  ║   Press Ctrl+C to stop                    ║
+  ║                                           ║
+  ╚═══════════════════════════════════════════╝
   `);
 });
