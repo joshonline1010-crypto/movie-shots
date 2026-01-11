@@ -887,8 +887,8 @@
     }
 
     .frame-box {
-      width: 100px;
-      height: 56px;
+      width: 160px;
+      height: 90px;
       background: var(--bg-deep);
       border: 2px solid var(--border);
       border-radius: 4px;
@@ -897,6 +897,13 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .frame-box:hover {
+      transform: scale(1.05);
+      border-color: var(--accent);
     }
 
     .frame-box img {
@@ -977,6 +984,40 @@
       color: var(--accent);
       font-style: italic;
       margin-top: 0.25rem;
+    }
+
+    .shot-prompt {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      padding: 0.4rem 0.6rem;
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+
+    .shot-prompt:hover {
+      border-color: var(--accent);
+      background: var(--bg-hover);
+    }
+
+    .shot-prompt.copied {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .shot-prompt.photo {
+      border-left: 3px solid #22d3ee;
+    }
+
+    .shot-prompt.video {
+      border-left: 3px solid #f472b6;
     }
 
     .shot-model {
@@ -2038,20 +2079,20 @@
               <div class="shot-order">${shot.order}</div>
 
               <div class="shot-frames">
-                <div class="frame-box start ${!startFrameDisplay ? 'empty' : ''}">
-                  ${startFrameDisplay && startFrameDisplay.startsWith('http')
-                    ? `<img src="${startFrameDisplay}" alt="Start">`
-                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">${startFrameDisplay ? 'Pending' : 'None'}</span>`
+                <div class="frame-box start ${!startFrameDisplay ? 'empty' : ''}" ${startFrameDisplay ? `title="${startFrameDisplay}"` : ''}>
+                  ${startFrameDisplay
+                    ? `<img src="${startFrameDisplay}" alt="Start" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none; color: var(--text-muted); font-size: 0.6rem; text-align:center; padding:4px;">${startFrameDisplay.split('/').pop()}</span>`
+                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">None</span>`
                   }
                   <span class="frame-label ${isChained ? 'chain' : 'start'}">${isChained ? 'CHAIN' : 'START'}</span>
                 </div>
 
                 <div class="chain-arrow">→</div>
 
-                <div class="frame-box end ${!endFrameDisplay ? 'empty' : ''}">
-                  ${endFrameDisplay && endFrameDisplay.startsWith('http')
-                    ? `<img src="${endFrameDisplay}" alt="End">`
-                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">${endFrameDisplay ? 'Pending' : 'None'}</span>`
+                <div class="frame-box end ${!endFrameDisplay ? 'empty' : ''}" ${endFrameDisplay ? `title="${endFrameDisplay}"` : ''}>
+                  ${endFrameDisplay
+                    ? `<img src="${endFrameDisplay}" alt="End" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none; color: var(--text-muted); font-size: 0.6rem; text-align:center; padding:4px;">${endFrameDisplay.split('/').pop()}</span>`
+                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">None</span>`
                   }
                   <span class="frame-label end">END</span>
                 </div>
@@ -2065,6 +2106,8 @@
                   <span>${shot.transition_in} → ${shot.transition_out}</span>
                 </div>
                 ${shot.has_dialog ? `<div class="shot-dialog">"${shot.dialog}"</div>` : ''}
+                ${sceneShot?.photo_prompt ? `<div class="shot-prompt photo" title="Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${sceneShot.photo_prompt.replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">📷 ${sceneShot.photo_prompt.substring(0, 80)}...</div>` : ''}
+                ${shot.inputs?.prompt ? `<div class="shot-prompt video" title="Video Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(shot.inputs.prompt || '').replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">🎬 ${(shot.inputs.prompt || '').substring(0, 80)}...</div>` : ''}
               </div>
 
               <div class="shot-model ${modelClass}">${shot.model}</div>
