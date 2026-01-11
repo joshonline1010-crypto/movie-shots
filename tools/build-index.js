@@ -74,6 +74,35 @@ function scanDirectory(dir, shots = []) {
               elevation: data.camera3d.elevation,
               distance: data.camera3d.distance,
               description: data.camera3d.description || null
+            } : null,
+            // Costume/Wardrobe
+            costume: data.costume ? {
+              style: data.costume.style || null,
+              era: data.costume.era || null,
+              keyPieces: data.costume.key_pieces || [],
+              condition: data.costume.condition || null,
+              colors: data.costume.colors || []
+            } : null,
+            // Character Pose
+            characterPose: data.character_pose ? {
+              posture: data.character_pose.posture || null,
+              bodyLanguage: data.character_pose.body_language || null,
+              gesture: data.character_pose.gesture || null,
+              headPosition: data.character_pose.head_position || null
+            } : null,
+            // Production Design
+            productionDesign: data.production_design ? {
+              style: data.production_design.style || null,
+              keyProps: data.production_design.key_props || [],
+              materials: data.production_design.materials || [],
+              practicalLights: data.production_design.practical_lights || []
+            } : null,
+            // Narrative/Story Purpose
+            narrative: data.narrative ? {
+              shotPurpose: data.narrative.shot_purpose || null,
+              narrativeBeat: data.narrative.narrative_beat || null,
+              emotionalFunction: data.narrative.emotional_function || null,
+              storyContext: data.narrative.story_context || null
             } : null
           });
         }

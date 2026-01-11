@@ -37,9 +37,19 @@ function loadIndex() {
 function generatePrompt(shot) {
   const promptParts = [];
 
-  // 1. Subject + Placement - Smart type detection
+  // 1. Subject + Placement + Costume - Smart type detection
   const subjectType = shot.subjectType || 'character';
-  const subjectDesc = shot.subjectDescription || 'subject';
+  let subjectDesc = shot.subjectDescription || 'subject';
+
+  // Add costume details to character description
+  if (subjectType === 'character' && shot.costume) {
+    const costumeParts = [];
+    if (shot.costume.keyPieces?.length) costumeParts.push(shot.costume.keyPieces.join(', '));
+    if (shot.costume.condition && shot.costume.condition !== 'pristine') costumeParts.push(shot.costume.condition);
+    if (costumeParts.length) {
+      subjectDesc += ` wearing ${costumeParts.join(', ')}`;
+    }
+  }
 
   let subjectStr = '';
   if (subjectType === 'character') {
@@ -52,6 +62,12 @@ function generatePrompt(shot) {
     subjectStr = `[SCENE: ${subjectDesc}]`;
   } else {
     subjectStr = `[${subjectType.toUpperCase()}: ${subjectDesc}]`;
+  }
+
+  // Add pose/body language
+  if (shot.characterPose) {
+    if (shot.characterPose.posture) subjectStr += ` ${shot.characterPose.posture}`;
+    if (shot.characterPose.gesture) subjectStr += `, ${shot.characterPose.gesture}`;
   }
 
   if (shot.subjectPlacement) {
@@ -139,6 +155,11 @@ function generatePrompt(shot) {
   // 10. Aspect Ratio
   if (shot.aspectRatio && shot.aspectRatio !== '16:9') {
     promptParts.push(`${shot.aspectRatio} aspect ratio`);
+  }
+
+  // 11. Narrative/Story Context
+  if (shot.narrative?.storyContext) {
+    promptParts.push(`[STORY: ${shot.narrative.storyContext}]`);
   }
 
   return promptParts.join(', ');

@@ -120,6 +120,31 @@ teal-orange, desaturated-cold, neon-noir, golden-warm, noir-monochrome, pastel, 
 ## ASPECT RATIO (estimate from black bars or composition):
 16:9 (HD), 2.39:1 (anamorphic/cinematic), 1.85:1 (theatrical), 4:3 (classic), 21:9 (ultrawide)
 
+## COSTUME/WARDROBE (describe what subject is wearing):
+- Style: casual, formal, military, period, fantasy, scifi, streetwear, uniform
+- Era: modern, 1940s, 1970s, victorian, futuristic, etc.
+- Key pieces: coat, suit, dress, armor, hat, glasses, etc.
+- Condition: pristine, worn, weathered, damaged, bloody, dirty
+- Colors: describe main colors
+
+## PRODUCTION DESIGN (set/environment details):
+- Style: minimalist, maximalist, period-accurate, stylized, industrial, organic
+- Key props: important objects visible in scene
+- Materials: wood, metal, glass, concrete, fabric
+- Practical lights: lamps, candles, neon-signs, screens, fire, windows
+
+## CHARACTER POSE (body language):
+- Posture: upright, slouched, leaning, crouched, sitting, standing
+- Body language: open, closed, defensive, aggressive, relaxed, tense
+- Gesture: what are hands doing
+- Head position: straight, tilted, bowed, turned
+
+## NARRATIVE/STORY PURPOSE (what role does this shot play):
+- Shot purpose: establishing, character-intro, reaction, reveal, climax, transition, pov, insert
+- Narrative beat: exposition, rising-action, crisis, climax, resolution
+- Emotional function: build-tension, release-tension, create-empathy, establish-threat, show-vulnerability, foreshadow
+- What story is this shot telling? (1 sentence)
+
 Respond in this exact JSON format:
 {
   "shot": {
@@ -139,6 +164,31 @@ Respond in this exact JSON format:
     "placement": "right-third",
     "eye_direction": "left",
     "pose": "standing"
+  },
+  "costume": {
+    "style": "formal",
+    "era": "modern",
+    "key_pieces": ["dark suit", "loosened tie", "white shirt"],
+    "condition": "worn",
+    "colors": ["black", "white", "gray"]
+  },
+  "character_pose": {
+    "posture": "standing",
+    "body_language": "tense",
+    "gesture": "hands at sides",
+    "head_position": "slightly bowed"
+  },
+  "production_design": {
+    "style": "period-accurate",
+    "key_props": ["venetian blinds", "desk lamp", "whiskey glass"],
+    "materials": ["wood", "glass", "brass"],
+    "practical_lights": ["desk lamp", "window light through blinds"]
+  },
+  "narrative": {
+    "shot_purpose": "character-intro",
+    "narrative_beat": "rising-action",
+    "emotional_function": "build-tension",
+    "story_context": "Detective contemplates case alone in his office after discovering a crucial clue"
   },
   "emotion": {
     "primary": "sadness",
@@ -288,6 +338,12 @@ async function processImage(imagePath, dryRun = false) {
       console.log(`  Camera3D: Az=${analysis.camera3d.azimuth}° El=${analysis.camera3d.elevation}° Dist=${analysis.camera3d.distance}`);
     }
     console.log(`  Lens: ${analysis.lens || 'unknown'}`);
+    if (analysis.narrative) {
+      console.log(`  Narrative: ${analysis.narrative.shot_purpose} / ${analysis.narrative.narrative_beat}`);
+    }
+    if (analysis.costume) {
+      console.log(`  Costume: ${analysis.costume.style} (${analysis.costume.era})`);
+    }
 
     // Merge with existing data
     const tagData = {
@@ -307,11 +363,17 @@ async function processImage(imagePath, dryRun = false) {
       director_style: analysis.director_style || existingData.director_style,
       decade: analysis.decade || existingData.decade,
       lens: analysis.lens || existingData.lens,
+      // NEW FIELDS
+      costume: analysis.costume || existingData.costume,
+      character_pose: analysis.character_pose || existingData.character_pose,
+      production_design: analysis.production_design || existingData.production_design,
+      narrative: analysis.narrative || existingData.narrative,
+      // End new fields
       tags: [...new Set([...(existingData.tags || []), ...(analysis.tags || [])])],
       prompt_keywords: analysis.prompt_keywords || existingData.prompt_keywords,
       _needsTagging: false,
       _taggedAt: new Date().toISOString(),
-      _taggedBy: 'auto-tagger/gpt4-vision-v2'
+      _taggedBy: 'auto-tagger/gpt4-vision-v3'
     };
 
     if (dryRun) {

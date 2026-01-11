@@ -639,5 +639,93 @@
     "stops and looks",
     "settles back",
     "then freezes"
-  ]
+  ],
+
+  "narrative": {
+    "_description": "Story/screenwriting purpose of the shot",
+    "shotPurpose": {
+      "establishing": "Sets location, time, mood for scene",
+      "character-intro": "First appearance, defines who they are",
+      "reaction": "Shows emotional response to event",
+      "insert": "Detail shot, important object or action",
+      "transition": "Bridges between scenes or beats",
+      "reveal": "Dramatic disclosure of information",
+      "pov": "Shows what character sees",
+      "montage": "Part of time-passing sequence",
+      "climax": "Peak dramatic moment",
+      "resolution": "Aftermath, emotional conclusion",
+      "cutaway": "Brief departure from main action"
+    },
+    "narrativeBeat": {
+      "exposition": "Delivers information to audience",
+      "inciting-incident": "Event that starts the story",
+      "rising-action": "Building tension and stakes",
+      "complication": "New obstacle or challenge",
+      "midpoint": "Major shift or revelation",
+      "crisis": "Moment of greatest tension",
+      "climax": "Peak confrontation or decision",
+      "falling-action": "Consequences unfold",
+      "resolution": "Story threads conclude",
+      "denouement": "New equilibrium established"
+    },
+    "emotionalFunction": {
+      "build-tension": "Increases anxiety/anticipation",
+      "release-tension": "Provides relief or catharsis",
+      "create-empathy": "Makes audience feel for character",
+      "establish-threat": "Shows danger or antagonist",
+      "show-vulnerability": "Exposes character weakness",
+      "demonstrate-power": "Shows strength or control",
+      "convey-isolation": "Character alone, separated",
+      "suggest-intimacy": "Close connection between characters",
+      "foreshadow": "Hints at future events",
+      "callback": "References earlier moment"
+    },
+    "informationDelivery": {
+      "visual-exposition": "Shows rather than tells",
+      "character-detail": "Reveals personality trait",
+      "relationship-dynamic": "Shows how characters relate",
+      "world-building": "Establishes setting rules/culture",
+      "plot-advancement": "Moves story forward",
+      "theme-reinforcement": "Echoes central message",
+      "subtext": "Hidden meaning beneath surface"
+    }
+  },
+
+  "costume": {
+    "_description": "Detailed wardrobe/costume analysis",
+    "style": ["casual", "formal", "military", "period", "fantasy", "scifi", "streetwear", "uniform", "theatrical"],
+    "era": ["ancient", "medieval", "victorian", "1920s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "modern", "futuristic"],
+    "formality": ["disheveled", "casual", "smart-casual", "business", "formal", "black-tie", "ceremonial"],
+    "condition": ["pristine", "worn", "weathered", "damaged", "bloody", "dirty", "wet"],
+    "colorScheme": ["monochrome", "earth-tones", "bright", "muted", "black", "white", "complementary", "accent-color"],
+    "keyPieces": ["coat", "jacket", "suit", "dress", "uniform", "armor", "robe", "hat", "glasses", "jewelry", "weapon-holster", "badge"]
+  },
+
+  "productionDesign": {
+    "_description": "Set design and art direction details",
+    "style": ["minimalist", "maximalist", "period-accurate", "stylized", "naturalistic", "surreal", "industrial", "organic"],
+    "materials": ["wood", "metal", "glass", "concrete", "brick", "fabric", "plastic", "stone", "organic"],
+    "textures": ["smooth", "rough", "weathered", "polished", "rusty", "dusty", "wet", "reflective"],
+    "era": ["prehistoric", "ancient", "medieval", "renaissance", "victorian", "art-deco", "mid-century", "contemporary", "futuristic"],
+    "keyProps": ["furniture", "vehicles", "technology", "weapons", "food", "documents", "art", "plants", "lighting-fixtures"],
+    "practicalLights": ["lamps", "candles", "neon-signs", "screens", "fire", "windows", "overhead-fixtures"]
+  },
+
+  "characterPose": {
+    "_description": "Body language and physical expression",
+    "posture": ["upright", "slouched", "leaning", "crouched", "lying", "kneeling", "sitting", "standing"],
+    "bodyLanguage": ["open", "closed", "defensive", "aggressive", "relaxed", "tense", "submissive", "dominant"],
+    "gesture": ["pointing", "reaching", "holding", "crossed-arms", "hands-in-pockets", "covering-face", "embracing", "fighting"],
+    "movement": ["static", "walking", "running", "turning", "falling", "rising", "recoiling", "advancing"],
+    "headPosition": ["straight", "tilted", "bowed", "raised", "turned-left", "turned-right", "looking-down", "looking-up"],
+    "tension": ["relaxed", "alert", "nervous", "coiled", "exhausted", "energized"]
+  },
+
+  "storyContext": {
+    "_description": "Overall story context for the shot",
+    "genre": ["action", "drama", "comedy", "horror", "thriller", "romance", "scifi", "fantasy", "western", "noir", "documentary"],
+    "tone": ["serious", "playful", "dark", "light", "ironic", "sincere", "satirical", "melancholic", "hopeful", "ominous"],
+    "pacing": ["slow-contemplative", "measured", "brisk", "rapid", "frenetic"],
+    "audienceEmotion": ["awe", "fear", "joy", "sadness", "tension", "relief", "curiosity", "disgust", "empathy", "excitement"]
+  }
 }

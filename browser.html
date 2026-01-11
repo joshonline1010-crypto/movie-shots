@@ -888,6 +888,37 @@
           </div>
         </div>
 
+        <div class="detail-section" id="narrativeSection" style="display: none;">
+          <div class="detail-label">Story/Narrative Purpose</div>
+          <div class="camera3d-box">
+            <div class="detail-grid">
+              <div class="camera3d-item">
+                <span class="camera3d-label">Shot Purpose</span>
+                <span class="detail-value" id="modalShotPurpose">-</span>
+              </div>
+              <div class="camera3d-item">
+                <span class="camera3d-label">Narrative Beat</span>
+                <span class="detail-value" id="modalNarrativeBeat">-</span>
+              </div>
+              <div class="camera3d-item">
+                <span class="camera3d-label">Emotional Function</span>
+                <span class="detail-value" id="modalEmotionalFunction">-</span>
+              </div>
+            </div>
+            <div class="camera3d-desc" id="modalStoryContext"></div>
+          </div>
+        </div>
+
+        <div class="detail-section" id="costumeSection" style="display: none;">
+          <div class="detail-label">Costume/Wardrobe</div>
+          <div class="detail-value" id="modalCostume">-</div>
+        </div>
+
+        <div class="detail-section" id="productionSection" style="display: none;">
+          <div class="detail-label">Production Design</div>
+          <div class="detail-value" id="modalProduction">-</div>
+        </div>
+
         <div class="detail-section">
           <div class="detail-label">Tags</div>
           <div class="tag-list" id="modalTags"></div>
@@ -1099,6 +1130,45 @@
         camera3dSection.style.display = 'none';
       }
 
+      // Narrative/Story Purpose
+      const narrativeSection = document.getElementById('narrativeSection');
+      if (shot.narrative) {
+        narrativeSection.style.display = 'block';
+        document.getElementById('modalShotPurpose').textContent = shot.narrative.shotPurpose || '-';
+        document.getElementById('modalNarrativeBeat').textContent = shot.narrative.narrativeBeat || '-';
+        document.getElementById('modalEmotionalFunction').textContent = shot.narrative.emotionalFunction || '-';
+        document.getElementById('modalStoryContext').textContent = shot.narrative.storyContext || '';
+      } else {
+        narrativeSection.style.display = 'none';
+      }
+
+      // Costume/Wardrobe
+      const costumeSection = document.getElementById('costumeSection');
+      if (shot.costume) {
+        costumeSection.style.display = 'block';
+        const costumeParts = [];
+        if (shot.costume.style) costumeParts.push(shot.costume.style);
+        if (shot.costume.era) costumeParts.push(`(${shot.costume.era})`);
+        if (shot.costume.keyPieces?.length) costumeParts.push(`- ${shot.costume.keyPieces.join(', ')}`);
+        if (shot.costume.condition) costumeParts.push(`[${shot.costume.condition}]`);
+        document.getElementById('modalCostume').textContent = costumeParts.join(' ') || '-';
+      } else {
+        costumeSection.style.display = 'none';
+      }
+
+      // Production Design
+      const productionSection = document.getElementById('productionSection');
+      if (shot.productionDesign) {
+        productionSection.style.display = 'block';
+        const prodParts = [];
+        if (shot.productionDesign.style) prodParts.push(shot.productionDesign.style);
+        if (shot.productionDesign.keyProps?.length) prodParts.push(`Props: ${shot.productionDesign.keyProps.join(', ')}`);
+        if (shot.productionDesign.practicalLights?.length) prodParts.push(`Lights: ${shot.productionDesign.practicalLights.join(', ')}`);
+        document.getElementById('modalProduction').textContent = prodParts.join(' | ') || '-';
+      } else {
+        productionSection.style.display = 'none';
+      }
+
       // Tags
       const tagsEl = document.getElementById('modalTags');
       tagsEl.innerHTML = shot.tags.map(t => `<span class="tag">${t}</span>`).join('');
@@ -1108,11 +1178,21 @@
 
       const promptParts = [];
 
-      // 1. Subject + Placement - Smart type detection
+      // 1. Subject + Placement + Costume - Smart type detection
       // Format: [CHARACTER: man in dark suit], [OBJECT: vintage car], [SCENE: rainy street]
       let subjectStr = '';
       const subjectType = shot.subjectType || 'character';
-      const subjectDesc = shot.subjectDescription || 'subject';
+      let subjectDesc = shot.subjectDescription || 'subject';
+
+      // Add costume details to character description
+      if (subjectType === 'character' && shot.costume) {
+        const costumeParts = [];
+        if (shot.costume.keyPieces?.length) costumeParts.push(shot.costume.keyPieces.join(', '));
+        if (shot.costume.condition && shot.costume.condition !== 'pristine') costumeParts.push(shot.costume.condition);
+        if (costumeParts.length) {
+          subjectDesc += ` wearing ${costumeParts.join(', ')}`;
+        }
+      }
 
       // Build the smart placeholder based on subject type
       if (subjectType === 'character') {
@@ -1126,6 +1206,12 @@
       } else {
         // Default fallback
         subjectStr = `[${subjectType.toUpperCase()}: ${subjectDesc}]`;
+      }
+
+      // Add pose/body language
+      if (shot.characterPose) {
+        if (shot.characterPose.posture) subjectStr += ` ${shot.characterPose.posture}`;
+        if (shot.characterPose.gesture) subjectStr += `, ${shot.characterPose.gesture}`;
       }
 
       // Add placement info
@@ -1213,6 +1299,11 @@
       // 10. Aspect Ratio (if cinematic)
       if (shot.aspectRatio && shot.aspectRatio !== '16:9') {
         promptParts.push(`${shot.aspectRatio} aspect ratio`);
+      }
+
+      // 11. Narrative/Story Context (what this shot means)
+      if (shot.narrative?.storyContext) {
+        promptParts.push(`[STORY: ${shot.narrative.storyContext}]`);
       }
 
       const quickBuild = document.getElementById('quickBuild');
