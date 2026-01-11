@@ -716,6 +716,333 @@
       color: var(--text-dim);
     }
 
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-dim);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg-deep);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Scenes Panel */
+    .scenes-container {
+      padding: 0 3rem 3rem;
+    }
+
+    .scene-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .scene-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .scene-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .scene-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+    }
+
+    .scene-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-meta {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .scene-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Timeline View */
+    .timeline-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .timeline-info {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline-shot {
+      display: flex;
+      align-items: stretch;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .timeline-shot:last-child {
+      border-bottom: none;
+    }
+
+    /* Chain line connecting shots */
+    .timeline-shot.chained::before {
+      content: '';
+      position: absolute;
+      left: 75px;
+      top: -10px;
+      width: 3px;
+      height: 20px;
+      background: linear-gradient(to bottom, var(--success), var(--success));
+    }
+
+    .shot-order {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-hover);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .shot-frames {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .frame-box {
+      width: 100px;
+      height: 56px;
+      background: var(--bg-deep);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .frame-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .frame-box.start {
+      border-color: var(--success);
+    }
+
+    .frame-box.end {
+      border-color: #f472b6;
+    }
+
+    .frame-box.empty {
+      border-style: dashed;
+    }
+
+    .frame-label {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      font-size: 0.6rem;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+    }
+
+    .frame-label.start {
+      background: var(--success);
+      color: var(--bg-deep);
+    }
+
+    .frame-label.end {
+      background: #f472b6;
+      color: var(--bg-deep);
+    }
+
+    .frame-label.chain {
+      background: var(--accent);
+      color: var(--bg-deep);
+    }
+
+    /* Chain arrow between frames */
+    .chain-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--success);
+      font-size: 1.2rem;
+    }
+
+    .shot-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .shot-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .shot-details {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .shot-dialog {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .shot-model {
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      flex-shrink: 0;
+    }
+
+    .shot-model.seedance {
+      background: rgba(244, 114, 182, 0.2);
+      color: #f472b6;
+      border: 1px solid #f472b6;
+    }
+
+    .shot-model.kling-o1 {
+      background: rgba(34, 211, 238, 0.2);
+      color: #22d3ee;
+      border: 1px solid #22d3ee;
+    }
+
+    .shot-model.kling-26 {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+      border: 1px solid #fbbf24;
+    }
+
+    .shot-duration {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Legend */
+    .timeline-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+    }
+
+    .legend-dot.start { background: var(--success); }
+    .legend-dot.end { background: #f472b6; }
+    .legend-dot.chain { background: var(--accent); }
+    .legend-dot.seedance { background: #f472b6; }
+    .legend-dot.kling-o1 { background: #22d3ee; }
+    .legend-dot.kling-26 { background: #fbbf24; }
+
     /* Responsive */
     @media (max-width: 900px) {
       .modal {
@@ -757,9 +1084,13 @@
   <header class="header">
     <div class="title-row">
       <h1>MOVIE SHOTS</h1>
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="shots">SHOTS</button>
+        <button class="tab-btn" data-tab="scenes">SCENES</button>
+      </div>
       <span class="stats" id="totalStats">Loading...</span>
     </div>
-    <div class="controls">
+    <div class="controls" id="shotControls">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="Search films, directors, tags...">
       </div>
@@ -785,12 +1116,50 @@
     </div>
   </header>
 
-  <main class="grid-container">
-    <div class="results-count" id="resultsCount"></div>
-    <div class="grid" id="shotGrid">
-      <div class="loading">Loading shots</div>
+  <!-- SHOTS TAB PANEL -->
+  <div class="tab-panel active" id="shotsPanel">
+    <main class="grid-container">
+      <div class="results-count" id="resultsCount"></div>
+      <div class="grid" id="shotGrid">
+        <div class="loading">Loading shots</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- SCENES TAB PANEL -->
+  <div class="tab-panel" id="scenesPanel">
+    <div class="scenes-container">
+      <div class="results-count" id="scenesCount">Loading scenes...</div>
+
+      <div class="scene-list" id="sceneList">
+        <!-- Scene cards populated by JS -->
+      </div>
+
+      <!-- Timeline View (shown when scene is selected) -->
+      <div class="timeline-container" id="timelineView" style="display: none;">
+        <div class="timeline-header">
+          <div>
+            <h3 class="timeline-title" id="timelineTitle">Scene Timeline</h3>
+            <div class="timeline-info" id="timelineInfo"></div>
+          </div>
+          <button class="clear-btn" id="closeTimeline">Close Timeline</button>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <!-- Timeline shots populated by JS -->
+        </div>
+
+        <div class="timeline-legend">
+          <div class="legend-item"><div class="legend-dot start"></div> Start Frame</div>
+          <div class="legend-item"><div class="legend-dot end"></div> End Frame</div>
+          <div class="legend-item"><div class="legend-dot chain"></div> Chained from Previous</div>
+          <div class="legend-item"><div class="legend-dot seedance"></div> Seedance (Dialog)</div>
+          <div class="legend-item"><div class="legend-dot kling-o1"></div> Kling O1 (Transitions)</div>
+          <div class="legend-item"><div class="legend-dot kling-26"></div> Kling 2.6 (Motion)</div>
+        </div>
+      </div>
     </div>
-  </main>
+  </div>
 
   <div class="modal-backdrop" id="modal">
     <div class="modal">
@@ -1550,6 +1919,180 @@
         lightRay.style.display = 'block';
       }
     }
+
+    // ==================== TAB SWITCHING ====================
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const shotControls = document.getElementById('shotControls');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+
+        // Update active button
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update active panel
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`${tab}Panel`).classList.add('active');
+
+        // Show/hide shot controls
+        shotControls.style.display = tab === 'shots' ? 'flex' : 'none';
+
+        // Load scenes if switching to scenes tab
+        if (tab === 'scenes' && !scenesLoaded) {
+          loadScenes();
+        }
+      });
+    });
+
+    // ==================== SCENES FUNCTIONALITY ====================
+    let scenesLoaded = false;
+    let allScenes = [];
+    let currentScene = null;
+
+    async function loadScenes() {
+      const sceneList = document.getElementById('sceneList');
+      const scenesCount = document.getElementById('scenesCount');
+
+      try {
+        const response = await fetch('/api/scenes');
+        const data = await response.json();
+        allScenes = data.scenes;
+        scenesLoaded = true;
+
+        scenesCount.textContent = `${data.count} scenes`;
+
+        if (allScenes.length === 0) {
+          sceneList.innerHTML = `
+            <div class="empty-state">
+              <h3>No scenes found</h3>
+              <p>Create scene JSON files in the scenes/ folder</p>
+            </div>
+          `;
+          return;
+        }
+
+        sceneList.innerHTML = allScenes.map(scene => `
+          <div class="scene-card" data-id="${scene.scene_id}">
+            <div class="scene-name">${scene.name}</div>
+            <div class="scene-meta">
+              <span>${scene.shots} shots</span>
+              <span>${scene.duration || '?'}s duration</span>
+            </div>
+            <div class="scene-desc">${scene.description || ''}</div>
+          </div>
+        `).join('');
+
+        // Add click handlers
+        document.querySelectorAll('.scene-card').forEach(card => {
+          card.addEventListener('click', () => loadSceneTimeline(card.dataset.id));
+        });
+
+      } catch (err) {
+        scenesCount.textContent = 'Error loading scenes';
+        sceneList.innerHTML = `
+          <div class="empty-state">
+            <h3>Could not load scenes</h3>
+            <p>Make sure the server is running: node server.js</p>
+          </div>
+        `;
+      }
+    }
+
+    async function loadSceneTimeline(sceneId) {
+      const timelineView = document.getElementById('timelineView');
+      const timelineTitle = document.getElementById('timelineTitle');
+      const timelineInfo = document.getElementById('timelineInfo');
+      const timeline = document.getElementById('timeline');
+
+      // Mark active scene card
+      document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
+      document.querySelector(`.scene-card[data-id="${sceneId}"]`)?.classList.add('active');
+
+      try {
+        // Get scene definition
+        const sceneRes = await fetch(`/api/scene/${sceneId}`);
+        const scene = await sceneRes.json();
+        currentScene = scene;
+
+        // Get execution plan (with model selection)
+        const buildRes = await fetch(`/api/scene/${sceneId}/build`);
+        const plan = await buildRes.json();
+
+        timelineTitle.textContent = scene.name;
+        timelineInfo.textContent = `${plan.total_shots} shots | ${plan.estimated_duration}s | ${scene.location || 'Unknown location'}`;
+
+        // Render timeline shots
+        timeline.innerHTML = plan.shots.map((shot, i) => {
+          const sceneShot = scene.shots.find(s => s.shot_id === shot.shot_id);
+          const isChained = shot.chain_from_previous;
+          const modelClass = shot.model.replace(/[.]/g, '-').replace(/kling-2-6/, 'kling-26');
+
+          // Determine frame displays
+          const startFrameDisplay = shot.inputs[Object.keys(shot.inputs).find(k => k.includes('image') && !k.includes('end') && !k.includes('tail'))] || null;
+          const endFrameDisplay = shot.inputs[Object.keys(shot.inputs).find(k => k.includes('end') || k.includes('tail'))] || null;
+
+          return `
+            <div class="timeline-shot ${isChained ? 'chained' : ''}">
+              <div class="shot-order">${shot.order}</div>
+
+              <div class="shot-frames">
+                <div class="frame-box start ${!startFrameDisplay ? 'empty' : ''}">
+                  ${startFrameDisplay && startFrameDisplay.startsWith('http')
+                    ? `<img src="${startFrameDisplay}" alt="Start">`
+                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">${startFrameDisplay ? 'Pending' : 'None'}</span>`
+                  }
+                  <span class="frame-label ${isChained ? 'chain' : 'start'}">${isChained ? 'CHAIN' : 'START'}</span>
+                </div>
+
+                <div class="chain-arrow">→</div>
+
+                <div class="frame-box end ${!endFrameDisplay ? 'empty' : ''}">
+                  ${endFrameDisplay && endFrameDisplay.startsWith('http')
+                    ? `<img src="${endFrameDisplay}" alt="End">`
+                    : `<span style="color: var(--text-muted); font-size: 0.7rem;">${endFrameDisplay ? 'Pending' : 'None'}</span>`
+                  }
+                  <span class="frame-label end">END</span>
+                </div>
+              </div>
+
+              <div class="shot-info">
+                <div class="shot-id">${shot.shot_id}</div>
+                <div class="shot-details">
+                  <span>${sceneShot?.shot_type || 'Unknown'}</span>
+                  <span>${sceneShot?.camera_angle || ''}</span>
+                  <span>${shot.transition_in} → ${shot.transition_out}</span>
+                </div>
+                ${shot.has_dialog ? `<div class="shot-dialog">"${shot.dialog}"</div>` : ''}
+              </div>
+
+              <div class="shot-model ${modelClass}">${shot.model}</div>
+              <div class="shot-duration">${shot.duration}s</div>
+            </div>
+          `;
+        }).join('');
+
+        timelineView.style.display = 'block';
+
+      } catch (err) {
+        console.error('Failed to load scene:', err);
+        timeline.innerHTML = `
+          <div class="empty-state">
+            <h3>Failed to load scene</h3>
+            <p>${err.message}</p>
+          </div>
+        `;
+        timelineView.style.display = 'block';
+      }
+    }
+
+    // Close timeline button
+    document.getElementById('closeTimeline').addEventListener('click', () => {
+      document.getElementById('timelineView').style.display = 'none';
+      document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
+      currentScene = null;
+    });
 
     // Initialize
     loadData();
