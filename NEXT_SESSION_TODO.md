@@ -60,3 +60,69 @@ Current model breakdown:
 - 28 seedance-1.5 (dialog)
 - 41 kling-2.6 (action)
 - 0 kling-o1 (could upgrade some kling-2.6 shots)
+
+---
+
+## Reference Shots Needed
+
+### Character Reference Images (Generate First)
+
+| Character | Prompt Location | Shots Appearing |
+|-----------|-----------------|-----------------|
+| **Ed** | `character_references.ed.generate_prompt` | 25+ shots |
+| **Shaun** | `character_references.shaun.generate_prompt` | 30+ shots |
+| **Barbara** | `character_references.barbara.generate_prompt` | 8 shots |
+| **Liz** | `character_references.liz.generate_prompt` | 5 shots |
+| **Philip** | `character_references.philip.generate_prompt` | 4 shots |
+
+**Generation command:**
+```
+Use nano-banana-pro with generate_prompt from scene JSON
+Save to: scenes/shaun_the_plan/characters/[name]_ref.png
+```
+
+### Key Frames for Shot Chaining
+
+Scene uses auto-chaining (each shot starts where previous ended). But these frames are critical anchor points:
+
+| Frame | Why Important | Used In |
+|-------|---------------|---------|
+| `frame_001.jpg` | Scene opener - Ed on couch | shot_001 |
+| `frame_020.jpg` | Mum's house exterior | shot_012 |
+| `frame_035.jpg` | Liz's flat exterior | shot_022 |
+| `frame_050.jpg` | Winchester pub exterior | shot_032 |
+| `frame_070.jpg` | Back to flat - plan revision | shot_045 |
+| `frame_105.jpg` | Final frame - scene end | shot_069 |
+
+### End Frames for Kling O1 Upgrades
+
+These shots would benefit from explicit end_frame (upgrade from kling-2.6 to kling-o1):
+
+| Shot | Start Frame | End Frame | Motion |
+|------|-------------|-----------|--------|
+| shot_003 | frame_004 | frame_006 | Shaun thinking → realization |
+| shot_011 | frame_018 | frame_020 | Whip pan to Mum's house |
+| shot_021 | frame_033 | frame_035 | Whip pan to Liz's flat |
+| shot_031 | frame_048 | frame_050 | Whip pan to Winchester |
+| shot_044 | frame_068 | frame_070 | Return to flat transition |
+
+### Last Frame Extraction (For Chaining)
+
+If generating shots sequentially, extract last frame from each video:
+```bash
+# After each video generates, extract last frame for next shot
+ffmpeg -sseof -0.1 -i shot_001.mp4 -frames:v 1 shot_001_last.jpg
+
+# Upload for next shot's start_frame
+curl -F "fileToUpload=@shot_001_last.jpg" https://catbox.moe/user/api.php
+```
+
+### Assets Checklist
+
+Before execution, ensure you have:
+
+- [ ] 5 character reference images generated
+- [ ] All 105 source frames accessible (local server running)
+- [ ] ElevenLabs API key (if using for voices)
+- [ ] n8n running with Story→Video workflow active
+- [ ] ~$30 FAL credits for full scene (~69 shots × $0.40)
