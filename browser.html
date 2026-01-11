@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVIE SHOTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0a0a0a;
+      --bg-card: #141414;
+      --bg-hover: #1a1a1a;
+      --accent: #c9a227;
+      --accent-dim: #8b7019;
+      --text: #e8e8e8;
+      --text-dim: #888;
+      --text-muted: #555;
+      --border: #2a2a2a;
+      --success: #4ade80;
+      --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--grain);
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(to bottom, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
+      padding: 2rem 3rem 3rem;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .stats {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    /* Search & Filters */
+    .controls {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-box::before {
+      content: '';
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23555'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E") no-repeat center;
+    }
+
+    .filter-select {
+      padding: 0.9rem 2.5rem 0.9rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23888'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .filter-select:hover {
+      border-color: var(--text-muted);
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .clear-btn {
+      padding: 0.9rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clear-btn:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    /* Grid */
+    .grid-container {
+      padding: 0 3rem 3rem;
+    }
+
+    .results-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .shot-card {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--bg-card);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .shot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .shot-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .shot-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem 1rem 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .shot-card:hover .shot-overlay {
+      opacity: 1;
+    }
+
+    .shot-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .shot-meta {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .shot-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .shot-tag::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border-radius: 8px;
+      max-width: 1200px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-backdrop.active .modal {
+      transform: scale(1);
+    }
+
+    .modal-image {
+      position: relative;
+      background: var(--bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+
+    .modal-image img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      border-radius: 50%;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .modal-details {
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: 90vh;
+      border-left: 1px solid var(--border);
+    }
+
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.7rem;
+      background: var(--bg-hover);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .prompt-box {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem;
+      padding-top: 2.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text);
+      position: relative;
+      max-height: 150px;
+      overflow-y: auto;
+      word-wrap: break-word;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn.copied {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .prompt-hint {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .camera3d-box {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem;
+    }
+
+    .camera3d-visual-row {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* 3D Scene Container */
+    .camera3d-scene {
+      width: 180px;
+      height: 140px;
+      perspective: 400px;
+      perspective-origin: 50% 30%;
+    }
+
+    .camera3d-stage {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(55deg) rotateZ(0deg);
+    }
+
+    /* Grid floor */
+    .camera3d-grid {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-image:
+        linear-gradient(rgba(74, 222, 128, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74, 222, 128, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      border-radius: 4px;
+    }
+
+    /* Orbit ring (green) */
+    .camera3d-orbit {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+    }
+
+    /* Elevation arc (pink) - vertical half circle */
+    .camera3d-elevation-arc {
+      position: absolute;
+      width: 80px;
+      height: 120px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateY(90deg) rotateX(0deg);
+      border: 3px solid #f472b6;
+      border-radius: 60px 0 0 60px;
+      border-right: none;
+      transform-origin: center center;
+    }
+
+    /* Subject in center */
+    .camera3d-subject {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateX(-55deg);
+      z-index: 10;
+    }
+
+    .subject-card {
+      width: 30px;
+      height: 36px;
+      background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+      border: 2px solid #555;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Camera position dot on orbit (cyan) */
+    .camera3d-cam-dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #22d3ee;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22d3ee;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+
+    /* Elevation dot (pink) */
+    .camera3d-elev-dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #f472b6;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #f472b6;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+
+    /* Distance dot (yellow) */
+    .camera3d-dist-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #facc15;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #facc15;
+      transform: translate(-50%, -50%);
+      z-index: 15;
+      transition: all 0.3s ease;
+    }
+
+    /* Distance line */
+    .camera3d-dist-line {
+      position: absolute;
+      height: 2px;
+      background: #facc15;
+      transform-origin: left center;
+      z-index: 5;
+      transition: all 0.3s ease;
+    }
+
+    /* Light source dot (warm glow) */
+    .camera3d-light-dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #fbbf24 0%, #f97316 50%, transparent 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 20px #fbbf24, 0 0 40px rgba(251, 191, 36, 0.5);
+      transform: translate(-50%, -50%);
+      z-index: 25;
+      transition: all 0.3s ease;
+      display: none;
+    }
+
+    /* Light ray from source to subject */
+    .camera3d-light-ray {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(251, 191, 36, 0.8), rgba(251, 191, 36, 0.1));
+      transform-origin: left center;
+      z-index: 3;
+      transition: all 0.3s ease;
+    }
+
+    .camera3d-values {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .camera3d-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .camera3d-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+
+    .camera3d-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .camera3d-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-style: italic;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quick-build {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.6;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      max-height: 120px;
+      overflow-y: auto;
+      word-wrap: break-word;
+    }
+
+    .quick-build:hover {
+      border-color: var(--success);
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(74, 222, 128, 0.05));
+    }
+
+    .quick-build-label {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Loading state */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      margin-left: 1rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      color: var(--text-dim);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .modal {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+      }
+
+      .modal-image {
+        min-height: 300px;
+      }
+
+      .modal-details {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        max-height: 50vh;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .grid-container {
+        padding: 0 1.5rem 1.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="title-row">
+      <h1>MOVIE SHOTS</h1>
+      <span class="stats" id="totalStats">Loading...</span>
+    </div>
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search films, directors, tags...">
+      </div>
+      <select class="filter-select" id="filterDirector">
+        <option value="">All Directors</option>
+      </select>
+      <select class="filter-select" id="filterEmotion">
+        <option value="">All Emotions</option>
+      </select>
+      <select class="filter-select" id="filterLighting">
+        <option value="">All Lighting</option>
+      </select>
+      <select class="filter-select" id="filterShot">
+        <option value="">All Shot Types</option>
+      </select>
+      <select class="filter-select" id="filterLens">
+        <option value="">All Lenses</option>
+      </select>
+      <select class="filter-select" id="filterAngle">
+        <option value="">All Angles</option>
+      </select>
+      <button class="clear-btn" id="clearFilters">Clear</button>
+    </div>
+  </header>
+
+  <main class="grid-container">
+    <div class="results-count" id="resultsCount"></div>
+    <div class="grid" id="shotGrid">
+      <div class="loading">Loading shots</div>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal">
+      <div class="modal-image">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <img id="modalImage" src="" alt="">
+      </div>
+      <div class="modal-details">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-year" id="modalYear"></div>
+
+        <div class="detail-grid">
+          <div class="detail-section">
+            <div class="detail-label">Shot Type</div>
+            <div class="detail-value" id="modalShot"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Camera Angle</div>
+            <div class="detail-value" id="modalAngle"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Lens</div>
+            <div class="detail-value" id="modalLens"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Emotion</div>
+            <div class="detail-value" id="modalEmotion"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Lighting</div>
+            <div class="detail-value" id="modalLighting"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Environment</div>
+            <div class="detail-value" id="modalEnvironment"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Director Style</div>
+            <div class="detail-value" id="modalDirector"></div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Decade</div>
+            <div class="detail-value" id="modalDecade"></div>
+          </div>
+        </div>
+
+        <div class="detail-section" id="camera3dSection" style="display: none;">
+          <div class="detail-label">3D Camera Placement</div>
+          <div class="camera3d-box">
+            <div class="camera3d-visual-row">
+              <!-- 3D Camera Visualization -->
+              <div class="camera3d-scene">
+                <div class="camera3d-stage">
+                  <!-- Grid floor -->
+                  <div class="camera3d-grid"></div>
+                  <!-- Orbit ring (green) -->
+                  <div class="camera3d-orbit" id="orbitRing"></div>
+                  <!-- Elevation arc (pink) -->
+                  <div class="camera3d-elevation-arc" id="elevationArc"></div>
+                  <!-- Subject in center -->
+                  <div class="camera3d-subject">
+                    <div class="subject-card" id="subjectCard"></div>
+                  </div>
+                  <!-- Camera dot on orbit (cyan) -->
+                  <div class="camera3d-cam-dot" id="camDotOrbit"></div>
+                  <!-- Elevation dot (pink) -->
+                  <div class="camera3d-elev-dot" id="camDotElev"></div>
+                  <!-- Distance dot (yellow) -->
+                  <div class="camera3d-dist-dot" id="camDotDist"></div>
+                  <!-- Distance line -->
+                  <div class="camera3d-dist-line" id="distLine"></div>
+                  <!-- Light source dot (orange/yellow glow) -->
+                  <div class="camera3d-light-dot" id="lightDot"></div>
+                  <!-- Light ray line -->
+                  <div class="camera3d-light-ray" id="lightRay"></div>
+                </div>
+              </div>
+              <!-- Values -->
+              <div class="camera3d-values">
+                <div class="camera3d-item">
+                  <span class="camera3d-label">Azimuth</span>
+                  <span class="camera3d-value" id="modal3dAzimuth">-</span>
+                </div>
+                <div class="camera3d-item">
+                  <span class="camera3d-label">Elevation</span>
+                  <span class="camera3d-value" id="modal3dElevation">-</span>
+                </div>
+                <div class="camera3d-item">
+                  <span class="camera3d-label">Distance</span>
+                  <span class="camera3d-value" id="modal3dDistance">-</span>
+                </div>
+              </div>
+            </div>
+            <div class="camera3d-desc" id="modal3dDesc"></div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-label">Tags</div>
+          <div class="tag-list" id="modalTags"></div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-label">COMPLETE PROMPT (Click to Copy)</div>
+          <div class="quick-build" id="quickBuild">
+            <span id="quickBuildText"></span>
+          </div>
+          <div class="prompt-hint">Subject + Placement + Environment + Time + Mood + 3D Camera + Framing + Shot/Lens/DOF + Movement + Lighting + Color + Aspect Ratio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allShots = [];
+    let filteredShots = [];
+    const basePath = '';
+
+    // DOM Elements
+    const grid = document.getElementById('shotGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filterDirector = document.getElementById('filterDirector');
+    const filterEmotion = document.getElementById('filterEmotion');
+    const filterLighting = document.getElementById('filterLighting');
+    const filterShot = document.getElementById('filterShot');
+    const filterLens = document.getElementById('filterLens');
+    const filterAngle = document.getElementById('filterAngle');
+    const clearFilters = document.getElementById('clearFilters');
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modalClose');
+    const totalStats = document.getElementById('totalStats');
+    const resultsCount = document.getElementById('resultsCount');
+
+    // Load data
+    async function loadData() {
+      try {
+        const response = await fetch('index.json');
+        const data = await response.json();
+        allShots = data.shots;
+        filteredShots = allShots;
+
+        // Populate filters
+        populateFilter(filterDirector, data.filters.directors);
+        populateFilter(filterEmotion, data.filters.emotions);
+        populateFilter(filterLighting, data.filters.lighting);
+        populateFilter(filterShot, data.filters.shotTypes);
+        populateFilter(filterLens, data.filters.lenses || []);
+        populateFilter(filterAngle, data.filters.angles || []);
+
+        totalStats.textContent = `${data.count} SHOTS`;
+        renderGrid();
+      } catch (err) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3>Could not load index</h3>
+            <p>Run: node tools/build-index.js</p>
+          </div>
+        `;
+      }
+    }
+
+    function populateFilter(select, options) {
+      const defaultOption = select.options[0].text;
+      select.innerHTML = `<option value="">${defaultOption}</option>`;
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt.replace(/-/g, ' ');
+        select.appendChild(option);
+      });
+    }
+
+    function renderGrid() {
+      if (filteredShots.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3>No shots found</h3>
+            <p>Try adjusting your filters</p>
+          </div>
+        `;
+        resultsCount.textContent = '0 results';
+        return;
+      }
+
+      resultsCount.textContent = `${filteredShots.length} results`;
+
+      grid.innerHTML = filteredShots.map(shot => `
+        <div class="shot-card" data-id="${shot.id}">
+          <img src="${shot.image}" alt="${shot.film}" loading="lazy">
+          <div class="shot-overlay">
+            <div class="shot-title">${shot.film}</div>
+            <div class="shot-meta">
+              ${shot.shot ? `<span class="shot-tag">${shot.shot}</span>` : ''}
+              ${shot.lens ? `<span class="shot-tag">${shot.lens}</span>` : ''}
+              ${shot.emotion ? `<span class="shot-tag">${shot.emotion}</span>` : ''}
+              ${shot.lighting ? `<span class="shot-tag">${shot.lighting}</span>` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Add click handlers
+      document.querySelectorAll('.shot-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card.dataset.id));
+      });
+    }
+
+    function applyFilters() {
+      const search = searchInput.value.toLowerCase();
+      const director = filterDirector.value;
+      const emotion = filterEmotion.value;
+      const lighting = filterLighting.value;
+      const shot = filterShot.value;
+      const lens = filterLens.value;
+      const angle = filterAngle.value;
+
+      filteredShots = allShots.filter(s => {
+        // Search
+        if (search) {
+          const searchable = [
+            s.film,
+            s.director,
+            s.emotion,
+            s.lighting,
+            s.shot,
+            s.location,
+            s.lens,
+            s.angle,
+            ...s.tags,
+            ...s.genre
+          ].filter(Boolean).join(' ').toLowerCase();
+          if (!searchable.includes(search)) return false;
+        }
+
+        // Filters
+        if (director && s.director !== director) return false;
+        if (emotion && s.emotion !== emotion) return false;
+        if (lighting && s.lighting !== lighting) return false;
+        if (shot && s.shot !== shot) return false;
+        if (lens && s.lens !== lens) return false;
+        if (angle && s.angle !== angle) return false;
+
+        return true;
+      });
+
+      renderGrid();
+    }
+
+    function openModal(id) {
+      const shot = allShots.find(s => s.id === id);
+      if (!shot) return;
+
+      document.getElementById('modalImage').src = shot.image;
+      document.getElementById('modalTitle').textContent = shot.film;
+      document.getElementById('modalYear').textContent = shot.year || '';
+      document.getElementById('modalShot').textContent = shot.shot || '-';
+      document.getElementById('modalAngle').textContent = shot.angle || '-';
+      document.getElementById('modalLens').textContent = shot.lens || '-';
+      document.getElementById('modalDecade').textContent = shot.decade || '-';
+      document.getElementById('modalEmotion').textContent =
+        shot.emotion ? `${shot.emotion}${shot.emotionIntensity ? ` (${shot.emotionIntensity})` : ''}` : '-';
+      document.getElementById('modalLighting').textContent =
+        shot.lighting ? `${shot.lighting}${shot.lightingSource ? ` - ${shot.lightingSource}` : ''}` : '-';
+      document.getElementById('modalEnvironment').textContent =
+        shot.environment ? `${shot.environment}${shot.location ? ` - ${shot.location}` : ''}` : '-';
+      document.getElementById('modalDirector').textContent =
+        shot.director ? shot.director.replace(/-/g, ' ') : '-';
+
+      // 3D Camera Data - use existing data OR reverse-engineer from shot/angle
+      const camera3dSection = document.getElementById('camera3dSection');
+      let cam3d = shot.camera3d;
+
+      // Reverse engineer 3D data from existing shot type and angle if not present
+      if (!cam3d && (shot.shot || shot.angle)) {
+        cam3d = reverseEngineer3D(shot.shot, shot.angle);
+      }
+
+      if (cam3d) {
+        camera3dSection.style.display = 'block';
+        document.getElementById('modal3dAzimuth').textContent = `${cam3d.azimuth}°`;
+        document.getElementById('modal3dElevation').textContent = `${cam3d.elevation}°`;
+        document.getElementById('modal3dDistance').textContent = cam3d.distance;
+        document.getElementById('modal3dDesc').textContent = cam3d.description ||
+          `${getAzimuthLabel(cam3d.azimuth)}, ${getElevationLabel(cam3d.elevation)}, ${getDistanceLabel(cam3d.distance)}`;
+
+        // Update subject card icon based on type
+        const subjectCard = document.getElementById('subjectCard');
+        const subjectIcons = {
+          'character': '👤',
+          'object': '📦',
+          'vehicle': '🚗',
+          'animal': '🐾',
+          'scene': '🌆',
+          'background': '🏔'
+        };
+        subjectCard.textContent = subjectIcons[shot.subjectType] || '🎬';
+
+        // Update camera visual indicator
+        updateCameraVisual(cam3d.azimuth, cam3d.elevation, cam3d.distance);
+
+        // Update lighting visual indicator
+        if (shot.lighting) {
+          updateLightingVisual(shot.lighting, shot.lightingSource);
+        }
+      } else {
+        camera3dSection.style.display = 'none';
+      }
+
+      // Tags
+      const tagsEl = document.getElementById('modalTags');
+      tagsEl.innerHTML = shot.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+      // COMPLETE PROMPT - ONE prompt with EVERYTHING
+      // ONE PROMPT with EVERYTHING: Subject, Placement, Environment, Mood, 3D Camera, Framing, Shot, Lens, DOF, Lighting, Color
+
+      const promptParts = [];
+
+      // 1. Subject + Placement - Smart type detection
+      // Format: [CHARACTER: man in dark suit], [OBJECT: vintage car], [SCENE: rainy street]
+      let subjectStr = '';
+      const subjectType = shot.subjectType || 'character';
+      const subjectDesc = shot.subjectDescription || 'subject';
+
+      // Build the smart placeholder based on subject type
+      if (subjectType === 'character') {
+        subjectStr = `[CHARACTER: ${subjectDesc}]`;
+      } else if (subjectType === 'object' || subjectType === 'vehicle') {
+        subjectStr = `[OBJECT: ${subjectDesc}]`;
+      } else if (subjectType === 'animal') {
+        subjectStr = `[ANIMAL: ${subjectDesc}]`;
+      } else if (subjectType === 'scene' || subjectType === 'background') {
+        subjectStr = `[SCENE: ${subjectDesc}]`;
+      } else {
+        // Default fallback
+        subjectStr = `[${subjectType.toUpperCase()}: ${subjectDesc}]`;
+      }
+
+      // Add placement info
+      if (shot.subjectPlacement) {
+        subjectStr += ` positioned ${shot.subjectPlacement}`;
+      }
+      if (shot.eyeDirection && shot.eyeDirection !== 'at-camera') {
+        subjectStr += ` looking ${shot.eyeDirection}`;
+      }
+      promptParts.push(subjectStr);
+
+      // 2. Environment/Location + Time + Weather
+      let envStr = '';
+      if (shot.location) {
+        envStr = `in ${shot.location}`;
+      } else if (shot.environment) {
+        envStr = `in ${shot.environment} setting`;
+      }
+      if (shot.timeOfDay) {
+        envStr += ` at ${shot.timeOfDay}`;
+      }
+      if (shot.weather && shot.weather !== 'clear') {
+        envStr += ` with ${shot.weather}`;
+      }
+      if (envStr) promptParts.push(envStr);
+
+      // 3. Mood/Emotion
+      if (shot.emotion) {
+        promptParts.push(`${shot.emotion} mood${shot.emotionIntensity ? ` (${shot.emotionIntensity})` : ''}`);
+      }
+
+      // 4. 3D Camera View (Azimuth + Elevation description)
+      if (cam3d) {
+        promptParts.push(cam3d.description);
+      }
+
+      // 5. Framing Rule
+      if (shot.framing) {
+        promptParts.push(`${shot.framing} composition`);
+      }
+
+      // 6. Shot Type + Lens + Depth of Field (all together)
+      let cameraStr = '';
+      if (shot.shot) cameraStr += `${shot.shot} shot`;
+      if (shot.lens) cameraStr += ` ${shot.lens}`;
+      if (shot.depth) cameraStr += ` ${shot.depth}`;
+      if (cameraStr) promptParts.push(cameraStr.trim());
+
+      // 7. Camera Movement (if not static)
+      if (shot.movement && shot.movement !== 'static') {
+        promptParts.push(`${shot.movement} camera`);
+      }
+
+      // 8. Lighting SOURCE (specific description)
+      const lightingSourceMap = {
+        'natural': 'natural daylight streaming from window on left',
+        'three-point': 'key light from front-left with soft fill from right',
+        'rembrandt': 'single key light from 45° left creating triangle shadow on cheek',
+        'silhouette': 'strong backlight from behind, subject in silhouette',
+        'neon': 'neon signs casting pink and blue glow from sides',
+        'harsh-sun': 'harsh midday sun from directly above casting sharp shadows',
+        'candlelight': 'warm flickering candlelight from below-left',
+        'moonlight': 'cool blue moonlight from above-right',
+        'volumetric': 'god rays streaming through dusty atmosphere from behind',
+        'spotlight': 'single hard spotlight from directly above',
+        'film-noir': 'venetian blind shadows with single hard key from side',
+        'rim-light': 'strong rim light from behind outlining subject',
+        'golden-hour': 'warm golden sunset light from low left angle',
+        'fireplace': 'warm orange fireplace glow from lower left',
+        'fluorescent': 'cold overhead fluorescent tubes casting flat even light'
+      };
+      if (shot.lightingSource) {
+        promptParts.push(shot.lightingSource);
+      } else if (shot.lighting) {
+        promptParts.push(lightingSourceMap[shot.lighting] || `${shot.lighting} lighting`);
+      }
+
+      // 9. Color Grade/Palette (if distinctive)
+      if (shot.colorPalette) {
+        promptParts.push(`${shot.colorPalette} color grade`);
+      } else if (shot.lightingColor) {
+        promptParts.push(`${shot.lightingColor} tones`);
+      }
+
+      // 10. Aspect Ratio (if cinematic)
+      if (shot.aspectRatio && shot.aspectRatio !== '16:9') {
+        promptParts.push(`${shot.aspectRatio} aspect ratio`);
+      }
+
+      const quickBuild = document.getElementById('quickBuild');
+      const quickBuildText = document.getElementById('quickBuildText');
+      const quickText = promptParts.join(', ');
+      quickBuildText.textContent = quickText;
+      quickBuild.onclick = () => {
+        navigator.clipboard.writeText(quickText);
+        quickBuild.style.borderColor = 'var(--success)';
+        quickBuild.style.background = 'linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.1))';
+        setTimeout(() => {
+          quickBuild.style.borderColor = '';
+          quickBuild.style.background = '';
+        }, 2000);
+      };
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', debounce(applyFilters, 200));
+    filterDirector.addEventListener('change', applyFilters);
+    filterEmotion.addEventListener('change', applyFilters);
+    filterLighting.addEventListener('change', applyFilters);
+    filterShot.addEventListener('change', applyFilters);
+    filterLens.addEventListener('change', applyFilters);
+    filterAngle.addEventListener('change', applyFilters);
+
+    clearFilters.addEventListener('click', () => {
+      searchInput.value = '';
+      filterDirector.value = '';
+      filterEmotion.value = '';
+      filterLighting.value = '';
+      filterShot.value = '';
+      filterLens.value = '';
+      filterAngle.value = '';
+      applyFilters();
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function debounce(fn, delay) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    // 3D Camera label helpers
+    function getAzimuthLabel(az) {
+      if (az >= 337.5 || az < 22.5) return 'front view';
+      if (az >= 22.5 && az < 67.5) return 'front-right view';
+      if (az >= 67.5 && az < 112.5) return 'right profile';
+      if (az >= 112.5 && az < 157.5) return 'back-right view';
+      if (az >= 157.5 && az < 202.5) return 'back view';
+      if (az >= 202.5 && az < 247.5) return 'back-left view';
+      if (az >= 247.5 && az < 292.5) return 'left profile';
+      return 'front-left view';
+    }
+
+    function getElevationLabel(el) {
+      if (el <= -20) return 'low angle';
+      if (el <= -5) return 'slightly low';
+      if (el >= -5 && el <= 10) return 'eye level';
+      if (el <= 30) return 'slightly elevated';
+      if (el <= 50) return 'high angle';
+      return "bird's eye";
+    }
+
+    function getDistanceLabel(dist) {
+      if (dist <= 0.65) return 'extreme close-up';
+      if (dist <= 0.75) return 'close-up';
+      if (dist <= 0.9) return 'medium-close';
+      if (dist <= 1.1) return 'medium shot';
+      if (dist <= 1.3) return 'medium-long';
+      if (dist <= 1.5) return 'wide shot';
+      return 'extreme wide';
+    }
+
+    // Reverse engineer 3D camera values from shot type and angle
+    function reverseEngineer3D(shotType, angle) {
+      // Map shot types to distance
+      const distanceMap = {
+        'extreme-close': 0.6,
+        'close-up': 0.7,
+        'medium-close': 0.8,
+        'medium': 1.0,
+        'medium-long': 1.2,
+        'long': 1.4,
+        'extreme-long': 1.8
+      };
+
+      // Map angles to elevation
+      const elevationMap = {
+        'eye-level': 0,
+        'low-angle': -25,
+        'high-angle': 40,
+        'dutch-angle': 5,
+        'birds-eye': 60,
+        'worms-eye': -30
+      };
+
+      // Default azimuth to front (0) - could be enhanced with more data
+      const azimuth = 0;
+      const elevation = elevationMap[angle] ?? 0;
+      const distance = distanceMap[shotType] ?? 1.0;
+
+      return {
+        azimuth,
+        elevation,
+        distance,
+        description: `${getAzimuthLabel(azimuth)}, ${getElevationLabel(elevation)}, ${getDistanceLabel(distance)}`
+      };
+    }
+
+    // Update the 3D camera visual indicator
+    function updateCameraVisual(azimuth, elevation, distance) {
+      const camDotOrbit = document.getElementById('camDotOrbit');
+      const camDotElev = document.getElementById('camDotElev');
+      const camDotDist = document.getElementById('camDotDist');
+      const distLine = document.getElementById('distLine');
+      const elevationArc = document.getElementById('elevationArc');
+
+      if (!camDotOrbit) return;
+
+      // Stage dimensions
+      const centerX = 90; // center of 180px stage
+      const centerY = 70; // center of 140px stage
+      const orbitRadius = 60; // radius of orbit ring
+
+      // Calculate camera position on orbit (azimuth)
+      // Azimuth 0 = front (bottom of visual), 90 = right, 180 = back (top), 270 = left
+      const azRad = (azimuth + 90) * Math.PI / 180;
+      const camX = centerX + orbitRadius * Math.cos(azRad);
+      const camY = centerY + orbitRadius * Math.sin(azRad) * 0.4; // Flatten for perspective
+
+      camDotOrbit.style.left = `${camX}px`;
+      camDotOrbit.style.top = `${camY}px`;
+
+      // Rotate elevation arc to match azimuth
+      if (elevationArc) {
+        elevationArc.style.transform = `translate(-50%, -50%) rotateY(90deg) rotateZ(${azimuth}deg)`;
+      }
+
+      // Calculate elevation dot position on the arc
+      // Elevation -30 to 60, mapped to arc position
+      const elevNormalized = (elevation + 30) / 90; // 0 to 1
+      const elevAngle = -90 + (elevNormalized * 180); // -90 to 90 degrees on arc
+      const elevRad = elevAngle * Math.PI / 180;
+      const arcRadius = 40;
+
+      // Position relative to center, accounting for the arc orientation
+      const elevX = centerX + Math.cos(azRad) * arcRadius * Math.cos(elevRad);
+      const elevY = centerY - arcRadius * Math.sin(elevRad) * 0.6;
+
+      if (camDotElev) {
+        camDotElev.style.left = `${elevX}px`;
+        camDotElev.style.top = `${elevY}px`;
+      }
+
+      // Distance dot - along the line from center to camera position
+      const distNormalized = (distance - 0.6) / 1.2; // 0 to 1
+      const distRadius = 20 + distNormalized * 40;
+      const distX = centerX + distRadius * Math.cos(azRad);
+      const distY = centerY + distRadius * Math.sin(azRad) * 0.4;
+
+      if (camDotDist) {
+        camDotDist.style.left = `${distX}px`;
+        camDotDist.style.top = `${distY}px`;
+      }
+
+      // Distance line from center to distance dot
+      if (distLine) {
+        const lineLength = Math.sqrt(Math.pow(distX - centerX, 2) + Math.pow(distY - centerY, 2));
+        const lineAngle = Math.atan2(distY - centerY, distX - centerX) * 180 / Math.PI;
+        distLine.style.width = `${lineLength}px`;
+        distLine.style.left = `${centerX}px`;
+        distLine.style.top = `${centerY}px`;
+        distLine.style.transform = `rotate(${lineAngle}deg)`;
+      }
+    }
+
+    // Update lighting visual indicator
+    function updateLightingVisual(lightingType, lightingSource) {
+      const lightDot = document.getElementById('lightDot');
+      const lightRay = document.getElementById('lightRay');
+      if (!lightDot) return;
+
+      const centerX = 90;
+      const centerY = 70;
+      const lightRadius = 75;
+
+      // Map lighting types to positions (angle from subject, elevation)
+      const lightPositions = {
+        'natural': { angle: -135, elevation: 25 },     // Top-left, window light
+        'three-point': { angle: -150, elevation: 15 }, // Front-left key
+        'rembrandt': { angle: -135, elevation: 20 },   // Classic 45° key
+        'silhouette': { angle: 0, elevation: 5 },      // Behind subject
+        'neon': { angle: 90, elevation: 0 },           // Right side
+        'harsh-sun': { angle: -90, elevation: 50 },    // Above-left
+        'candlelight': { angle: -120, elevation: -15 },// Low left side
+        'moonlight': { angle: 135, elevation: 35 },    // Top-right behind
+        'volumetric': { angle: 0, elevation: 40 },     // Behind, high
+        'spotlight': { angle: -90, elevation: 45 },    // Above
+        'film-noir': { angle: -90, elevation: 15 },    // Hard side left
+        'rim-light': { angle: 0, elevation: 10 },      // Behind
+        'golden-hour': { angle: -160, elevation: 5 },  // Low front-left
+        'fireplace': { angle: -110, elevation: -10 },  // Low side
+        'fluorescent': { angle: -90, elevation: 55 }   // Overhead
+      };
+
+      const pos = lightPositions[lightingType] || { angle: -135, elevation: 20 };
+      const rad = pos.angle * Math.PI / 180;
+
+      const lightX = centerX + lightRadius * Math.cos(rad);
+      const lightY = centerY + lightRadius * Math.sin(rad) * 0.35 - pos.elevation * 0.5;
+
+      lightDot.style.left = `${lightX}px`;
+      lightDot.style.top = `${lightY}px`;
+      lightDot.style.display = 'block';
+
+      // Draw light ray from light to center
+      if (lightRay) {
+        const rayLength = Math.sqrt(Math.pow(centerX - lightX, 2) + Math.pow(centerY - lightY, 2)) - 15;
+        const rayAngle = Math.atan2(centerY - lightY, centerX - lightX) * 180 / Math.PI;
+        lightRay.style.width = `${rayLength}px`;
+        lightRay.style.left = `${lightX}px`;
+        lightRay.style.top = `${lightY}px`;
+        lightRay.style.transform = `rotate(${rayAngle}deg)`;
+        lightRay.style.display = 'block';
+      }
+    }
+
+    // Initialize
+    loadData();
+  </script>
+</body>
+</html>

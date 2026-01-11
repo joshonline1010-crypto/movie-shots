@@ -1,0 +1,303 @@
+{
+  "version": "1.0.0",
+  "description": "Movie shot tagging schema - matches promptBuilder.ts vocabulary",
+  "lastUpdated": "2026-01-11",
+
+  "emotions": {
+    "happiness": {
+      "levels": ["subtle", "medium", "strong", "extreme"],
+      "keywords": {
+        "subtle": ["slight smile", "hint of amusement", "soft eyes"],
+        "medium": ["genuine smile", "warm expression", "friendly eyes"],
+        "strong": ["beaming with joy", "wide smile", "eyes crinkled with happiness"],
+        "extreme": ["laughing out loud", "head thrown back", "tears of joy"]
+      }
+    },
+    "sadness": {
+      "levels": ["subtle", "medium", "strong", "extreme"],
+      "keywords": {
+        "subtle": ["melancholy look", "distant eyes", "slight frown"],
+        "medium": ["visibly sad", "downcast eyes", "mouth turned down"],
+        "strong": ["devastated expression", "tears welling up", "trembling lip"],
+        "extreme": ["sobbing uncontrollably", "tears streaming", "face contorted in grief"]
+      }
+    },
+    "anger": {
+      "levels": ["subtle", "medium", "strong", "extreme"],
+      "keywords": {
+        "subtle": ["annoyed expression", "slight frown", "narrowed eyes"],
+        "medium": ["angry scowl", "furrowed brow", "clenched jaw"],
+        "strong": ["furious rage", "baring teeth", "veins visible on forehead"],
+        "extreme": ["explosive fury", "screaming", "face red with anger"]
+      }
+    },
+    "fear": {
+      "levels": ["subtle", "medium", "strong", "extreme"],
+      "keywords": {
+        "subtle": ["uneasy look", "darting eyes", "tense posture"],
+        "medium": ["worried expression", "wide eyes", "biting lip"],
+        "strong": ["terrified", "eyes wide with fear", "mouth open in shock"],
+        "extreme": ["paralyzed with terror", "screaming", "pure panic in eyes"]
+      }
+    },
+    "surprise": {
+      "levels": ["subtle", "medium", "strong", "extreme"],
+      "keywords": {
+        "subtle": ["raised eyebrow", "curious look", "head tilted"],
+        "medium": ["surprised expression", "eyebrows raised", "mouth slightly open"],
+        "strong": ["shocked", "jaw dropped", "eyes wide"],
+        "extreme": ["utterly stunned", "frozen in disbelief", "gasping"]
+      }
+    },
+    "confidence": {
+      "keywords": ["confident smirk", "one eyebrow raised", "self-assured gaze", "cocky grin", "chin raised"]
+    },
+    "love": {
+      "keywords": ["looking lovingly", "soft adoring gaze", "gentle smile", "eyes filled with love", "tender expression"]
+    },
+    "disgust": {
+      "keywords": ["disgusted sneer", "nose wrinkled", "contemptuous look", "lip curled"]
+    },
+    "neutral": {
+      "keywords": ["neutral expression", "emotionless face", "stoic", "poker face", "calm and composed", "deadpan"]
+    },
+    "menacing": {
+      "keywords": ["Kubrick stare", "head tilted down eyes looking up through brow", "intense piercing gaze"]
+    },
+    "vulnerable": {
+      "keywords": ["uncertain expression", "avoiding eye contact", "eyes seeking reassurance"]
+    },
+    "defeated": {
+      "keywords": ["defeated posture", "hollow eyes", "exhausted", "bags under eyes", "emotionally drained"]
+    }
+  },
+
+  "shotTypes": {
+    "extreme-long": {
+      "description": "Vast space, tiny figure",
+      "aliases": ["extreme wide", "establishing", "vista"]
+    },
+    "long": {
+      "description": "Full body, head to toe",
+      "aliases": ["full shot", "full body"]
+    },
+    "medium-long": {
+      "description": "From knees up",
+      "aliases": ["american shot", "cowboy shot", "3/4 shot"]
+    },
+    "medium": {
+      "description": "From waist up",
+      "aliases": ["mid shot", "waist shot"]
+    },
+    "medium-close": {
+      "description": "Chest up",
+      "aliases": ["bust shot"]
+    },
+    "close-up": {
+      "description": "Face fills frame",
+      "aliases": ["CU", "closeup"]
+    },
+    "extreme-close": {
+      "description": "Eyes or specific detail",
+      "aliases": ["ECU", "extreme closeup", "detail shot"]
+    }
+  },
+
+  "cameraAngles": {
+    "eye-level": {
+      "description": "Camera at character eye level",
+      "effect": "Neutral, natural perspective"
+    },
+    "low-angle": {
+      "description": "Camera below looking up",
+      "effect": "Subject appears powerful, dominant"
+    },
+    "high-angle": {
+      "description": "Camera above looking down",
+      "effect": "Subject appears vulnerable, small"
+    },
+    "dutch": {
+      "description": "Camera tilted on axis",
+      "effect": "Unease, tension, disorientation"
+    },
+    "birds-eye": {
+      "description": "Camera directly above looking down",
+      "effect": "God's eye view, surveillance, maps"
+    },
+    "worms-eye": {
+      "description": "Camera at ground level looking up",
+      "effect": "Extreme power, towering presence"
+    }
+  },
+
+  "cameraMovements": {
+    "static": ["locked off", "tripod shot", "no movement"],
+    "dolly": ["dolly in", "dolly out", "truck left", "truck right", "push in", "pull back"],
+    "tracking": ["tracking shot", "following shot", "parallel tracking"],
+    "orbit": ["orbit around", "360 orbit", "circular tracking", "arc shot"],
+    "pan": ["pan left", "pan right", "whip pan", "swish pan"],
+    "tilt": ["tilt up", "tilt down", "nodding"],
+    "crane": ["crane up", "crane down", "jib shot"],
+    "handheld": ["handheld shake", "documentary style", "shaky cam"],
+    "steadicam": ["steadicam", "glide", "floating camera"],
+    "zoom": ["zoom in", "zoom out", "crash zoom", "dolly zoom"]
+  },
+
+  "lighting": {
+    "dramatic": {
+      "source": "single harsh spotlight from above",
+      "keywords": ["deep shadows", "chiaroscuro", "Rembrandt lighting", "face half-lit"]
+    },
+    "warm": {
+      "source": "golden hour sunlight",
+      "keywords": ["soft glow", "amber", "sunset", "tungsten"]
+    },
+    "cold": {
+      "source": "blue fluorescent",
+      "keywords": ["sterile", "clinical", "moonlight", "cool tones"]
+    },
+    "romantic": {
+      "source": "candlelight, firelight",
+      "keywords": ["soft orange glow", "intimate", "warm highlights"]
+    },
+    "horror": {
+      "source": "flashlight from below",
+      "keywords": ["upward shadows", "scary", "unsettling"]
+    },
+    "fire": {
+      "source": "flames, explosions",
+      "keywords": ["orange flicker", "dynamic shadows", "warmth"]
+    },
+    "neon": {
+      "source": "neon signs",
+      "keywords": ["pink", "blue", "purple", "reflections", "wet pavement"]
+    },
+    "moonlight": {
+      "source": "moon through window",
+      "keywords": ["silver highlights", "blue-white", "night"]
+    },
+    "sunset": {
+      "source": "setting sun behind",
+      "keywords": ["rim lighting", "golden hour", "silhouette", "backlit"]
+    },
+    "overcast": {
+      "source": "diffused sky",
+      "keywords": ["soft", "even", "no harsh shadows", "gray"]
+    }
+  },
+
+  "environments": {
+    "urban": {
+      "locations": ["street", "alley", "rooftop", "subway", "nightclub", "office", "apartment"]
+    },
+    "nature": {
+      "locations": ["forest", "beach", "mountain", "desert", "waterfall", "lake", "meadow"]
+    },
+    "interior": {
+      "locations": ["living room", "bedroom", "kitchen", "bathroom", "hallway", "basement"]
+    },
+    "fantasy": {
+      "locations": ["castle", "tavern", "dungeon", "enchanted forest", "throne room"]
+    },
+    "scifi": {
+      "locations": ["spaceship", "space station", "alien planet", "cyberpunk city", "lab"]
+    },
+    "historical": {
+      "locations": ["victorian", "1920s", "1950s", "1980s", "medieval", "ancient"]
+    }
+  },
+
+  "genres": [
+    "action", "drama", "horror", "comedy", "scifi", "fantasy",
+    "thriller", "romance", "noir", "documentary", "western",
+    "war", "crime", "mystery", "adventure", "animation"
+  ],
+
+  "weatherTime": {
+    "weather": ["sunny", "cloudy", "overcast", "rain", "snow", "storm", "fog", "wind"],
+    "time": ["dawn", "morning", "midday", "afternoon", "golden hour", "sunset", "dusk", "night"]
+  },
+
+  "composition": {
+    "framing": [
+      "centered", "rule of thirds", "symmetrical", "asymmetrical",
+      "leading lines", "frame within frame", "negative space",
+      "foreground interest", "layered depth"
+    ],
+    "depth": [
+      "shallow focus", "deep focus", "rack focus",
+      "bokeh", "soft background", "sharp throughout"
+    ]
+  },
+
+  "lenses": {
+    "wide": ["14mm", "24mm", "35mm"],
+    "standard": ["50mm"],
+    "portrait": ["85mm"],
+    "telephoto": ["135mm", "200mm"],
+    "special": ["anamorphic", "fisheye", "macro", "tilt-shift"]
+  },
+
+  "cameraBodies": [
+    "ARRI Alexa", "ARRI 65", "RED V-Raptor", "RED Komodo",
+    "Sony Venice", "Canon C70", "Blackmagic", "Panavision",
+    "35mm film", "16mm film", "65mm IMAX", "Kodak film stock"
+  ],
+
+  "directors": {
+    "stanley-kubrick": {
+      "style": ["symmetry", "one-point perspective", "Kubrick stare", "slow zoom", "cold"],
+      "films": ["2001", "The Shining", "A Clockwork Orange", "Full Metal Jacket"]
+    },
+    "wes-anderson": {
+      "style": ["symmetry", "pastels", "centered", "whip pan", "Futura font", "tableau"],
+      "films": ["Grand Budapest Hotel", "Moonrise Kingdom", "Royal Tenenbaums"]
+    },
+    "david-fincher": {
+      "style": ["desaturated", "green tint", "precise movement", "dark", "clinical"],
+      "films": ["Se7en", "Fight Club", "Gone Girl", "Social Network"]
+    },
+    "denis-villeneuve": {
+      "style": ["vast scale", "orange-teal", "IMAX", "atmospheric", "minimal dialogue"],
+      "films": ["Blade Runner 2049", "Dune", "Arrival", "Sicario"]
+    },
+    "christopher-nolan": {
+      "style": ["IMAX", "practical effects", "blue-gray", "non-linear", "epic"],
+      "films": ["Inception", "Interstellar", "Dunkirk", "Dark Knight"]
+    },
+    "quentin-tarantino": {
+      "style": ["trunk shot", "long takes", "feet", "pop culture", "violence"],
+      "films": ["Pulp Fiction", "Kill Bill", "Inglourious Basterds"]
+    },
+    "ridley-scott": {
+      "style": ["atmosphere", "smoke", "backlight", "rain", "industrial"],
+      "films": ["Blade Runner", "Alien", "Gladiator", "The Martian"]
+    }
+  },
+
+  "tagExamples": {
+    "description": "Example tag combinations for common shots",
+    "examples": [
+      {
+        "name": "Kubrick Stare",
+        "tags": ["menacing", "close-up", "eye-level", "static", "cold", "stanley-kubrick"]
+      },
+      {
+        "name": "Villeneuve Epic",
+        "tags": ["extreme-long", "eye-level", "static", "overcast", "scifi", "denis-villeneuve"]
+      },
+      {
+        "name": "Film Noir",
+        "tags": ["dramatic", "high-contrast", "shadows", "venetian blinds", "noir", "mystery"]
+      },
+      {
+        "name": "Horror Reveal",
+        "tags": ["fear", "close-up", "dutch", "horror-lighting", "handheld", "horror"]
+      },
+      {
+        "name": "Romance Golden Hour",
+        "tags": ["love", "medium", "warm", "sunset", "shallow-focus", "romance"]
+      }
+    ]
+  }
+}

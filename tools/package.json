@@ -1,0 +1,18 @@
+{
+  "name": "movie-shots-tools",
+  "version": "1.0.0",
+  "description": "Tools for scraping, tagging, and organizing movie screenshots",
+  "scripts": {
+    "scrape": "node scraper.js",
+    "scrape:test": "node scraper.js --url https://film-grab.com/2017/10/08/blade-runner-2049/ --max 5",
+    "tag": "node auto-tagger.js",
+    "tag:untag": "node auto-tagger.js --untag",
+    "organize": "node organizer.js",
+    "organize:dry": "node organizer.js --dry-run"
+  },
+  "dependencies": {
+    "puppeteer": "^22.15.0"
+  },
+  "author": "CHIP Production System",
+  "license": "MIT"
+}

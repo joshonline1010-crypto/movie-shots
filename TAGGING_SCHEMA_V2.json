@@ -1,0 +1,643 @@
+{
+  "version": "2.0",
+  "description": "Complete tagging schema matching Cinema Studio + Qwen Tool UI vocabulary",
+
+  "shotTypes": {
+    "extreme-long": "Tiny figure, vast space",
+    "long": "Full body, head to toe",
+    "medium-long": "Knees up",
+    "medium": "Waist up",
+    "medium-close": "Chest up",
+    "close-up": "Face fills frame",
+    "extreme-close": "Single feature (eyes, hands)"
+  },
+
+  "cameraAngles": {
+    "eye-level": "Neutral, conversational",
+    "low-angle": "Subject looks powerful, heroic",
+    "high-angle": "Subject looks vulnerable",
+    "dutch-angle": "Tilted, tension/unease",
+    "birds-eye": "Directly above",
+    "worms-eye": "Directly below"
+  },
+
+  "cameraMovements": {
+    "static": "Locked tripod, no movement",
+    "micro-movement": "Barely perceptible drift, breathing camera",
+    "dolly-in": "Forward approach",
+    "dolly-out": "Pull back, reveal",
+    "dolly-left": "Lateral tracking left",
+    "dolly-right": "Lateral tracking right",
+    "pan-left": "Horizontal sweep left",
+    "pan-right": "Horizontal sweep right",
+    "tilt-up": "Vertical reveal upward",
+    "tilt-down": "Vertical movement down",
+    "orbit-left": "Counter-clockwise around subject",
+    "orbit-right": "Clockwise around subject",
+    "orbit-360": "Full rotation around subject",
+    "zoom-in": "Slow zoom in",
+    "zoom-out": "Slow zoom out, wide reveal",
+    "crash-zoom": "Rapid zoom, dramatic",
+    "handheld": "Documentary style, organic movement",
+    "steadicam": "Smooth glide through space",
+    "crane-up": "Rising crane movement",
+    "crane-down": "Descending crane",
+    "fpv-drone": "First-person drone perspective",
+    "bullet-time": "Frozen spin around subject",
+    "snorricam": "Subject-mounted, face centered",
+    "through-object": "Camera moves through doorway"
+  },
+
+  "lenses": {
+    "14mm": "Ultra-wide, dramatic distortion",
+    "24mm": "Wide, environmental context",
+    "35mm": "Natural perspective, documentary",
+    "50mm": "Human eye perspective, classic",
+    "85mm": "Portrait, beautiful bokeh",
+    "135mm": "Strong compression, intimate",
+    "200mm": "Extreme compression, paparazzi",
+    "anamorphic": "Horizontal flares, oval bokeh, 2.39:1",
+    "anamorphic-vintage": "Blue streak flares, aberrations",
+    "macro": "Extreme close-up, tiny details",
+    "fisheye": "180-degree view, barrel distortion",
+    "tilt-shift": "Miniature look, selective focus"
+  },
+
+  "cameraBodies": {
+    "arri-alexa": "Rich color, Hollywood standard",
+    "arri-65": "Large format, IMAX quality",
+    "red-v-raptor": "8K ultra high resolution",
+    "sony-venice": "Dual ISO, wide color gamut",
+    "blackmagic": "Raw capture, indie aesthetic",
+    "imax-70mm": "Massive resolution, epic scale",
+    "kodak-5219": "Vision3 500T, warm tungsten",
+    "kodak-5207": "Vision3 250D, natural colors",
+    "fuji-eterna": "Subtle colors, Japanese aesthetic",
+    "super-8": "Heavy grain, nostalgic",
+    "16mm-bolex": "Documentary texture, indie grain",
+    "vhs": "Low res, tracking lines, retro 80s",
+    "dslr-cinematic": "Shallow DOF, run and gun"
+  },
+
+  "focusDepth": {
+    "shallow-dof": "f/1.4, creamy bokeh, subject isolation",
+    "medium-dof": "f/4, balanced focus",
+    "deep-focus": "f/11, everything sharp, Citizen Kane",
+    "rack-focus": "Focus pull foreground to background",
+    "follow-focus": "Maintained focus on moving subject",
+    "split-diopter": "Two focal planes sharp, De Palma",
+    "soft-focus": "Dreamy glow, diffused edges",
+    "focus-in": "Starts out of focus, pulls sharp",
+    "focus-out": "Sharp fading to blur"
+  },
+
+  "emotions": {
+    "happiness": {
+      "description": "Joy, delight, contentment",
+      "intensities": {
+        "subtle": "slight smile, hint of amusement",
+        "medium": "genuine smile, warm expression",
+        "strong": "beaming with joy, eyes crinkled",
+        "extreme": "laughing out loud, tears of joy"
+      }
+    },
+    "sadness": {
+      "description": "Sorrow, melancholy, grief",
+      "intensities": {
+        "subtle": "melancholy look, distant eyes",
+        "medium": "visibly sad, downcast eyes",
+        "strong": "devastated, tears welling",
+        "extreme": "sobbing uncontrollably"
+      }
+    },
+    "anger": {
+      "description": "Fury, rage, frustration",
+      "intensities": {
+        "subtle": "annoyed, slight frown",
+        "medium": "angry scowl, furrowed brow",
+        "strong": "furious rage, baring teeth",
+        "extreme": "explosive fury, screaming"
+      }
+    },
+    "fear": {
+      "description": "Terror, anxiety, dread",
+      "intensities": {
+        "subtle": "uneasy, darting eyes",
+        "medium": "worried, wide eyes",
+        "strong": "terrified, mouth open",
+        "extreme": "paralyzed with terror"
+      }
+    },
+    "surprise": {
+      "description": "Shock, astonishment",
+      "intensities": {
+        "subtle": "raised eyebrow, curious",
+        "medium": "eyebrows raised, mouth slightly open",
+        "strong": "shocked, jaw dropped",
+        "extreme": "utterly stunned, frozen"
+      }
+    },
+    "confidence": {
+      "description": "Self-assured, powerful",
+      "intensities": {
+        "subtle": "self-assured gaze",
+        "medium": "confident smirk",
+        "strong": "commanding presence",
+        "extreme": "powerful stance, unwavering"
+      }
+    },
+    "love": {
+      "description": "Affection, tenderness, passion",
+      "intensities": {
+        "subtle": "soft adoring gaze",
+        "medium": "looking lovingly",
+        "strong": "eyes filled with love",
+        "extreme": "passionate intensity"
+      }
+    },
+    "neutral": {
+      "description": "Calm, composed, stoic",
+      "intensities": {
+        "subtle": "calm and composed",
+        "medium": "neutral expression",
+        "strong": "stoic, revealing nothing",
+        "extreme": "deadpan, blank stare"
+      }
+    },
+    "contemplative": {
+      "description": "Thoughtful, pensive",
+      "intensities": {
+        "subtle": "distant look",
+        "medium": "deep in thought",
+        "strong": "intense concentration",
+        "extreme": "completely lost in thought"
+      }
+    },
+    "menacing": {
+      "description": "Threatening, intimidating",
+      "intensities": {
+        "subtle": "cold stare",
+        "medium": "predatory gaze",
+        "strong": "intimidating presence",
+        "extreme": "terrifying menace"
+      }
+    },
+    "vulnerability": {
+      "description": "Exposed, defenseless",
+      "intensities": {
+        "subtle": "uncertain expression",
+        "medium": "eyes seeking reassurance",
+        "strong": "defeated, hollow eyes",
+        "extreme": "broken, empty stare"
+      }
+    },
+    "mystery": {
+      "description": "Enigmatic, secretive",
+      "intensities": {
+        "subtle": "hint of hidden knowledge",
+        "medium": "knowing look",
+        "strong": "completely unreadable",
+        "extreme": "deeply enigmatic"
+      }
+    }
+  },
+
+  "eyeDirections": [
+    "at-camera",
+    "left",
+    "right",
+    "down",
+    "up",
+    "over-shoulder",
+    "side-eye",
+    "closed"
+  ],
+
+  "lighting": {
+    "natural": "Available light, realistic",
+    "three-point": "Key, fill, back - studio setup",
+    "rembrandt": "Triangle shadow on cheek, dramatic",
+    "silhouette": "Backlit, rim light only",
+    "neon": "Colored light gels, cyberpunk",
+    "harsh-sun": "Hard shadows, high contrast, midday",
+    "overcast": "Diffused, no harsh shadows",
+    "candlelight": "Warm flickering, intimate",
+    "moonlight": "Blue night lighting, cool",
+    "volumetric": "God rays, light shafts",
+    "spotlight": "Single harsh spotlight, deep shadows",
+    "film-noir": "Half-lit face, dramatic shadows",
+    "rim-light": "Strong edge light from behind",
+    "golden-hour": "Warm sunset, soft diffused glow",
+    "fireplace": "Warm glow from side, flickering",
+    "fluorescent": "Cold blue tubes, sterile",
+    "fire-glow": "Orange flames, character lit by fire",
+    "underwater": "Blue-green, caustics, diffused",
+    "horror-underlight": "Flashlight from below, upward shadows"
+  },
+
+  "colorPalettes": {
+    "wes-anderson-pastel": "Soft pink, mint, powder blue, cream",
+    "teal-orange": "Complementary, blockbuster look",
+    "desaturated-cold": "Muted, cold blue-grey, clinical",
+    "neon-noir": "Hot pink, electric blue, magenta, cyan",
+    "golden-hour-warm": "Amber tones, magic hour, honey",
+    "noir-monochrome": "High contrast black and white",
+    "sepia-vintage": "Sepia tones, faded browns, aged film",
+    "matrix-green": "Green color cast, digital",
+    "bleach-bypass": "High contrast, desaturated, metallic",
+    "technicolor-vivid": "Saturated primary colors, Hollywood glamour"
+  },
+
+  "environments": {
+    "urban": {
+      "city-street": "busy city street, cars, pedestrians",
+      "dark-alley": "narrow alley, dumpsters, graffiti",
+      "rooftop": "city rooftop, skyline view",
+      "subway": "underground platform, fluorescent lights",
+      "nightclub": "neon lights, dance floor",
+      "office": "corporate office, glass walls, city view"
+    },
+    "nature": {
+      "forest": "dense trees, dappled sunlight",
+      "beach": "sandy beach, waves, palm trees",
+      "mountain": "snowy peak, vast vista",
+      "desert": "sand dunes, harsh sun",
+      "meadow": "flower field, rolling hills",
+      "waterfall": "majestic falls, mist rising",
+      "cave": "dark interior, stalactites"
+    },
+    "interior": {
+      "living-room": "cozy, sofa, coffee table",
+      "bedroom": "bed, nightstand, soft lamp",
+      "kitchen": "modern, island counter",
+      "library": "floor-to-ceiling bookshelves",
+      "restaurant": "elegant decor, candlelight",
+      "bathroom": "marble, claw-foot tub",
+      "attic": "dusty, old boxes, cobwebs",
+      "basement": "dark, concrete walls"
+    },
+    "fantasy": {
+      "castle": "throne room, stone walls, torches",
+      "tavern": "wooden tables, fireplace, ale",
+      "dungeon": "chains, iron bars, dripping water",
+      "enchanted-forest": "glowing mushrooms, fairy lights",
+      "wizard-tower": "books, potions, artifacts",
+      "dragon-lair": "treasure, gold coins"
+    },
+    "scifi": {
+      "spaceship": "cockpit, holographic displays",
+      "space-station": "orbital, Earth visible",
+      "alien-planet": "strange vegetation, two moons",
+      "cyberpunk-city": "neon, holograms, flying cars",
+      "high-tech-lab": "screens, equipment, glass tubes",
+      "cryo-bay": "pods, sleeping figures, frost"
+    },
+    "historical": {
+      "victorian": "ornate furniture, gas lamps",
+      "1920s-speakeasy": "art deco, jazz band",
+      "1950s-diner": "checkered floor, jukebox",
+      "1970s-living-room": "shag carpet, wood paneling",
+      "1980s-arcade": "neon signs, arcade cabinets"
+    },
+    "studio": {
+      "white-studio": "clean seamless backdrop",
+      "dark-studio": "dramatic spotlight, black backdrop",
+      "gradient": "smooth gradient background"
+    }
+  },
+
+  "setDesign": {
+    "sterile-geometric": "White corridors, brutalist architecture",
+    "dollhouse-whimsy": "Miniature aesthetic, pastel interiors",
+    "neon-urban": "Neon streets, rain-wet asphalt, Asian signage",
+    "gritty-decay": "Urban decay, grimy textures, rust",
+    "vast-landscapes": "Desert, monumental scale, epic vistas",
+    "retro-americana": "1950s-70s diners, motels, vintage cars",
+    "gothic-ornate": "Victorian interiors, candlelit chambers",
+    "minimalist-modern": "Clean lines, sparse furnishing",
+    "nature-organic": "Forests, golden wheat, flowing water",
+    "sci-fi-industrial": "Exposed pipes, machinery, Alien aesthetic"
+  },
+
+  "outfits": {
+    "casual": {
+      "jeans-tshirt": "jeans and plain white t-shirt",
+      "hoodie": "hoodie and sweatpants",
+      "summer": "cargo shorts and tank top",
+      "flannel": "flannel over band tee"
+    },
+    "formal": {
+      "suit": "tailored black suit, tie",
+      "evening-gown": "elegant floor-length gown",
+      "business-casual": "blazer over button-down",
+      "tuxedo": "black tuxedo, bow tie"
+    },
+    "fantasy": {
+      "plate-armor": "full plate armor, battle-worn",
+      "wizard-robes": "flowing robes, stars embroidered",
+      "ranger": "leather armor, hood, quiver",
+      "royal": "gown with gold trim, crown"
+    },
+    "scifi": {
+      "spacesuit": "sleek spacesuit",
+      "cyberpunk": "LED jacket, neon accents",
+      "tactical-armor": "hexagonal plating",
+      "pilot-jumpsuit": "mission patches"
+    },
+    "streetwear": {
+      "urban": "oversized hoodie, sneakers, chain",
+      "leather": "leather jacket, ripped jeans",
+      "tracksuit": "tracksuit, snapback hat",
+      "vintage": "band tee, distressed denim"
+    },
+    "profession": {
+      "doctor": "lab coat, stethoscope, scrubs",
+      "chef": "chef whites, toque, apron",
+      "police": "uniform, badge, utility belt",
+      "military": "camouflage fatigues, tactical vest",
+      "firefighter": "bunker gear, helmet"
+    },
+    "athletic": {
+      "basketball": "jersey, shorts, headband",
+      "boxing": "gloves, shorts, no shirt",
+      "yoga": "leggings, sports bra",
+      "running": "compression shorts, tank"
+    }
+  },
+
+  "characterStyles": {
+    "wes-anderson-quirky": "Quirky vintage costumes, matching outfits",
+    "noir-hardboiled": "Fedora, trench coat, 1940s suits",
+    "grunge-realistic": "Worn clothing, sweat and dirt",
+    "sci-fi-functional": "Functional space suits, utilitarian",
+    "retro-70s": "Bell bottoms, big collars, mustaches",
+    "gothic-romantic": "Flowing dark fabrics, Victorian",
+    "minimalist-modern": "Clean lines, monochromatic",
+    "cyberpunk-street": "Tech wear, Asian influences",
+    "classic-hollywood": "Elegant gowns, tuxedos",
+    "natural-earthy": "Natural fabrics, earthy tones"
+  },
+
+  "props": {
+    "weapons": ["sword", "katana", "gun", "pistol", "rifle", "bow", "crossbow", "staff", "lightsaber", "dagger", "axe"],
+    "tech": ["phone", "laptop", "headphones", "camera", "tablet", "monitor"],
+    "food": ["coffee-mug", "wine-glass", "beer", "cocktail", "plate-of-food"],
+    "accessories": ["sunglasses", "hat", "backpack", "umbrella", "briefcase"],
+    "vehicles": ["motorcycle", "sports-car", "bicycle", "vintage-car"],
+    "lighting-props": ["candles", "lantern", "flashlight", "neon-sign", "torch"]
+  },
+
+  "weather": {
+    "clear": "Crisp visibility, no effects",
+    "fog": "Thick fog, mysterious",
+    "mist": "Light mist, morning haze",
+    "rain": "Heavy rain, wet surfaces, puddles",
+    "snow": "Falling snow, winter atmosphere",
+    "dust": "Dust particles, hazy air",
+    "smoke": "Atmospheric smoke wisps",
+    "storm": "Thunderstorm, lightning",
+    "heat-haze": "Desert mirage, shimmering"
+  },
+
+  "timeOfDay": {
+    "day": "Bright daylight, blue sky",
+    "night": "Dark sky, moonlight",
+    "sunset": "Golden hour, orange/pink sky",
+    "sunrise": "Early morning, soft pink",
+    "twilight": "Blue hour, fading light",
+    "midnight": "Deep night, minimal light"
+  },
+
+  "directors": {
+    "stanley-kubrick": {
+      "style": "Symmetrical, cold, meticulous",
+      "recommended": {
+        "framing": "centered-symmetrical",
+        "setDesign": "sterile-geometric",
+        "colorPalette": "desaturated-cold"
+      }
+    },
+    "steven-spielberg": {
+      "style": "Warm, emotional, wonder",
+      "recommended": {
+        "framing": "rule-of-thirds",
+        "setDesign": "retro-americana",
+        "colorPalette": "teal-orange"
+      }
+    },
+    "quentin-tarantino": {
+      "style": "Low angles, pop culture",
+      "recommended": {
+        "framing": "low-angle-hero",
+        "setDesign": "retro-americana",
+        "colorPalette": "sepia-vintage"
+      }
+    },
+    "david-fincher": {
+      "style": "Dark, moody, precise",
+      "recommended": {
+        "framing": "rule-of-thirds",
+        "setDesign": "gritty-decay",
+        "colorPalette": "desaturated-cold"
+      }
+    },
+    "christopher-nolan": {
+      "style": "IMAX epic, blue/orange",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "sci-fi-industrial",
+        "colorPalette": "teal-orange"
+      }
+    },
+    "denis-villeneuve": {
+      "style": "Vast, atmospheric, Deakins",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "vast-landscapes",
+        "colorPalette": "desaturated-cold"
+      }
+    },
+    "wes-anderson": {
+      "style": "Symmetrical pastel whimsy",
+      "recommended": {
+        "framing": "centered-symmetrical",
+        "setDesign": "dollhouse-whimsy",
+        "colorPalette": "wes-anderson-pastel"
+      }
+    },
+    "wong-kar-wai": {
+      "style": "Neon romance, step-print",
+      "recommended": {
+        "framing": "frames-within-frames",
+        "setDesign": "neon-urban",
+        "colorPalette": "neon-noir"
+      }
+    },
+    "andrei-tarkovsky": {
+      "style": "Poetic, contemplative, nature",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "nature-organic",
+        "colorPalette": "sepia-vintage"
+      }
+    },
+    "ridley-scott": {
+      "style": "Epic scale, atmospheric",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "sci-fi-industrial",
+        "colorPalette": "desaturated-cold"
+      }
+    },
+    "martin-scorsese": {
+      "style": "Dynamic camera, urban grit",
+      "recommended": {
+        "framing": "handheld",
+        "setDesign": "gritty-decay",
+        "colorPalette": "bleach-bypass"
+      }
+    },
+    "alfred-hitchcock": {
+      "style": "Suspense master, POV",
+      "recommended": {
+        "framing": "dutch-angle",
+        "setDesign": "gothic-ornate",
+        "colorPalette": "noir-monochrome"
+      }
+    },
+    "akira-kurosawa": {
+      "style": "Epic samurai, weather",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "nature-organic",
+        "colorPalette": "noir-monochrome"
+      }
+    },
+    "nicolas-winding-refn": {
+      "style": "Neon-drenched, Drive style",
+      "recommended": {
+        "framing": "profile-side",
+        "setDesign": "neon-urban",
+        "colorPalette": "neon-noir"
+      }
+    },
+    "terrence-malick": {
+      "style": "Golden hour, ethereal nature",
+      "recommended": {
+        "framing": "wide-negative-space",
+        "setDesign": "nature-organic",
+        "colorPalette": "golden-hour-warm"
+      }
+    }
+  },
+
+  "framing": {
+    "centered-symmetrical": "Dead center, perfect symmetry",
+    "rule-of-thirds": "Off-center, balanced asymmetry",
+    "dutch-angle": "Tilted frame, unsettling",
+    "extreme-closeup": "Eyes only, macro detail",
+    "wide-negative-space": "Tiny subject, vast space",
+    "profile-side": "Perfect profile, flat staging",
+    "over-shoulder": "Conversation shot, foreground silhouette",
+    "low-angle-hero": "Looking up, heroic",
+    "high-angle-vulnerable": "Looking down, vulnerable",
+    "frames-within-frames": "Doorway/window framing"
+  },
+
+  "storyBeats": {
+    "epic-establish": "Location reveal, vast establishing",
+    "intimate-establish": "Character intro in environment",
+    "confrontation": "Two-shot tension, alternating close-ups",
+    "confession": "Intimate single shot, slow push in",
+    "chase": "Dynamic following, fast movement",
+    "fight": "Kinetic choreography, impact shots",
+    "death-scene": "Slow motion, fading light",
+    "reunion": "Building anticipation, embrace",
+    "victory": "Heroic framing, rising crane",
+    "jumpscare": "Slow approach, sudden reveal",
+    "stalker": "Voyeuristic, predatory",
+    "time-passage": "Timelapse, seasons changing",
+    "dream-sequence": "Surreal, floating camera",
+    "noir-detective": "Hard shadows, venetian blinds",
+    "sci-fi-discovery": "Awe and wonder, slow reveal"
+  },
+
+  "camera3d": {
+    "_description": "Exact 3D camera placement matching Qwen Tool UI",
+    "azimuth": {
+      "range": [0, 359],
+      "description": "Horizontal rotation around subject (degrees)",
+      "presets": {
+        "0": { "label": "front", "description": "Front view" },
+        "45": { "label": "front-right", "description": "Three-quarter view from right" },
+        "66": { "label": "front-right-view", "description": "Front-right view" },
+        "90": { "label": "right", "description": "Right profile" },
+        "135": { "label": "back-right", "description": "Three-quarter back-right" },
+        "180": { "label": "back", "description": "Back view" },
+        "225": { "label": "back-left", "description": "Three-quarter back-left" },
+        "270": { "label": "left", "description": "Left profile" },
+        "315": { "label": "front-left", "description": "Three-quarter view from left" }
+      }
+    },
+    "elevation": {
+      "range": [-30, 60],
+      "description": "Vertical angle (degrees). -30=low angle, 0=eye level, 60=high angle",
+      "presets": {
+        "-30": { "label": "low-angle", "description": "Low angle, looking up, heroic" },
+        "-15": { "label": "slight-low", "description": "Slightly low, subtle heroic" },
+        "0": { "label": "eye-level", "description": "Eye level, neutral" },
+        "15": { "label": "slight-elevated", "description": "Slightly elevated" },
+        "29": { "label": "elevated-shot", "description": "Elevated shot" },
+        "30": { "label": "elevated", "description": "Elevated, looking down" },
+        "45": { "label": "high-angle", "description": "High angle, vulnerable" },
+        "60": { "label": "birds-eye", "description": "Bird's eye view" }
+      }
+    },
+    "distance": {
+      "range": [0.6, 1.8],
+      "description": "Camera distance multiplier. 0.6=close-up, 1.0=medium, 1.8=wide",
+      "presets": {
+        "0.6": { "label": "extreme-close", "description": "Extreme close-up, face detail" },
+        "0.7": { "label": "close-up", "description": "Close-up, head and shoulders" },
+        "0.8": { "label": "medium-close", "description": "Medium close-up, chest up" },
+        "1.0": { "label": "medium", "description": "Medium shot, waist up" },
+        "1.2": { "label": "medium-long", "description": "Medium-long, knees up" },
+        "1.4": { "label": "wide", "description": "Wide shot, full body" },
+        "1.6": { "label": "long", "description": "Long shot, full body with space" },
+        "1.8": { "label": "extreme-wide", "description": "Extreme wide, tiny figure" }
+      }
+    },
+    "promptFormat": "Example output: 'three-quarter view from the right, slightly elevated angle, wide full body shot'"
+  },
+
+  "genres": [
+    "action", "adventure", "animation", "comedy", "crime",
+    "documentary", "drama", "fantasy", "historical", "horror",
+    "musical", "mystery", "noir", "romance", "scifi",
+    "thriller", "war", "western"
+  ],
+
+  "decades": [
+    "1920s", "1930s", "1940s", "1950s", "1960s",
+    "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"
+  ],
+
+  "poses": {
+    "confident": ["power-pose", "arms-crossed", "casual-lean", "chin-up"],
+    "action": ["fighting-stance", "hero-landing", "running", "jumping", "punching", "kicking"],
+    "relaxed": ["standing-relaxed", "sitting-casual", "lying-back", "lounging"],
+    "emotional": ["crying", "laughing", "thinking", "defeated"],
+    "heroic": ["victory", "cape-flowing", "looking-horizon", "walking-from-explosion"],
+    "communication": ["pointing", "waving", "shushing", "thumbs-up"]
+  },
+
+  "motionEndpoints": [
+    "then settles",
+    "comes to rest",
+    "then holds",
+    "settles into place",
+    "stops and looks",
+    "settles back",
+    "then freezes"
+  ]
+}
