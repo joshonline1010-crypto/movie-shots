@@ -1,195 +1,562 @@
 {
   "scene_id": "shaun_the_plan",
   "name": "The Plan - Shaun of the Dead",
-  "description": "Shaun and Ed devise their survival plan during the zombie outbreak. Classic Edgar Wright comedy scene with rapid-fire dialogue and match cuts.",
+  "description": "Shaun explains his zombie survival plan with Edgar Wright's signature match-cut montage visualizing each step. Classic comedic sequence.",
   "duration_estimate": 105,
-  "location": "Shaun's flat / suburban London streets",
+  "location": "Multiple: Shaun's flat, suburban streets, Mum's house, Liz's flat, Winchester pub",
   "time_of_day": "day",
   "mood": "comedic-tense",
   "color_palette": "desaturated-cool",
+  "aspect_ratio": "2.35:1",
   "director": "Edgar Wright",
   "year": 2004,
 
-  "characters": [
-    {
+  "character_references": {
+    "shaun": {
       "id": "shaun",
-      "description": "man with short blonde hair, white shirt, red tie, dark jacket, blood on face",
-      "role": "The reluctant hero making the plan"
+      "name": "Shaun",
+      "reference_image": "characters/shaun_ref.jpg",
+      "description": "British man, early 30s, short receding blonde hair, stubble, tired bloodshot eyes, blood splatter on right cheek",
+      "costume": "White dress shirt with loosened red tie, dark navy jacket, disheveled office worker",
+      "generate_prompt": "Professional character reference sheet, front view and 3/4 profile. British man early 30s, short receding blonde hair, light stubble, tired bloodshot eyes, pale complexion, small blood splatter marks on right cheek. Wearing rumpled white dress shirt, loosened burgundy red tie, dark navy harrington jacket. Exhausted office worker appearance, determined expression. Clean white background, even studio lighting, 4K photorealistic, character turnaround sheet"
     },
-    {
+    "ed": {
       "id": "ed",
-      "description": "heavier man with dark hair, beige t-shirt, casual appearance",
-      "role": "Shaun's best friend, provides comic relief"
+      "name": "Ed",
+      "reference_image": "characters/ed_ref.jpg",
+      "description": "British man, late 20s, dark messy hair, round friendly face, unshaven, slightly overweight",
+      "costume": "Faded beige 'I GOT WOOD' t-shirt with orange text, blood stained",
+      "generate_prompt": "Professional character reference sheet, front view and 3/4 profile. British man late 20s, dark brown messy unkempt hair, round friendly face, patchy stubble, slightly overweight build, rosy cheeks. Wearing faded beige graphic t-shirt with 'I GOT WOOD' text in orange, blood stains on shirt. Lovable slacker appearance, goofy grin. Clean white background, even studio lighting, 4K photorealistic, character turnaround sheet"
+    },
+    "philip": {
+      "id": "philip",
+      "name": "Philip",
+      "reference_image": "characters/philip_ref.jpg",
+      "description": "British man, late 50s, thinning grey hair, gaunt face, blue-green polo shirt",
+      "costume": "Teal blue-green polo shirt, casual trousers",
+      "generate_prompt": "Professional character reference sheet, front view and 3/4 profile. British man late 50s, thinning grey hair, gaunt angular face, tired expression, slightly disheveled. Wearing teal blue-green polo shirt. Stern stepfather appearance. Clean white background, even studio lighting, 4K photorealistic, character turnaround sheet"
+    },
+    "liz": {
+      "id": "liz",
+      "name": "Liz",
+      "reference_image": "characters/liz_ref.jpg",
+      "description": "British woman, late 20s, shoulder length brown hair, attractive, worried expression",
+      "costume": "Casual grey top, practical clothing",
+      "generate_prompt": "Professional character reference sheet, front view and 3/4 profile. British woman late 20s, shoulder length brown hair, attractive face, concerned expression. Wearing casual grey top. Girlfriend character, sensible appearance. Clean white background, even studio lighting, 4K photorealistic, character turnaround sheet"
+    },
+    "mum": {
+      "id": "mum",
+      "name": "Barbara (Mum)",
+      "reference_image": "characters/mum_ref.jpg",
+      "description": "British woman, early 60s, short grey-blonde hair, kind maternal face",
+      "costume": "Light blue blouse, cardigan",
+      "generate_prompt": "Professional character reference sheet, front view and 3/4 profile. British woman early 60s, short grey-blonde hair, kind maternal face, gentle worried expression. Wearing light blue blouse with cardigan. Loving mother appearance. Clean white background, even studio lighting, 4K photorealistic, character turnaround sheet"
     }
-  ],
+  },
 
   "shots": [
     {
-      "shot_id": "shaun_plan_01",
+      "shot_id": "plan_01_twoshot_flat",
       "order": 1,
-      "description": "Two-shot of Shaun and Ed in messy living room, discussing the plan",
+      "timestamp": "0:00-0:05",
+      "description": "Two-shot in messy living room. Shaun begins explaining the plan to Ed.",
       "start_frame": "scenes/shaun_the_plan/frames/frame_001.jpg",
       "end_frame": null,
       "duration": 5,
       "model": "seedance-1.5",
-      "dialog": "[ADD DIALOGUE - Shaun explains first part of plan]",
-      "dialog_voice": "shaun_british",
+      "shot_type": "medium-two-shot",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat_living_room",
+
+      "dialog": "Right. We take Pete's car, we drive over to Mum's, we go in, take care of Philip...",
       "dialog_speaker": "shaun",
-      "motion_prompt": "static shot, characters gesturing while talking, then settles",
-      "transition_in": "cut",
-      "transition_out": "cut",
-      "narrative_beat": "exposition",
-      "shot_type": "medium",
-      "camera_angle": "eye-level"
+      "dialog_voice": "british_male_determined",
+
+      "video_prompt": "[CHARACTER: Shaun] and [CHARACTER: Ed] sit in cluttered messy living room with overturned furniture, empty cans. Shaun on left speaks determinedly using hand gestures to emphasize plan. Ed on right listens intently, nodding. Natural daylight from window left. Shaun speaks British English: 'Right. We take Pete's car, we drive over to Mum's, we go in, take care of Philip...' Desaturated color grade, documentary intimacy.",
+
+      "motion_prompt": "Static two-shot, Shaun gestures emphatically while speaking, Ed nods along listening, subtle natural breathing movement, then settles",
+
+      "transition_out": "match-cut",
+      "narrative_beat": "plan_exposition"
     },
     {
-      "shot_id": "shaun_plan_02",
+      "shot_id": "plan_02_car_zombies",
       "order": 2,
-      "description": "Close-up of Shaun thinking, processing information",
+      "timestamp": "0:05-0:08",
+      "description": "MATCH CUT - Visualization: Car driving through streets with zombies shambling behind",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_002.jpg",
+      "end_frame": null,
+      "duration": 3,
+      "model": "kling-2.6",
+      "shot_type": "wide-tracking",
+      "camera_angle": "front-low",
+      "location": "suburban_street",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Front tracking shot of red hatchback car driving toward camera, two figures visible through windshield, two zombies shambling in background behind car, suburban London houses and trees, car passes camera, slight handheld shake, then settles",
+
+      "transition_in": "match-cut",
+      "transition_out": "match-cut",
+      "narrative_beat": "plan_visualization_drive"
+    },
+    {
+      "shot_id": "plan_03_philip_hit",
+      "order": 3,
+      "timestamp": "0:08-0:11",
+      "description": "MATCH CUT - Visualization: Philip getting hit (motion blur showing impact)",
       "start_frame": "scenes/shaun_the_plan/frames/frame_003.jpg",
       "end_frame": null,
       "duration": 3,
       "model": "kling-2.6",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "mums_house_interior",
+
       "dialog": null,
-      "motion_prompt": "subtle head movement, character blinks and thinks, then holds",
-      "transition_in": "cut",
-      "transition_out": "cut",
-      "narrative_beat": "reaction",
-      "shot_type": "close-up",
-      "camera_angle": "eye-level"
+
+      "video_prompt": null,
+
+      "motion_prompt": "Medium shot of older man in teal polo shirt, motion blur as something swings toward him, head snaps to side with impact, living room with curtained window background, quick violent motion, then holds on reaction",
+
+      "transition_in": "match-cut",
+      "transition_out": "match-cut",
+      "narrative_beat": "plan_visualization_philip"
     },
     {
-      "shot_id": "shaun_plan_03",
-      "order": 3,
-      "description": "Medium close-up of Shaun drinking tea while listening",
-      "start_frame": "scenes/shaun_the_plan/frames/frame_005.jpg",
-      "end_frame": null,
-      "duration": 4,
-      "model": "kling-2.6",
-      "dialog": null,
-      "motion_prompt": "character drinks from mug, slight nod, then lowers cup",
-      "transition_in": "cut",
-      "transition_out": "cut",
-      "narrative_beat": "reaction",
-      "shot_type": "medium-close",
-      "camera_angle": "eye-level"
-    },
-    {
-      "shot_id": "shaun_plan_04",
+      "shot_id": "plan_04_door_burst",
       "order": 4,
-      "description": "Ed responds with enthusiasm",
+      "timestamp": "0:11-0:13",
+      "description": "MATCH CUT - Visualization: Someone bursting through doors dramatically",
       "start_frame": "scenes/shaun_the_plan/frames/frame_004.jpg",
+      "end_frame": null,
+      "duration": 2,
+      "model": "kling-2.6",
+      "shot_type": "medium",
+      "camera_angle": "straight-on",
+      "location": "doorway",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Static shot of wooden double doors, person in blue jacket bursts through dramatically, arms outstretched, motion blur on movement, doors swing open forcefully, then figure runs past camera",
+
+      "transition_in": "match-cut",
+      "transition_out": "cut",
+      "narrative_beat": "plan_visualization_rescue"
+    },
+    {
+      "shot_id": "plan_05_shaun_continues",
+      "order": 5,
+      "timestamp": "0:13-0:18",
+      "description": "Back to flat - Shaun continues explaining while drinking tea",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_005.jpg",
       "end_frame": null,
       "duration": 5,
       "model": "seedance-1.5",
-      "dialog": "[ADD DIALOGUE - Ed's comedic response]",
-      "dialog_voice": "ed_british",
-      "dialog_speaker": "ed",
-      "motion_prompt": "character speaks animatedly, gestures with hands, then settles",
-      "transition_in": "cut",
+      "shot_type": "medium-close",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "...grab Mum, go over to Liz's place, pick her up, hole up, have a cup of tea, and wait for all this to blow over.",
+      "dialog_speaker": "shaun",
+      "dialog_voice": "british_male_casual",
+
+      "video_prompt": "[CHARACTER: Shaun] medium close-up, holds white mug with blue text, takes sip then continues speaking matter-of-factly. Soft focus background, natural skin texture. He speaks casually in British accent: '...grab Mum, go over to Liz's place, pick her up, hole up, have a cup of tea, and wait for all this to blow over.' Warm indoor lighting, intimate documentary feel.",
+
+      "motion_prompt": "Shaun drinks from mug, lowers it, speaks with casual confidence, slight head movements for emphasis, then settles with satisfied expression",
+
       "transition_out": "cut",
-      "narrative_beat": "comic-relief",
-      "shot_type": "medium",
-      "camera_angle": "eye-level"
+      "narrative_beat": "plan_conclusion_v1"
     },
     {
-      "shot_id": "shaun_plan_05",
-      "order": 5,
-      "description": "Quick montage shot - car driving through suburban streets",
-      "start_frame": "scenes/shaun_the_plan/frames/frame_010.jpg",
+      "shot_id": "plan_06_ed_thinks",
+      "order": 6,
+      "timestamp": "0:18-0:21",
+      "description": "Close-up of Ed processing, getting an idea",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_007.jpg",
       "end_frame": null,
       "duration": 3,
       "model": "kling-2.6",
+      "shot_type": "close-up",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
       "dialog": null,
-      "motion_prompt": "car drives forward down suburban street, camera follows from behind, then slows",
+
+      "video_prompt": null,
+
+      "motion_prompt": "Close-up on Ed's round face, dark messy hair, sitting on leather couch, eyebrows furrow in thought, then eyes widen with sudden idea, slight smile forms, then holds with excited expression",
+
+      "transition_out": "cut",
+      "narrative_beat": "ed_gets_idea"
+    },
+    {
+      "shot_id": "plan_07_ed_suggestion",
+      "order": 7,
+      "timestamp": "0:21-0:25",
+      "description": "Ed suggests going to the Winchester pub",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_008.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "seedance-1.5",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "Why don't we go to the Winchester?",
+      "dialog_speaker": "ed",
+      "dialog_voice": "british_male_enthusiastic",
+
+      "video_prompt": "[CHARACTER: Ed] medium shot, sitting on couch holding vinyl record, leans forward eagerly with excited expression, eyes bright. Messy living room background with debris. He speaks enthusiastically: 'Why don't we go to the Winchester?' Natural daylight, comedic beat timing.",
+
+      "motion_prompt": "Ed perks up excitedly, leans forward, gestures with record in hand, big hopeful smile, then holds expectantly waiting for response",
+
+      "transition_out": "cut",
+      "narrative_beat": "winchester_suggestion"
+    },
+    {
+      "shot_id": "plan_08_shaun_considers",
+      "order": 8,
+      "timestamp": "0:25-0:28",
+      "description": "Shaun pauses, considers Ed's suggestion",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_006.jpg",
+      "end_frame": "scenes/shaun_the_plan/frames/frame_009.jpg",
+      "duration": 3,
+      "model": "kling-o1",
+      "shot_type": "medium-close",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Medium close-up of Shaun, teal green wall background, pauses with mouth slightly open, tilts head considering, expression shifts from skeptical to agreeable, slight nod, then settles on decision",
+
+      "transition_out": "cut",
+      "narrative_beat": "shaun_considers"
+    },
+    {
+      "shot_id": "plan_09_revised_plan",
+      "order": 9,
+      "timestamp": "0:28-0:38",
+      "description": "Shaun delivers the revised plan incorporating Winchester",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_013.jpg",
+      "end_frame": null,
+      "duration": 10,
+      "model": "seedance-1.5",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "Okay. We take Pete's car, go round Mum's, go in, deal with Philip, grab Mum, go to Liz's, pick her up, bring her back here, go to the Winchester, have a nice cold pint, and wait for all this to blow over.",
+      "dialog_speaker": "shaun",
+      "dialog_voice": "british_male_planning",
+
+      "video_prompt": "[CHARACTER: Shaun] medium shot, teal wall background with globe and bookshelf visible, speaks with growing confidence using hands to count off plan steps. Expression shifts from thoughtful to satisfied as plan comes together. He speaks in measured British tone speeding up: 'Okay. We take Pete's car, go round Mum's, go in, deal with Philip, grab Mum, go to Liz's, pick her up, bring her back here, go to the Winchester, have a nice cold pint, and wait for all this to blow over.' Cool color grade, slight handheld.",
+
+      "motion_prompt": "Shaun speaks confidently, makes counting gestures with fingers, nods along to plan points, expression grows more satisfied, then settles with proud look",
+
+      "transition_out": "match-cut",
+      "narrative_beat": "revised_plan_delivery"
+    },
+    {
+      "shot_id": "plan_10_car_suburban",
+      "order": 10,
+      "timestamp": "0:38-0:41",
+      "description": "MATCH CUT - Car driving through quiet suburban streets",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_010.jpg",
+      "end_frame": "scenes/shaun_the_plan/frames/frame_011.jpg",
+      "duration": 3,
+      "model": "kling-o1",
+      "shot_type": "wide-tracking",
+      "camera_angle": "low-behind",
+      "location": "suburban_street",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Low angle tracking shot behind red hatchback car, vehicle drives forward through quiet suburban English street with trees and hedges, camera smoothly follows, car turns corner past brick apartment building, zombie figure visible on grass, then shot settles",
+
       "transition_in": "match-cut",
       "transition_out": "match-cut",
-      "narrative_beat": "action-montage",
-      "shot_type": "wide",
-      "camera_angle": "low-angle"
+      "narrative_beat": "plan_viz_drive_v2"
     },
     {
-      "shot_id": "shaun_plan_06",
-      "order": 6,
-      "description": "Back to living room - Shaun continues explaining",
-      "start_frame": "scenes/shaun_the_plan/frames/frame_015.jpg",
-      "end_frame": null,
-      "duration": 5,
-      "model": "seedance-1.5",
-      "dialog": "[ADD DIALOGUE - Shaun continues plan]",
-      "dialog_voice": "shaun_british",
-      "dialog_speaker": "shaun",
-      "motion_prompt": "character speaks urgently, makes pointing gesture, then pauses",
-      "transition_in": "cut",
-      "transition_out": "cut",
-      "narrative_beat": "rising-action",
-      "shot_type": "medium",
-      "camera_angle": "eye-level"
-    },
-    {
-      "shot_id": "shaun_plan_07",
-      "order": 7,
-      "description": "TV showing news broadcast - CRISIS WORSENS",
-      "start_frame": "scenes/shaun_the_plan/frames/frame_020.jpg",
+      "shot_id": "plan_11_liz_pickup",
+      "order": 11,
+      "timestamp": "0:41-0:45",
+      "description": "MATCH CUT - At Liz's place, Shaun with tea, Liz visible",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_012.jpg",
       "end_frame": null,
       "duration": 4,
       "model": "kling-2.6",
+      "shot_type": "medium-two-shot",
+      "camera_angle": "eye-level",
+      "location": "liz_flat",
+
       "dialog": null,
-      "motion_prompt": "TV screen shows news anchor speaking, slight camera push-in, then holds",
-      "transition_in": "cut",
-      "transition_out": "cut",
-      "narrative_beat": "exposition",
-      "shot_type": "insert",
-      "camera_angle": "over-shoulder"
+
+      "video_prompt": null,
+
+      "motion_prompt": "Two-shot in cozy flat, Shaun on right drinks from COOL mug, Liz on left edge of frame in grey top, both look concerned, Shaun lowers mug nodding reassuringly, intimate domestic setting, then settles",
+
+      "transition_in": "match-cut",
+      "transition_out": "match-cut",
+      "narrative_beat": "plan_viz_liz_pickup"
     },
     {
-      "shot_id": "shaun_plan_08",
-      "order": 8,
-      "description": "Reaction shot - both characters react to news",
-      "start_frame": "scenes/shaun_the_plan/frames/frame_017.jpg",
+      "shot_id": "plan_12_wide_living_room",
+      "order": 12,
+      "timestamp": "0:45-0:49",
+      "description": "Wide shot - Shaun standing confidently, Ed on couch, TV visible",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_014.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "kling-2.6",
+      "shot_type": "wide",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Wide shot of living room, Shaun stands center-right with hands on hips in confident pose, Ed visible on couch foreground left, TV showing news in corner, bookshelf and globe visible, Shaun shifts weight proudly, then holds pose",
+
+      "transition_out": "cut",
+      "narrative_beat": "confident_pose"
+    },
+    {
+      "shot_id": "plan_13_fried_gold",
+      "order": 13,
+      "timestamp": "0:49-0:53",
+      "description": "Shaun delivers the punchline - 'slice of fried gold'",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_015.jpg",
       "end_frame": null,
       "duration": 4,
       "model": "seedance-1.5",
-      "dialog": "[ADD DIALOGUE - Reaction to news]",
-      "dialog_voice": "shaun_british",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "How's that for a slice of fried gold?",
       "dialog_speaker": "shaun",
-      "motion_prompt": "characters turn to look at each other, worried expressions, then settles",
+      "dialog_voice": "british_male_proud",
+
+      "video_prompt": "[CHARACTER: Shaun] medium shot, teal wall background, blood on white shirt visible, stands with satisfied smirk, eyebrows raised expectantly waiting for approval. He speaks with self-satisfied British tone: 'How's that for a slice of fried gold?' Cool indoor lighting, comedic timing beat, pause after line.",
+
+      "motion_prompt": "Shaun spreads arms slightly in presentation gesture, eyebrows raise, smirks proudly, tilts head waiting for response, then holds with expectant expression",
+
+      "transition_out": "cut",
+      "narrative_beat": "punchline_delivery"
+    },
+    {
+      "shot_id": "plan_14_whip_pan",
+      "order": 14,
+      "timestamp": "0:53-0:54",
+      "description": "Whip pan transition - Edgar Wright signature",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_016.jpg",
+      "end_frame": null,
+      "duration": 1,
+      "model": "kling-2.6",
+      "shot_type": "transition",
+      "camera_angle": "whip-pan",
+      "location": "transition",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Extreme motion blur whip pan right, dark blur streaks across frame, abstract shapes, quick transition movement",
+
+      "transition_in": "whip-pan",
+      "transition_out": "whip-pan",
+      "narrative_beat": "signature_transition"
+    },
+    {
+      "shot_id": "plan_15_winchester_sign",
+      "order": 15,
+      "timestamp": "0:54-0:57",
+      "description": "MATCH CUT - Winchester Tavern pub sign establishing shot",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_017.jpg",
+      "end_frame": null,
+      "duration": 3,
+      "model": "kling-2.6",
+      "shot_type": "close-up-insert",
+      "camera_angle": "low-angle",
+      "location": "winchester_exterior",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Low angle shot of Winchester Tavern pub sign with coat of arms crest, red and white checkered pattern with lions, sign sways gently in breeze, brick building background, overcast daylight, then settles",
+
+      "transition_in": "match-cut",
+      "transition_out": "cut",
+      "narrative_beat": "plan_viz_winchester"
+    },
+    {
+      "shot_id": "plan_16_pint",
+      "order": 16,
+      "timestamp": "0:57-1:01",
+      "description": "MATCH CUT - Shaun drinking a pint at Winchester, visualization complete",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_018.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "kling-2.6",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "winchester_interior",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Medium shot of Shaun in pub interior, holds pint glass of beer, takes long satisfying sip, eyes wide with relief, pub patrons and bar visible in background blur, lowers glass with satisfied exhale, then holds with content expression",
+
       "transition_in": "cut",
+      "transition_out": "cut",
+      "narrative_beat": "plan_viz_pint"
+    },
+    {
+      "shot_id": "plan_17_ed_yeahboy",
+      "order": 17,
+      "timestamp": "1:01-1:05",
+      "description": "Back to flat - Ed's enthusiastic approval",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_019.jpg",
+      "end_frame": null,
+      "duration": 4,
+      "model": "seedance-1.5",
+      "shot_type": "medium",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "Yeah, boyyyy!",
+      "dialog_speaker": "ed",
+      "dialog_voice": "british_male_excited",
+
+      "video_prompt": "[CHARACTER: Ed] medium shot in living room, holds cricket bat, swings it enthusiastically in celebration, huge excited grin, eyes crinkling with joy. He exclaims with drawn out emphasis: 'Yeah, boyyyy!' Natural lighting, comedic energy, motion blur on bat swing.",
+
+      "motion_prompt": "Ed swings cricket bat excitedly in celebration arc, huge grin on face, fist pumps with other hand, enthusiastic full body movement, then settles holding bat triumphantly",
+
+      "transition_out": "cut",
+      "narrative_beat": "approval_celebration"
+    },
+    {
+      "shot_id": "plan_18_tv_news",
+      "order": 18,
+      "timestamp": "1:05-1:10",
+      "description": "TV shows breaking news - CRISIS WORSENS - tension builds",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_020.jpg",
+      "end_frame": null,
+      "duration": 5,
+      "model": "kling-2.6",
+      "shot_type": "insert",
+      "camera_angle": "over-shoulder",
+      "location": "shaun_flat",
+
+      "dialog": null,
+
+      "video_prompt": null,
+
+      "motion_prompt": "Over-shoulder shot of CRT TV screen, news anchor in suit speaks urgently, red BREAKING NEWS banner with CRISIS WORSENS text, blue news studio background, silhouettes of characters visible at frame edges watching, slight push-in toward screen, then holds",
+
+      "transition_out": "cut",
+      "narrative_beat": "reality_intrusion"
+    },
+    {
+      "shot_id": "plan_19_two_shot_worry",
+      "order": 19,
+      "timestamp": "1:10-1:15",
+      "description": "Two-shot - Both react to news, mood shifts from celebration to concern",
+      "start_frame": "scenes/shaun_the_plan/frames/frame_021.jpg",
+      "end_frame": null,
+      "duration": 5,
+      "model": "seedance-1.5",
+      "shot_type": "medium-two-shot",
+      "camera_angle": "eye-level",
+      "location": "shaun_flat",
+
+      "dialog": "...",
+      "dialog_speaker": "shaun",
+      "dialog_voice": "british_male_worried",
+
+      "video_prompt": "[CHARACTER: Ed] on left holds blood-stained cricket bat, wears 'I GOT WOOD' t-shirt, worried expression. [CHARACTER: Shaun] on right in jacket and tie, turns from TV with concerned look. Both share worried glance. Teal wall background, refrigerator with posters visible. Tension in silence.",
+
+      "motion_prompt": "Two-shot, Ed lowers cricket bat slowly, smile fades to concern, Shaun turns to look at Ed, both share worried glance, Ed swallows nervously, then both turn back toward TV off-screen",
+
       "transition_out": "fade",
-      "narrative_beat": "climax",
-      "shot_type": "two-shot",
-      "camera_angle": "eye-level"
+      "narrative_beat": "plan_meets_reality"
     }
   ],
 
   "audio_layers": [
     {
       "type": "music",
-      "file": null,
-      "start": 0,
-      "volume": 0.2,
-      "note": "Queen - Don't Stop Me Now plays during montage sections"
+      "file": "queen_dont_stop_me_now.mp3",
+      "start_time": 5,
+      "end_time": 60,
+      "volume": 0.4,
+      "note": "Queen - Don't Stop Me Now plays during montage visualization sequences"
     },
     {
       "type": "ambience",
-      "file": null,
-      "start": 0,
-      "volume": 0.3,
-      "note": "Suburban quiet, occasional distant sounds"
+      "file": "suburban_quiet.mp3",
+      "start_time": 0,
+      "volume": 0.2,
+      "note": "Quiet suburban atmosphere"
+    },
+    {
+      "type": "sfx",
+      "file": "tv_news_audio.mp3",
+      "start_time": 65,
+      "volume": 0.5,
+      "note": "TV news broadcast audio"
     }
   ],
 
-  "production_notes": {
-    "style": "Edgar Wright signature rapid editing, match cuts, whip pans",
-    "comedy_timing": "Dialogue delivered quickly, deadpan reactions",
-    "visual_motif": "Repeated shots with slight variations showing different plans",
-    "how_to_get_transcript": "Use OpenAI Whisper API or FAL AI whisper endpoint to transcribe audio.wav"
+  "execution_notes": {
+    "total_shots": 19,
+    "dialog_shots": 8,
+    "motion_shots": 11,
+
+    "model_breakdown": {
+      "seedance-1.5": "shots 1, 5, 7, 9, 13, 17, 19 (all dialog)",
+      "kling-2.6": "shots 2, 3, 4, 6, 11, 12, 14, 15, 16, 18 (motion/action)",
+      "kling-o1": "shots 8, 10 (state transitions with end frames)"
+    },
+
+    "seedance_settings": {
+      "resolution": "720p",
+      "aspect_ratio": "16:9",
+      "generate_audio": true,
+      "lip_sync": true
+    },
+    "kling_26_settings": {
+      "resolution": "2K",
+      "duration": "5",
+      "mode": "standard"
+    },
+    "kling_o1_settings": {
+      "resolution": "2K",
+      "duration": "5",
+      "note": "Uses start_image_url and tail_image_url for smooth transitions"
+    }
   },
 
-  "transcript_instructions": {
-    "step_1": "Upload audio.wav to OpenAI Whisper API or use: curl https://api.openai.com/v1/audio/transcriptions -F file=@audio.wav -F model=whisper-1",
-    "step_2": "Or use FAL AI: fal-ai/wizper with the audio file",
-    "step_3": "Replace [ADD DIALOGUE] placeholders with actual transcript",
-    "step_4": "Match dialogue to correct character and timestamp"
+  "production_notes": {
+    "style": "Edgar Wright signature rapid editing with match cuts between dialogue and visualization",
+    "editing_pattern": "Talk-show-talk: Shaun explains each step, cut to visualization, return to dialogue",
+    "comedy_timing": "Deadpan British delivery, visual punchlines, building repetition for final payoff",
+    "color_grade": "Desaturated cool tones, slight green/teal tint in flat scenes, warmer in pub",
+    "pacing": "Quick cuts during montage (1-3 sec), longer holds for dialogue (4-5 sec), pause beats for comedy",
+    "key_transitions": "Match cuts on action words, whip pans between scenes"
   }
 }
