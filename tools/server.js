@@ -95,8 +95,15 @@ const server = http.createServer((req, res) => {
         if (!startFrame) return;
 
         const framePath = `/scenes/${sceneId}/analysis_3fps/frame_${String(startFrame).padStart(4, '0')}.jpg`;
-        const framing = shot.camera?.start_framing?.toUpperCase() || 'MS';
-        const framingScore = FRAMING_SCORES[framing] || 50;
+        const fullFraming = shot.camera?.start_framing?.toUpperCase() || 'MS';
+        // Extract base framing (MS_GROUP -> MS, MS_ACTION -> MS)
+        const baseFraming = fullFraming.split('_')[0];
+        let framingScore = FRAMING_SCORES[baseFraming] || 50;
+
+        // Penalize group shots - they're worse for character references
+        if (fullFraming.includes('GROUP') || fullFraming.includes('TWO_SHOT')) {
+          framingScore -= 15;
+        }
 
         // Get primary and secondary characters
         const primaryChars = [];
@@ -129,7 +136,7 @@ const server = http.createServer((req, res) => {
             characterFrames[charLower] = {
               frame: framePath,
               shot_id: shot.shot_id,
-              framing: framing,
+              framing: fullFraming,
               score: score,
               is_primary: true,
               is_solo: validPrimary.length === 1 && validSecondary.length === 0
@@ -146,7 +153,7 @@ const server = http.createServer((req, res) => {
             characterFrames[charLower] = {
               frame: framePath,
               shot_id: shot.shot_id,
-              framing: framing,
+              framing: fullFraming,
               score: score,
               is_primary: false,
               is_solo: false
@@ -159,16 +166,16 @@ const server = http.createServer((req, res) => {
         if (location) {
           // Score for sets: prefer wide shots (WS, EWS, MWS)
           const SET_FRAMING_SCORES = {
-            'EWS': 100, 'WS': 90, 'MWS': 80, 'MS': 50, 'MCU': 30, 'CU': 20, 'BCU': 10
+            'EWS': 100, 'WS': 90, 'MWS': 80, 'MW': 70, 'MS': 50, 'MCU': 30, 'CU': 20, 'BCU': 10
           };
-          const setScore = SET_FRAMING_SCORES[framing] || 50;
+          const setScore = SET_FRAMING_SCORES[baseFraming] || 50;
 
           if (!locationFrames[location] || setScore > locationFrames[location].score) {
             locationFrames[location] = {
               frame: framePath,
               shot_id: shot.shot_id,
               elements: shot.environment?.visible_elements || [],
-              framing: framing,
+              framing: fullFraming,
               score: setScore
             };
           }
@@ -180,7 +187,7 @@ const server = http.createServer((req, res) => {
         const PROP_FRAMING_SCORES = {
           'ECU': 100, 'BCU': 95, 'CU': 90, 'MCU': 80, 'MS': 60, 'MWS': 40, 'WS': 20
         };
-        const propScore = PROP_FRAMING_SCORES[framing] || 50;
+        const propScore = PROP_FRAMING_SCORES[baseFraming] || 50;
         // Bonus if there's prop interaction described
         const interactionBonus = shot.props?.interaction ? 20 : 0;
 
@@ -191,7 +198,7 @@ const server = http.createServer((req, res) => {
               frame: framePath,
               shot_id: shot.shot_id,
               interaction: shot.props?.interaction,
-              framing: framing,
+              framing: fullFraming,
               score: totalPropScore
             };
           }
@@ -330,6 +337,9 @@ const server = http.createServer((req, res) => {
         return 'INT'; // Default
       }
 
+      // Track last known location to carry forward
+      let lastLocation = null;
+
       const plan = {
         scene_id: sceneId,
         total_shots: scene.shots?.length || 0,
@@ -362,7 +372,13 @@ const server = http.createServer((req, res) => {
           inputs.prompt = shot.motion_prompt;
           inputs.duration = shot.timing?.generation_duration_sec || shot.duration || 5;
 
-          const location = shot.environment?.location || shot.location;
+          // Get location - inherit from previous shot if not specified
+          let location = shot.environment?.location || shot.location;
+          if (location) {
+            lastLocation = location; // Update last known location
+          } else {
+            location = lastLocation; // Inherit from previous
+          }
 
           return {
             shot_id: shot.shot_id,

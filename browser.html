@@ -2575,7 +2575,7 @@
                   <div class="shot-assets">
                     ${shot.location ? `<span class="shot-asset-tag ${shot.int_ext === 'EXT' ? 'ext' : 'int'}">📍 ${shot.location.toUpperCase()} ${shot.int_ext || 'INT'}</span>` : ''}
                     ${(shot.characters_needed || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
-                    ${filterAndConsolidateProps(shot.props).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
+                    ${filterAndConsolidateProps(shot.props).map(p => `<span class="shot-asset-tag prop">🎬 ${p.name.toUpperCase()}${p.int_ext ? ' ' + p.int_ext : ''}</span>`).join('')}
                   </div>
                 </div>
                 ` : ''}
@@ -2630,6 +2630,11 @@
       'pint_glass': ['pint_glass', 'lager', 'beer']
     };
 
+    // Props that indicate INTERIOR view
+    const PROP_INT_INDICATORS = {
+      'car': ['steering_wheel', 'gas_pedal', 'car_interior', 'dashboard', 'seat', 'mirror']
+    };
+
     const EXCLUDE_PROPS = [
       'finger', 'thumb', 'hand', 'hands', 'foot', 'shoe', 'shoes', 'feet',  // Body parts
       'door', 'window', 'wall', 'floor', 'ceiling',  // Set elements (generic)
@@ -2640,7 +2645,7 @@
     function filterAndConsolidateProps(props) {
       if (!props || !Array.isArray(props)) return [];
 
-      const result = new Set();
+      const result = new Map(); // group -> {name, int_ext}
 
       props.forEach(prop => {
         const propLower = prop.toLowerCase();
@@ -2657,10 +2662,24 @@
           }
         }
 
-        result.add(groupName || prop);
+        const finalName = groupName || prop;
+
+        // Detect INT/EXT for props that have it (like car)
+        if (groupName && PROP_INT_INDICATORS[groupName]) {
+          const isInt = PROP_INT_INDICATORS[groupName].some(ind => propLower.includes(ind));
+          const existing = result.get(finalName);
+          // If already marked as INT, keep it; otherwise set based on this prop
+          if (!existing || isInt) {
+            result.set(finalName, { name: finalName, int_ext: isInt ? 'INT' : 'EXT' });
+          }
+        } else {
+          if (!result.has(finalName)) {
+            result.set(finalName, { name: finalName, int_ext: null });
+          }
+        }
       });
 
-      return Array.from(result);
+      return Array.from(result.values());
     }
 
     // ==================== ASSETS FUNCTIONALITY ====================
