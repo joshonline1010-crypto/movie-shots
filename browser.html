@@ -1288,6 +1288,113 @@
       color: var(--success);
     }
 
+    /* Prompts Panel Styles */
+    .prompts-section {
+      background: var(--bg-card);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .prompts-section h4 {
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .prompt-item {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 0.4rem 0.6rem;
+      background: var(--bg-hover);
+      border-radius: 3px;
+    }
+
+    .prompt-item strong {
+      color: var(--text);
+    }
+
+    .prompt-notes {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+      padding: 0.5rem;
+      background: var(--bg-hover);
+      border-radius: 3px;
+      border-left: 2px solid var(--accent-dim);
+    }
+
+    .prompt-copy {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background: rgba(201, 162, 39, 0.1);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .prompt-copy:hover {
+      background: rgba(201, 162, 39, 0.2);
+    }
+
+    .prompts-overview {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .overview-item {
+      background: var(--bg-hover);
+      border-radius: 4px;
+      padding: 0.75rem;
+    }
+
+    .overview-title {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .overview-text {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .angles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .angle-item {
+      background: var(--bg-hover);
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    .angle-name {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .angle-details {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
     /* Frames strip */
     .frames-strip {
       display: flex;
@@ -1586,6 +1693,7 @@
           <button class="asset-tab" data-asset="sets">Sets/Backgrounds</button>
           <button class="asset-tab" data-asset="props">Props</button>
           <button class="asset-tab" data-asset="dialogue">Dialogue</button>
+          <button class="asset-tab" data-asset="prompts">Prompts</button>
         </div>
 
         <!-- Screenshots/Frames -->
@@ -1620,6 +1728,13 @@
         <div class="asset-content" id="dialogueContent">
           <div id="dialoguePanel">
             <!-- Dialogue info populated by JS -->
+          </div>
+        </div>
+
+        <!-- Prompts Settings -->
+        <div class="asset-content" id="promptsContent">
+          <div id="promptsPanel">
+            <!-- Prompts settings populated by JS -->
           </div>
         </div>
       </div>
@@ -2721,7 +2836,7 @@
           framesStrip.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">No frames extracted yet. Run: ffmpeg -i video.mp4 -vf "fps=3" analysis_3fps/frame_%04d.jpg</div>';
         }
 
-        // Render characters with screenshots
+        // Render characters with screenshots and voice info
         if (currentAssets.characters && Object.keys(currentAssets.characters).length > 0) {
           charactersGrid.innerHTML = Object.entries(currentAssets.characters).map(([id, char]) => `
             <div class="asset-card character">
@@ -2737,6 +2852,19 @@
                   <div class="asset-meta" style="color: var(--accent);">
                     ${char.best_shot} | ${char.shot_framing || 'MS'}${char.is_solo_shot ? ' | SOLO' : ''}
                   </div>
+                ` : ''}
+                ${char.voice ? `
+                  <div class="asset-meta" style="color: #a78bfa; margin-top: 0.3rem;">
+                    🎤 ${char.voice.gender || ''} | ${char.voice.tone || ''} | ${char.voice.accent || ''}
+                  </div>
+                  <div class="asset-meta" style="color: var(--text-dim); font-size: 0.7rem;">
+                    ${char.voice.speaking_style || ''}
+                  </div>
+                  ${char.voice.tts_prompt ? `
+                    <div class="asset-prompt" onclick="copyPrompt(this, '${char.voice.tts_prompt.replace(/'/g, "\\'")}')">
+                      🔊 TTS: ${char.voice.tts_prompt.substring(0, 60)}...
+                    </div>
+                  ` : ''}
                 ` : ''}
                 ${char.generate_prompt ? `
                   <div class="asset-prompt" onclick="copyPrompt(this, '${char.generate_prompt.replace(/'/g, "\\'")}')">
@@ -2797,6 +2925,9 @@
 
         // Load dialogue info
         await loadDialogueInfo(sceneId);
+
+        // Render prompts settings panel
+        renderPromptsPanel(currentAssets);
 
         assetsPanel.style.display = 'block';
 
@@ -2902,6 +3033,143 @@ node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
         console.error('Failed to load dialogue info:', err);
         dialoguePanel.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">Failed to load dialogue info.</div>';
       }
+    }
+
+    // Render prompts settings panel
+    function renderPromptsPanel(assets) {
+      const promptsPanel = document.getElementById('promptsPanel');
+      if (!promptsPanel) return;
+
+      let html = '';
+
+      // Video Motion Style
+      if (assets.video_motion_style) {
+        const vms = assets.video_motion_style;
+        html += `
+          <div class="prompts-section">
+            <h4>🎬 Video Motion Style</h4>
+            <div class="prompts-grid">
+              <div class="prompt-item"><strong>Type:</strong> ${vms.type || 'normal'}</div>
+              <div class="prompt-item"><strong>FPS Style:</strong> ${vms.fps_style || '24fps_cinematic'}</div>
+              <div class="prompt-item"><strong>Motion Quality:</strong> ${vms.motion_quality || 'smooth'}</div>
+              ${vms.special_style ? `<div class="prompt-item"><strong>Special:</strong> ${vms.special_style}</div>` : ''}
+            </div>
+            ${vms.notes ? `<div class="prompt-notes">${vms.notes}</div>` : ''}
+          </div>
+        `;
+      }
+
+      // Visual Style
+      if (assets.visual_style) {
+        const vs = assets.visual_style;
+        html += `
+          <div class="prompts-section">
+            <h4>📷 Visual Style</h4>
+            <div class="prompts-grid">
+              <div class="prompt-item"><strong>Camera:</strong> ${vs.camera || 'N/A'}</div>
+              <div class="prompt-item"><strong>Lens:</strong> ${vs.lens || 'N/A'}</div>
+              <div class="prompt-item"><strong>Focal Length:</strong> ${vs.default_focal_length || 'N/A'}</div>
+              <div class="prompt-item"><strong>Film Stock:</strong> ${vs.film_stock_look || 'N/A'}</div>
+              <div class="prompt-item"><strong>Grain:</strong> ${vs.grain || 'N/A'}</div>
+              <div class="prompt-item"><strong>Contrast:</strong> ${vs.contrast || 'N/A'}</div>
+              <div class="prompt-item"><strong>Saturation:</strong> ${vs.saturation || 'N/A'}</div>
+            </div>
+            ${vs.color_grade ? `<div class="prompt-notes"><strong>Color Grade:</strong> ${vs.color_grade}</div>` : ''}
+            ${vs.lighting_style ? `<div class="prompt-notes"><strong>Lighting Style:</strong> ${vs.lighting_style}</div>` : ''}
+            ${vs.style_suffix ? `
+              <div class="prompt-copy" onclick="copyPrompt(this, '${vs.style_suffix.replace(/'/g, "\\'")}')">
+                📋 Style Suffix: ${vs.style_suffix}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      // Prompt Settings Overview
+      if (assets.prompt_settings) {
+        const ps = assets.prompt_settings;
+        html += `
+          <div class="prompts-section">
+            <h4>📝 Prompt Settings Overview</h4>
+            <div class="prompts-overview">
+              ${ps.camera_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">📷 Camera</div>
+                  <div class="overview-text">${ps.camera_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.lighting_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">💡 Lighting</div>
+                  <div class="overview-text">${ps.lighting_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.set_design_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">🏠 Set Design</div>
+                  <div class="overview-text">${ps.set_design_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.wardrobe_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">👔 Wardrobe</div>
+                  <div class="overview-text">${ps.wardrobe_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.color_palette_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">🎨 Color Palette</div>
+                  <div class="overview-text">${ps.color_palette_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.transitions_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">✂️ Transitions</div>
+                  <div class="overview-text">${ps.transitions_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.movement_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">🎥 Camera Movement</div>
+                  <div class="overview-text">${ps.movement_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.audio_overview ? `
+                <div class="overview-item">
+                  <div class="overview-title">🔊 Audio</div>
+                  <div class="overview-text">${ps.audio_overview}</div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }
+
+      // Camera Angles
+      if (assets.camera_angles && Object.keys(assets.camera_angles).length > 0) {
+        html += `
+          <div class="prompts-section">
+            <h4>📐 Camera Angles</h4>
+            <div class="angles-grid">
+              ${Object.entries(assets.camera_angles).map(([name, angle]) => `
+                <div class="angle-item">
+                  <div class="angle-name">${name}</div>
+                  <div class="angle-details">
+                    ${angle.focal_length || ''} | ${angle.distance || ''} | ${angle.height || ''}
+                    ${angle.angle ? ` | ${angle.angle}` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (!html) {
+        html = '<div style="color: var(--text-muted); padding: 1rem;">No prompt settings defined in scene JSON. Add visual_style, video_motion_style, and prompt_settings blocks.</div>';
+      }
+
+      promptsPanel.innerHTML = html;
     }
 
     // Asset tab switching

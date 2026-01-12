@@ -311,6 +311,8 @@ const server = http.createServer((req, res) => {
       // Include visual style for prompt building
       const visual_style = scene.visual_style || null;
       const camera_angles = scene.camera_angles || null;
+      const video_motion_style = scene.video_motion_style || null;
+      const prompt_settings = scene.prompt_settings || null;
 
       return sendJSON(res, {
         characters,
@@ -319,6 +321,8 @@ const server = http.createServer((req, res) => {
         frames,
         visual_style,
         camera_angles,
+        video_motion_style,
+        prompt_settings,
         style_suffix: visual_style?.style_suffix || `${scene.aspect_ratio || '2.35:1'} cinematic`
       });
     }

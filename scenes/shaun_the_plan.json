@@ -46,35 +46,92 @@
     "default_resolution": "2K",
     "post_processing": "ffmpeg_cut"
   },
+  "video_motion_style": {
+    "type": "normal",
+    "fps_style": "24fps_cinematic",
+    "motion_quality": "smooth",
+    "special_style": null,
+    "notes": "Standard live-action film motion. Use 'stop_motion_12fps' for animation, 'jittery_handheld' for found footage, 'dreamy_slow' for ethereal sequences"
+  },
+  "prompt_settings": {
+    "camera_overview": "ARRI 435 with Panavision Primo anamorphic lenses. Primary focal lengths: 85mm (CU), 50mm (MCU), 35mm (MS), 24mm (WS). Eye-level default, occasional low angles for tension.",
+    "lighting_overview": "Practical source lighting. Interiors: warm tungsten from visible lamps. Exteriors: overcast British daylight, slightly flat. Night: sodium streetlight orange cast.",
+    "set_design_overview": "Cluttered British domestic spaces - messy bachelor flat with pizza boxes, dated 70s decor at Mum's house, traditional English pub. Zombies as background furniture.",
+    "wardrobe_overview": "Casual everyday British - Shaun in office shirt/tie, Ed in slacker t-shirt, Barbara in maternal cardigan. Philip in middle-class polo. Blood stains accumulate through scene.",
+    "color_palette_overview": "Desaturated with teal push in shadows, warm highlights. Muted greens and browns. Not stylized - grounded British realism with slight comic-book flatness.",
+    "transitions_overview": "Edgar Wright signature: Match cuts on action, whip pans between locations, smash cuts for comedy. Quick cutting rhythm during plan explanation.",
+    "movement_overview": "Mostly static or subtle push-ins. Handheld for running/action. Whip pans for location jumps. No Steadicam - grounded tripod work.",
+    "audio_overview": "Dialogue-driven with quick-fire British wit. Sound bridges between match cuts. Diegetic music from car radio. Ambient zombie groans."
+  },
   "character_references": {
     "shaun": {
       "id": "shaun",
       "name": "Shaun",
       "costume": "White dress shirt, red tie, dark grey-blue jacket, blood scratch on cheek",
+      "voice": {
+        "gender": "male",
+        "tone": "medium_pitch",
+        "quality": "dry, deadpan",
+        "accent": "British London",
+        "speaking_style": "Rapid-fire delivery when explaining plans. Sarcastic undertone. Slightly exasperated. Clear enunciation.",
+        "tts_prompt": "British male, mid-30s, dry deadpan delivery, slight sarcasm, clear London accent"
+      },
       "generate_prompt": "Professional character reference sheet, front and 3/4 profile. British man early 30s, short receding blonde hair, stubble, blood scratch marks on right cheek. Wearing white dress shirt with blood stains, red tie, dark grey-blue harrington jacket. Clean white background, studio lighting, 4K photorealistic"
     },
     "ed": {
       "id": "ed",
       "name": "Ed",
       "costume": "Beige 'I GOT WOOD' t-shirt with blood stains",
+      "voice": {
+        "gender": "male",
+        "tone": "deep_gravelly",
+        "quality": "slow, dim-witted",
+        "accent": "British working class",
+        "speaking_style": "Slow delivery, simple words. Enthusiastic about violence. Childlike wonder. Often one beat behind.",
+        "tts_prompt": "British male, late-20s, deep gravelly voice, slow simple delivery, working class accent"
+      },
       "generate_prompt": "Professional character reference sheet, front and 3/4 profile. British man late 20s, dark brown messy hair, round face, stubble, slightly overweight. Wearing dirty beige t-shirt with 'I GOT WOOD' orange text, blood stains. Clean white background, studio lighting, 4K photorealistic"
     },
     "barbara": {
       "id": "barbara",
       "name": "Barbara (Mum)",
       "costume": "Purple top with grey cardigan",
+      "voice": {
+        "gender": "female",
+        "tone": "soft_warm",
+        "quality": "gentle, maternal",
+        "accent": "British middle-class",
+        "speaking_style": "Soft spoken, always supportive. Understated worry. Never raises voice even in crisis. Polite deflection.",
+        "tts_prompt": "British female, early-60s, soft warm maternal voice, gentle middle-class accent"
+      },
       "generate_prompt": "Professional character reference sheet. British woman early 60s, short grey-brown bob haircut, kind maternal face. Wearing purple top with grey cardigan. Clean white background, studio lighting, 4K photorealistic"
     },
     "liz": {
       "id": "liz",
       "name": "Liz",
       "costume": "Light blue track jacket",
+      "voice": {
+        "gender": "female",
+        "tone": "medium_clear",
+        "quality": "direct, no-nonsense",
+        "accent": "British London",
+        "speaking_style": "Direct and assertive. Frustrated patience with Shaun. Occasional eye-roll in her tone. Sensible voice of reason.",
+        "tts_prompt": "British female, late-20s, clear direct voice, slight frustration, London accent"
+      },
       "generate_prompt": "Professional character reference sheet. British woman late 20s, blonde hair. Wearing light blue track jacket. Clean white background, studio lighting, 4K photorealistic"
     },
     "philip": {
       "id": "philip",
       "name": "Philip (Stepfather/Zombie)",
       "costume": "Teal blue polo shirt",
+      "voice": {
+        "gender": "male",
+        "tone": "low_gruff",
+        "quality": "dismissive, condescending",
+        "accent": "British middle-class",
+        "speaking_style": "Clipped, disapproving. Passive-aggressive. Sighs before speaking. Later: zombie groans only.",
+        "tts_prompt": "British male, late-50s, low gruff voice, dismissive condescending tone, middle-class accent"
+      },
       "generate_prompt": "Professional character reference sheet. British man late 50s, grey-brown disheveled hair, gaunt angular face, zombie makeup with pale grey complexion and dark sunken eyes. Wearing teal blue polo shirt. Clean white background, studio lighting, 4K photorealistic"
     }
   },
