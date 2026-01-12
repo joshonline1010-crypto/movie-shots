@@ -857,13 +857,29 @@
 
     /* Chain line connecting shots */
     .timeline-shot.chained::before {
+      content: '⛓';
+      position: absolute;
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #fbbf24;
+    }
+
+    .timeline-shot.chained::after {
       content: '';
       position: absolute;
-      left: 75px;
-      top: -10px;
-      width: 3px;
-      height: 20px;
-      background: linear-gradient(to bottom, var(--success), var(--success));
+      left: -10px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+      border-radius: 2px;
+    }
+
+    .timeline-shot.chained {
+      border-left: 3px solid #fbbf24;
+      margin-left: 20px;
     }
 
     .shot-order {

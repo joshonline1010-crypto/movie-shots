@@ -118,7 +118,8 @@
       "motion_prompt": "Slow zoom out pulling back, man SPINS cricket bat in hands while speaking gesturing enthusiastically, raises bat overhead, second person revealed on right, camera settles on two-shot, then holds",
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed ON SCREEN but camera moving (zoom_out)",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_002",
@@ -177,7 +178,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun ON SCREEN but camera moving (push_in)",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_001",
+        "use_frame": 10
+      }
     },
     {
       "shot_id": "shot_003",
@@ -212,7 +218,8 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_004",
@@ -263,7 +270,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_003",
+        "use_frame": 18
+      }
     },
     {
       "shot_id": "shot_005",
@@ -314,7 +326,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_004",
+        "use_frame": 20
+      }
     },
     {
       "shot_id": "shot_006",
@@ -366,7 +383,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_005",
+        "use_frame": 21
+      }
     },
     {
       "shot_id": "shot_007",
@@ -411,7 +433,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_006",
+        "use_frame": 24
+      }
     },
     {
       "shot_id": "shot_008",
@@ -458,7 +485,12 @@
         "word_count": 0
       },
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_007",
+        "use_frame": 27
+      }
     },
     {
       "shot_id": "shot_009",
@@ -510,7 +542,12 @@
         "word_count": 0
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_008",
+        "use_frame": 30
+      }
     },
     {
       "shot_id": "shot_010",
@@ -557,7 +594,12 @@
         "word_count": 0
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_009",
+        "use_frame": 33
+      }
     },
     {
       "shot_id": "shot_011",
@@ -609,7 +651,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_010",
+        "use_frame": 36
+      }
     },
     {
       "shot_id": "shot_012",
@@ -659,7 +706,12 @@
         "word_count": 0
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_011",
+        "use_frame": 42
+      }
     },
     {
       "shot_id": "shot_013",
@@ -710,7 +762,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_012",
+        "use_frame": 45
+      }
     },
     {
       "shot_id": "shot_014",
@@ -740,7 +797,8 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_015",
@@ -788,7 +846,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_014",
+        "use_frame": 50
+      }
     },
     {
       "shot_id": "shot_016",
@@ -838,7 +901,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_015",
+        "use_frame": 54
+      }
     },
     {
       "shot_id": "shot_017",
@@ -892,7 +960,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_016",
+        "use_frame": 57
+      }
     },
     {
       "shot_id": "shot_018",
@@ -936,7 +1009,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_017",
+        "use_frame": 61
+      }
     },
     {
       "shot_id": "shot_019",
@@ -998,7 +1076,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_018",
+        "use_frame": 64
+      }
     },
     {
       "shot_id": "shot_020",
@@ -1043,7 +1126,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_019",
+        "use_frame": 72
+      }
     },
     {
       "shot_id": "shot_021",
@@ -1085,7 +1173,12 @@
       "photo_prompt_start": "CU of heavyset man with dark messy hair sitting on brown leather couch, dirty beige t-shirt, skeptical questioning expression, cricket bat visible on right, teal walls blurred background, desaturated, 2.35:1 cinematic",
       "motion_prompt": "Character speaks with animated expression, eyebrows raise questioningly, slight head tilt, then settles",
       "model_reason": "Ed ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_020",
+        "use_frame": 78
+      }
     },
     {
       "shot_id": "shot_022",
@@ -1120,7 +1213,12 @@
       "photo_prompt_start": "MCU of blonde man with receding hairline standing in flat, blood scratch on cheek, dark grey jacket over white shirt with red tie, teal walls behind, speaking earnestly, soft daylight, 2.35:1 cinematic",
       "motion_prompt": "Character speaks passionately, facial expressions shift, hand gestures counting off plan steps, subtle head movements emphasizing words, then holds with resolved expression",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_021",
+        "use_frame": 84
+      }
     },
     {
       "shot_id": "shot_023",
@@ -1162,7 +1260,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_022",
+        "use_frame": 105
+      }
     },
     {
       "shot_id": "shot_024",
@@ -1197,7 +1300,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_023",
+        "use_frame": 111
+      }
     },
     {
       "shot_id": "shot_025",
@@ -1227,7 +1335,8 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_026",
@@ -1262,7 +1371,12 @@
       "photo_prompt_start": "MCU of blonde man speaking with hands pressed together in prayer gesture, wearing white shirt red tie dark jacket, teal walls behind, soft daylight, 2.35:1 cinematic",
       "motion_prompt": "Character speaks animatedly, slight head movements, mouth articulating words, then settles",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_025",
+        "use_frame": 119
+      }
     },
     {
       "shot_id": "shot_027",
@@ -1303,7 +1417,12 @@
       "photo_prompt_start": "MS of heavyset man sitting in leather armchair, wearing beige 'I GOT WOOD' t-shirt, holding cricket bat, messy flat with teal walls, zombie body visible on floor, soft overcast daylight, 2.35:1 cinematic",
       "motion_prompt": "Character gestures with hands while speaking, SPINS cricket bat in hands, facial expressions shift from thoughtful to animated, then settles back",
       "model_reason": "Ed ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_026",
+        "use_frame": 125
+      }
     },
     {
       "shot_id": "shot_028",
@@ -1338,7 +1457,12 @@
       "photo_prompt_start": "MCU of blonde man with hands pressed together speaking with conviction, teal walls behind, slight sheen of sweat, 2.35:1 cinematic",
       "motion_prompt": "Character brings hands together in prayer position, speaks with conviction, slight head nod, then holds",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_027",
+        "use_frame": 135
+      }
     },
     {
       "shot_id": "shot_029",
@@ -1377,7 +1501,8 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_030",
@@ -1419,7 +1544,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_029",
+        "use_frame": 145
+      }
     },
     {
       "shot_id": "shot_031",
@@ -1459,7 +1589,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_030",
+        "use_frame": 151
+      }
     },
     {
       "shot_id": "shot_032",
@@ -1498,7 +1633,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_031",
+        "use_frame": 154
+      }
     },
     {
       "shot_id": "shot_033",
@@ -1537,7 +1677,12 @@
       "photo_prompt_start": "MS group shot inside British living room, blonde man gesturing left, older woman shocked center, man in teal polo back to camera center, heavyset man stern right, cream walls, sheer curtains, warm daylight, 2.35:1 cinematic",
       "motion_prompt": "Characters react to each other, speaking urgently, subtle body movements and gestures, then settles",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_032",
+        "use_frame": 157
+      }
     },
     {
       "shot_id": "shot_034",
@@ -1580,7 +1725,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_033",
+        "use_frame": 163
+      }
     },
     {
       "shot_id": "shot_035",
@@ -1622,7 +1772,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_034",
+        "use_frame": 168
+      }
     },
     {
       "shot_id": "shot_036",
@@ -1672,7 +1827,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_035",
+        "use_frame": 174
+      }
     },
     {
       "shot_id": "shot_037",
@@ -1711,7 +1871,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_036",
+        "use_frame": 179
+      }
     },
     {
       "shot_id": "shot_038",
@@ -1755,7 +1920,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_037",
+        "use_frame": 185
+      }
     },
     {
       "shot_id": "shot_039",
@@ -1811,7 +1981,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_038",
+        "use_frame": 188
+      }
     },
     {
       "shot_id": "shot_040",
@@ -1856,7 +2031,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_039",
+        "use_frame": 195
+      }
     },
     {
       "shot_id": "shot_041",
@@ -1897,7 +2077,12 @@
       "photo_prompt_start": "CU of heavyset man with dark messy hair in leather armchair, dirty beige t-shirt, cricket bat on shoulder, skeptical doubtful expression, messy flat with teal walls blurred, 2.35:1 cinematic",
       "motion_prompt": "Character raises eyebrow skeptically, slight head shake, expression shifts from doubt to consideration, then settles",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_040",
+        "use_frame": 201
+      }
     },
     {
       "shot_id": "shot_042",
@@ -1932,7 +2117,12 @@
       "photo_prompt_start": "MCU of blonde man in white shirt red tie dark jacket, arms raised with motion blur from animated gesture, teal walls, bookshelf with globe and Heineken bottle visible right, overcast daylight, 2.35:1 cinematic",
       "motion_prompt": "Character gestures EMPHATICALLY with both hands raised, speaking passionately, arms lower, then settles into calm pose",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_041",
+        "use_frame": 208
+      }
     },
     {
       "shot_id": "shot_043",
@@ -1974,7 +2164,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_042",
+        "use_frame": 217
+      }
     },
     {
       "shot_id": "shot_044",
@@ -2009,7 +2204,12 @@
       "photo_prompt_start": "MS two-shot in messy flat, blonde man standing center-right looking down at seated heavyset man in armchair lower-left, cricket bat visible, teal walls, bookshelf with Heineken bottle, CRT TV showing news in corner, 2.35:1 cinematic",
       "motion_prompt": "Standing man speaks while gesturing toward seated friend, slight body movement, TV flickers, then settles",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_043",
+        "use_frame": 221
+      }
     },
     {
       "shot_id": "shot_045",
@@ -2047,7 +2247,12 @@
       "photo_prompt_start": "OTS from behind blonde man in dark jacket showing heavyset man in leather armchair, beige I GOT WOOD t-shirt, cricket bat, speaking and gesturing, messy flat with teal walls, zombie body on floor left, 2.35:1 cinematic",
       "motion_prompt": "Seated character speaks and makes small hand gestures, slight lean forward, then settles back",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_044",
+        "use_frame": 227
+      }
     },
     {
       "shot_id": "shot_046",
@@ -2085,7 +2290,12 @@
       "photo_prompt_start": "MS two-shot, blonde man standing hands on hips center-right, authoritative pose, seated man's back lower-left, teal walls, bookshelf with globe, CRT TV showing news anchor in corner, 2.35:1 cinematic",
       "motion_prompt": "Standing man shifts weight, speaks with authority, hands remain on hips, slight head movements for emphasis, TV flickers, then holds pose",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_045",
+        "use_frame": 233
+      }
     },
     {
       "shot_id": "shot_047",
@@ -2123,7 +2333,12 @@
       "photo_prompt_start": "MS of blonde man standing with hands on hips, white shirt blood stains, red tie, dark jacket, speaking confidently, teal walls, CRT TV showing news, Ed's back of head in foreground, 2.35:1 cinematic",
       "motion_prompt": "Character speaks with slight head movements and hand gestures, subtle breathing, then settles",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_046",
+        "use_frame": 242
+      }
     },
     {
       "shot_id": "shot_048",
@@ -2168,7 +2383,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_047",
+        "use_frame": 248
+      }
     },
     {
       "shot_id": "shot_049",
@@ -2202,7 +2422,12 @@
       "photo_prompt_start": "CU of blonde man speaking earnestly, stubble, blood marks on cheek, white shirt red tie dark jacket, teal wall behind, blurred bookshelf with globe right edge, shallow depth of field, 2.35:1 cinematic",
       "motion_prompt": "Man speaks with subtle mouth movements and micro-expressions, head tilts slightly, then settles",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_048",
+        "use_frame": 254
+      }
     },
     {
       "shot_id": "shot_050",
@@ -2243,7 +2468,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_049",
+        "use_frame": 260
+      }
     },
     {
       "shot_id": "shot_051",
@@ -2278,7 +2508,12 @@
       "photo_prompt_start": "CU of blonde man slightly smiling mouth open mid-speech, enthusiastic expression, stubble blood marks on cheek, white shirt red tie dark jacket, teal wall, blurred bookshelf with globe right, 2.35:1 cinematic",
       "motion_prompt": "Man speaks animatedly with eyebrow raises and smile, head moves with emphasis, then expression settles",
       "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_050",
+        "use_frame": 265
+      }
     },
     {
       "shot_id": "shot_052",
@@ -2308,7 +2543,8 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": false
     },
     {
       "shot_id": "shot_053",
@@ -2347,7 +2583,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_052",
+        "use_frame": 273
+      }
     },
     {
       "shot_id": "shot_054",
@@ -2394,7 +2635,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_053",
+        "use_frame": 275
+      }
     },
     {
       "shot_id": "shot_055",
@@ -2427,7 +2673,12 @@
       },
       "recommended_model": "seedance-1.5",
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_054",
+        "use_frame": 278
+      }
     },
     {
       "shot_id": "shot_056",
@@ -2473,7 +2724,12 @@
         "word_count": 0
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "speaker_on_screen": true,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_055",
+        "use_frame": 279
+      }
     },
     {
       "shot_id": "shot_057",
@@ -2515,7 +2771,12 @@
         "word_count": 6
       },
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_056",
+        "use_frame": 285
+      }
     },
     {
       "shot_id": "shot_058",
@@ -2557,7 +2818,12 @@
         "word_count": 8
       },
       "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_057",
+        "use_frame": 290
+      }
     },
     {
       "shot_id": "shot_059",
@@ -2599,7 +2865,12 @@
         "word_count": 5
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_058",
+        "use_frame": 296
+      }
     },
     {
       "shot_id": "shot_060",
@@ -2643,7 +2914,12 @@
         "word_count": 8
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_059",
+        "use_frame": 299
+      }
     },
     {
       "shot_id": "shot_061",
@@ -2701,7 +2977,12 @@
         "word_count": 9
       },
       "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "speaker_on_screen": false,
+      "chain_from_previous": true,
+      "chain_ref": {
+        "from_shot": "shot_060",
+        "use_frame": 305
+      }
     }
   ],
   "summary": {
