@@ -1378,6 +1378,35 @@
       border: 1px solid rgba(251, 191, 36, 0.3);
     }
 
+    .shot-asset-tag.int {
+      background: rgba(168, 85, 247, 0.2);
+      color: #a855f7;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      font-weight: 600;
+    }
+
+    .shot-asset-tag.ext {
+      background: rgba(249, 115, 22, 0.2);
+      color: #f97316;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      font-weight: 600;
+    }
+
+    .shot-asset-tag.ref {
+      background: rgba(99, 102, 241, 0.2);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      font-weight: 500;
+    }
+
+    .shot-prompt.photo.start {
+      border-left-color: #4ade80;
+    }
+
+    .shot-prompt.photo.end {
+      border-left-color: #f472b6;
+    }
+
     /* Frame modal */
     .frame-modal {
       position: fixed;
@@ -2539,13 +2568,31 @@
                   ${sceneShot?.audio?.word_count ? `<span style="color: var(--text-muted); font-size: 0.7rem;">(${sceneShot.audio.word_count} words)</span>` : ''}
                 </div>` : ''}
                 ${sceneShot?.model_reason ? `<div class="shot-prompt" style="background: rgba(168, 139, 250, 0.1); border-left: 2px solid #a78bfa;">📋 ${sceneShot.model_reason}</div>` : ''}
-                ${sceneShot?.photo_prompt_start || sceneShot?.photo_prompt ? `<div class="shot-prompt photo" title="Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">📷 ${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).substring(0, 80)}...</div>` : ''}
-                ${shot.inputs?.prompt ? `<div class="shot-prompt video" title="Video Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(shot.inputs.prompt || '').replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">🎬 ${(shot.inputs.prompt || '').substring(0, 80)}...</div>` : ''}
-                <div class="shot-assets">
-                  ${(shot.characters_needed || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
-                  ${shot.location ? `<span class="shot-asset-tag loc">📍 ${shot.location}</span>` : ''}
-                  ${(shot.props || []).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
+
+                ${sceneShot?.photo_prompt_start || sceneShot?.photo_prompt ? `
+                <div class="prompt-block start">
+                  <div class="shot-prompt photo start" title="START Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);"><span style="color: #4ade80; font-weight: bold;">📷 START:</span> ${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).substring(0, 70)}...</div>
+                  <div class="shot-assets">
+                    ${shot.int_ext ? `<span class="shot-asset-tag ${shot.int_ext === 'EXT' ? 'ext' : 'int'}">${shot.int_ext}</span>` : ''}
+                    ${(shot.characters_needed || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
+                    ${shot.location ? `<span class="shot-asset-tag loc">📍 ${shot.location}</span>` : ''}
+                    ${filterAndConsolidateProps(shot.props).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
+                  </div>
                 </div>
+                ` : ''}
+
+                ${sceneShot?.photo_prompt_end ? `
+                <div class="prompt-block end">
+                  <div class="shot-prompt photo end" title="END Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${sceneShot.photo_prompt_end.replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);"><span style="color: #f472b6; font-weight: bold;">📷 END:</span> ${sceneShot.photo_prompt_end.substring(0, 70)}...</div>
+                  <div class="shot-assets">
+                    <span class="shot-asset-tag ref" title="Reference = START frame">🎯 ref: frame ${sceneShot?.timing?.start_frame || '?'}</span>
+                    ${(sceneShot?.end_frame_refs?.characters || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
+                    ${(sceneShot?.end_frame_refs?.props || []).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
+                  </div>
+                </div>
+                ` : ''}
+
+                ${shot.inputs?.prompt ? `<div class="shot-prompt video" title="Video Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(shot.inputs.prompt || '').replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">🎬 ${(shot.inputs.prompt || '').substring(0, 80)}...</div>` : ''}
               </div>
 
               <div class="shot-model ${modelClass}">${shot.model}</div>
@@ -2575,6 +2622,47 @@
       document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
       currentScene = null;
     });
+
+    // ==================== PROP FILTERING ====================
+    // Same logic as server.js - filter out body parts, consolidate groups
+    const PROP_GROUPS = {
+      'car': ['car_door_handle', 'key', 'gas_pedal', 'red_car', 'red_megane', 'steering_wheel', 'car_key', 'car_interior'],
+      'mug': ['tea_mug', 'mug', 'COOL_mug', 'cool_mug'],
+      'pint_glass': ['pint_glass', 'lager', 'beer']
+    };
+
+    const EXCLUDE_PROPS = [
+      'finger', 'thumb', 'hand', 'hands', 'foot', 'shoe', 'shoes', 'feet',  // Body parts
+      'door', 'window', 'wall', 'floor', 'ceiling',  // Set elements (generic)
+      'table', 'chair', 'couch', 'sofa',  // Furniture
+      'zombie', 'body'  // Characters
+    ];
+
+    function filterAndConsolidateProps(props) {
+      if (!props || !Array.isArray(props)) return [];
+
+      const result = new Set();
+
+      props.forEach(prop => {
+        const propLower = prop.toLowerCase();
+
+        // Skip excluded props
+        if (EXCLUDE_PROPS.some(ex => propLower.includes(ex))) return;
+
+        // Check if belongs to a group
+        let groupName = null;
+        for (const [group, members] of Object.entries(PROP_GROUPS)) {
+          if (members.some(m => propLower.includes(m.toLowerCase()) || m.toLowerCase().includes(propLower))) {
+            groupName = group;
+            break;
+          }
+        }
+
+        result.add(groupName || prop);
+      });
+
+      return Array.from(result);
+    }
 
     // ==================== ASSETS FUNCTIONALITY ====================
     let currentAssets = null;
@@ -2627,7 +2715,11 @@
               <div class="asset-info">
                 <div class="asset-name">${char.name || id}</div>
                 <div class="asset-meta">${char.costume || 'No costume defined'}</div>
-                ${char.best_shot ? `<div class="asset-meta" style="color: var(--accent);">Best shot: ${char.best_shot}</div>` : ''}
+                ${char.best_shot ? `
+                  <div class="asset-meta" style="color: var(--accent);">
+                    ${char.best_shot} | ${char.shot_framing || 'MS'}${char.is_solo_shot ? ' | SOLO' : ''}
+                  </div>
+                ` : ''}
                 ${char.generate_prompt ? `
                   <div class="asset-prompt" onclick="copyPrompt(this, '${char.generate_prompt.replace(/'/g, "\\'")}')">
                     📋 ${char.generate_prompt.substring(0, 80)}...

@@ -202,19 +202,189 @@ Another empty location prompt...
 
 ---
 
+## INT/EXT Auto-Detection
+
+Each shot is automatically tagged as **INT** (interior) or **EXT** (exterior) based on location keywords.
+
+**EXT Keywords:** street, exterior, driveway, garden, outside, outdoor, yard, parking, sidewalk, road, alley
+
+**INT Keywords:** interior, inside, room, flat, apartment, house, pub, bar, kitchen, bedroom, bathroom, office, hall, corridor
+
+| Location Example | Tag |
+|------------------|-----|
+| `flat` | INT |
+| `suburban_street` | EXT |
+| `mums_house_driveway` | EXT |
+| `winchester_pub` | INT |
+| `garden` | EXT |
+
+---
+
+## Character Screenshot Selection
+
+The system auto-selects the BEST screenshot for each character based on:
+
+| Priority | Score Bonus |
+|----------|-------------|
+| Close-up (CU, BCU, ECU) | +90-100 |
+| Medium Close-up (MCU) | +80 |
+| Medium Shot (MS) | +60 |
+| Wide Shot (WS, EWS) | +10-20 |
+| Primary Subject | +30 |
+| Solo Shot (no other characters) | +20 |
+
+**Example Scores:**
+- CU + Primary + Solo = 90 + 30 + 20 = **140** (best)
+- MS + Secondary = 60 + 0 = **60** (poor)
+
+---
+
+## Prop Filtering & Consolidation
+
+Props are automatically filtered and consolidated in the UI.
+
+**Excluded Props (body parts/set elements):**
+- finger, thumb, hand, foot, shoe, feet
+- door, window, wall, floor, ceiling
+- table, chair, couch, sofa
+- zombie, body
+
+**Consolidated Groups:**
+| Group | Individual Items |
+|-------|------------------|
+| `car` | car_door_handle, key, gas_pedal, steering_wheel, car_interior |
+| `mug` | tea_mug, mug, COOL_mug |
+| `pint_glass` | pint_glass, lager, beer |
+
+---
+
+## Nano Banana Pro Prompt Rules
+
+**ORDER:** Subject → Action → Environment → Style → Camera → Lighting → Technical
+
+```
+BAD:  "Shot on ARRI, 85mm, cinematic, a man in a room"
+GOOD: "A man standing in living room, golden sunlight from window, 85mm lens"
+```
+
+**Key Rules:**
+1. Subject FIRST, Technical LAST
+2. Lighting = SOURCE ("spotlight from above" not "cinematic lighting")
+3. "THIS EXACT CHARACTER" - anchor phrase for character consistency
+4. "maintain color grading" - for shot sequences
+5. 2K is fastest (4K just upscales from 2K)
+
+---
+
+## Kling Video Prompt Rules
+
+**VIDEO PROMPTS = MOTION ONLY** (image already has all visual info)
+
+```
+BAD:  "A chipmunk with green headphones in a forest..."
+GOOD: "Character advances. Fire billows. Embers drift."
+```
+
+**MUST ADD MOTION ENDPOINTS:**
+```
+BAD:  "Hair moves in wind" → 99% hang
+GOOD: "Hair moves in breeze, then settles back into place"
+```
+
+**Key Rules:**
+1. ONE camera movement at a time (multiple = warped geometry)
+2. Always end with "then settles" or "then holds"
+3. Use POWER VERBS: WALKING, BILLOWING, CHARGING (not "moving", "going")
+
+---
+
+## Visual Style Definition (Scene-Level)
+
+Each scene should have a `visual_style` block that applies to ALL prompts:
+
+```json
+{
+  "visual_style": {
+    "camera": "ARRI 435",
+    "lens": "Panavision Primo anamorphic",
+    "default_focal_length": "35mm",
+    "color_grade": "desaturated, teal shadows, warm highlights",
+    "lighting_style": "practical sources, overcast daylight exteriors",
+    "film_stock_look": "Kodak Vision2 500T",
+    "grain": "fine film grain",
+    "contrast": "medium contrast, lifted blacks",
+    "saturation": "reduced saturation, muted palette",
+    "style_suffix": "2.35:1 anamorphic, film grain, desaturated color grade"
+  },
+  "camera_angles": {
+    "CU": { "focal_length": "85mm", "distance": "close", "height": "eye-level" },
+    "MCU": { "focal_length": "50mm", "distance": "medium-close", "height": "eye-level" },
+    "MS": { "focal_length": "35mm", "distance": "medium", "height": "eye-level" },
+    "WS": { "focal_length": "24mm", "distance": "wide", "height": "eye-level" },
+    "LOW_ANGLE": { "height": "below-eye-level", "angle": "looking-up" },
+    "HIGH_ANGLE": { "height": "above-eye-level", "angle": "looking-down" },
+    "DUTCH": { "angle": "tilted-15deg" }
+  }
+}
+```
+
+---
+
 ## Prompt Templates
+
+**ALL prompts must end with the scene's `style_suffix` for consistency!**
 
 ### Photo Prompt (Start Frame)
 ```
-[FRAMING] of [SUBJECT DESCRIPTION] in [LOCATION], wearing [COSTUME],
-[ACTION/POSE], [VISIBLE ELEMENTS], [LIGHTING], [ASPECT RATIO] cinematic
+[FRAMING] of [SUBJECT] in [LOCATION], [ACTION/POSE],
+[LENS]mm lens, [LIGHTING SOURCE], [STYLE_SUFFIX]
+```
+
+**Example:**
+```
+CU of man in beige t-shirt drinking from mug, content expression,
+85mm lens, warm tungsten pub lighting from above,
+2.35:1 anamorphic, film grain, desaturated color grade, Edgar Wright style
+```
+
+### Character Reference Prompt
+```
+Professional character reference sheet, front and 3/4 profile.
+[AGE/GENDER/ETHNICITY], [PHYSICAL DESCRIPTION], [COSTUME DETAILS].
+Clean white background, studio lighting, [STYLE_SUFFIX]
+```
+
+### Empty Set Prompt
+```
+Empty [LOCATION TYPE], [ARCHITECTURAL DETAILS], [FURNITURE/PROPS],
+[LIGHTING SOURCE AND DIRECTION], [ATMOSPHERE],
+[STYLE_SUFFIX], no people
+```
+
+### Prop Reference Prompt
+```
+[PROP NAME] isolated on neutral background, [MATERIAL/COLOR/CONDITION],
+[SPECIFIC DETAILS], studio lighting, [STYLE_SUFFIX]
 ```
 
 ### Photo Prompt (End Frame) - For Kling O1
 ```
 [END FRAMING] of [SUBJECT] in [LOCATION], [END POSE/POSITION],
-[CHANGED ELEMENTS], [LIGHTING], [ASPECT RATIO] cinematic
+[LENS]mm lens, [LIGHTING], maintain color grading, [STYLE_SUFFIX]
 ```
+
+**TIP: Character/Prop References for END Frame**
+- Only send character ref if character is NOT fully visible in START shot
+- Only send prop ref if prop is NOT visible in START shot
+- If visible in START → model infers appearance, no ref needed
+- If entering frame or newly revealed → send ref
+
+| START Frame | END Frame | Send Ref? |
+|-------------|-----------|-----------|
+| Character fully visible | Same character | ❌ No |
+| Character back to camera | Character facing camera | ✅ Yes |
+| Prop not in frame | Prop now visible | ✅ Yes |
+| Prop visible | Same prop | ❌ No |
 
 ### Motion Prompt (Video)
 ```

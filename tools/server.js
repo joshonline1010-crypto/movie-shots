@@ -70,47 +70,129 @@ const server = http.createServer((req, res) => {
     // Get assets for scene
     if (action === 'assets') {
       // Build character->frame mapping from shots
+      // PRIORITIZE: Close-ups > Medium shots > Wide shots
+      // PRIORITIZE: Primary subject > Secondary subject
+      // PRIORITIZE: Solo shots > Group shots
       const characterFrames = {};
       const locationFrames = {};
       const propFrames = {};
+
+      // Framing priority scores (higher = better for character reference)
+      const FRAMING_SCORES = {
+        'BCU': 100, 'ECU': 100,  // Big/Extreme close-up - best
+        'CU': 90,                 // Close-up - great
+        'MCU': 80,                // Medium close-up - good
+        'MS': 60,                 // Medium shot - ok
+        'MWS': 40,                // Medium wide - not great
+        'WS': 20,                 // Wide shot - poor
+        'EWS': 10,                // Extreme wide - worst
+        'OTS': 50,                // Over the shoulder - ok if primary
+        'POV': 5                  // POV - usually no character visible
+      };
 
       (scene.shots || []).forEach(shot => {
         const startFrame = shot.timing?.start_frame;
         if (!startFrame) return;
 
         const framePath = `/scenes/${sceneId}/analysis_3fps/frame_${String(startFrame).padStart(4, '0')}.jpg`;
+        const framing = shot.camera?.start_framing?.toUpperCase() || 'MS';
+        const framingScore = FRAMING_SCORES[framing] || 50;
 
-        // Map characters to their first appearance
-        const chars = extractCharacters(shot);
-        chars.forEach(char => {
+        // Get primary and secondary characters
+        const primaryChars = [];
+        const secondaryChars = [];
+
+        if (shot.subject_primary?.who) {
+          const who = shot.subject_primary.who;
+          if (Array.isArray(who)) primaryChars.push(...who);
+          else if (typeof who === 'string') primaryChars.push(who);
+        }
+        if (shot.subject_secondary?.who) {
+          const who = shot.subject_secondary.who;
+          if (Array.isArray(who)) secondaryChars.push(...who);
+          else if (typeof who === 'string') secondaryChars.push(who);
+        }
+
+        // Filter out non-characters
+        const validPrimary = primaryChars.filter(c => c && !c.includes('_') && !c.includes('blur') && !c.includes('transition'));
+        const validSecondary = secondaryChars.filter(c => c && !c.includes('blur') && !c.includes('transition'));
+
+        // Score primary characters (bonus for being primary + solo)
+        validPrimary.forEach(char => {
           const charLower = char.toLowerCase();
-          if (!characterFrames[charLower]) {
+          let score = framingScore + 30; // +30 for being primary subject
+          if (validPrimary.length === 1 && validSecondary.length === 0) {
+            score += 20; // +20 for solo shot
+          }
+
+          if (!characterFrames[charLower] || score > characterFrames[charLower].score) {
             characterFrames[charLower] = {
               frame: framePath,
               shot_id: shot.shot_id,
-              framing: shot.camera?.start_framing || 'MS'
+              framing: framing,
+              score: score,
+              is_primary: true,
+              is_solo: validPrimary.length === 1 && validSecondary.length === 0
             };
           }
         });
 
-        // Map locations to representative frame
+        // Score secondary characters (no primary bonus)
+        validSecondary.forEach(char => {
+          const charLower = char.toLowerCase();
+          let score = framingScore; // No bonus for secondary
+
+          if (!characterFrames[charLower] || score > characterFrames[charLower].score) {
+            characterFrames[charLower] = {
+              frame: framePath,
+              shot_id: shot.shot_id,
+              framing: framing,
+              score: score,
+              is_primary: false,
+              is_solo: false
+            };
+          }
+        });
+
+        // Map locations to representative frame - prefer wide shots for sets
         const location = shot.environment?.location;
-        if (location && !locationFrames[location]) {
-          locationFrames[location] = {
-            frame: framePath,
-            shot_id: shot.shot_id,
-            elements: shot.environment?.visible_elements || []
+        if (location) {
+          // Score for sets: prefer wide shots (WS, EWS, MWS)
+          const SET_FRAMING_SCORES = {
+            'EWS': 100, 'WS': 90, 'MWS': 80, 'MS': 50, 'MCU': 30, 'CU': 20, 'BCU': 10
           };
+          const setScore = SET_FRAMING_SCORES[framing] || 50;
+
+          if (!locationFrames[location] || setScore > locationFrames[location].score) {
+            locationFrames[location] = {
+              frame: framePath,
+              shot_id: shot.shot_id,
+              elements: shot.environment?.visible_elements || [],
+              framing: framing,
+              score: setScore
+            };
+          }
         }
 
-        // Map props to first appearance
+        // Map props with scoring - prefer close-ups showing the prop
         const props = shot.props?.items || [];
+        // Score for props: prefer close-ups where prop is visible
+        const PROP_FRAMING_SCORES = {
+          'ECU': 100, 'BCU': 95, 'CU': 90, 'MCU': 80, 'MS': 60, 'MWS': 40, 'WS': 20
+        };
+        const propScore = PROP_FRAMING_SCORES[framing] || 50;
+        // Bonus if there's prop interaction described
+        const interactionBonus = shot.props?.interaction ? 20 : 0;
+
         props.forEach(prop => {
-          if (!propFrames[prop]) {
+          const totalPropScore = propScore + interactionBonus;
+          if (!propFrames[prop] || totalPropScore > propFrames[prop].score) {
             propFrames[prop] = {
               frame: framePath,
               shot_id: shot.shot_id,
-              interaction: shot.props?.interaction
+              interaction: shot.props?.interaction,
+              framing: framing,
+              score: totalPropScore
             };
           }
         });
@@ -119,14 +201,21 @@ const server = http.createServer((req, res) => {
       // Build enhanced characters with screenshots
       const characters = {};
       Object.entries(scene.character_references || {}).forEach(([id, char]) => {
+        const frameData = characterFrames[id] || characterFrames[char.name?.toLowerCase()];
         characters[id] = {
           ...char,
-          screenshot: characterFrames[id]?.frame || characterFrames[char.name?.toLowerCase()]?.frame || null,
-          best_shot: characterFrames[id]?.shot_id || null
+          screenshot: frameData?.frame || null,
+          best_shot: frameData?.shot_id || null,
+          shot_framing: frameData?.framing || null,
+          is_solo_shot: frameData?.is_solo || false,
+          selection_score: frameData?.score || 0
         };
       });
 
       // Read SET_PROMPTS.md and add location screenshots
+      // Exclude vehicle interiors (these are props, not sets)
+      const EXCLUDE_SETS = ['car interior', 'car_interior', 'jaguar', 'vehicle'];
+
       const sets = [];
       const setPromptsPath = path.join(ROOT, 'scenes', sceneId, 'SET_PROMPTS.md');
       if (fs.existsSync(setPromptsPath)) {
@@ -134,6 +223,10 @@ const server = http.createServer((req, res) => {
         const promptMatches = setContent.matchAll(/### \d+\. ([^\n]+)\n```\n([^`]+)```/g);
         for (const match of promptMatches) {
           const setName = match[1].trim();
+
+          // Skip vehicle interiors (treat as props, not sets)
+          if (EXCLUDE_SETS.some(ex => setName.toLowerCase().includes(ex))) continue;
+
           // Try to match location name to find screenshot
           const locationKey = Object.keys(locationFrames).find(k =>
             setName.toLowerCase().includes(k) || k.includes(setName.toLowerCase().split(' ')[0])
@@ -208,11 +301,35 @@ const server = http.createServer((req, res) => {
           .map(f => `/scenes/${sceneId}/analysis_3fps/${f}`);
       }
 
-      return sendJSON(res, { characters, sets, props, frames });
+      // Include visual style for prompt building
+      const visual_style = scene.visual_style || null;
+      const camera_angles = scene.camera_angles || null;
+
+      return sendJSON(res, {
+        characters,
+        sets,
+        props,
+        frames,
+        visual_style,
+        camera_angles,
+        style_suffix: visual_style?.style_suffix || `${scene.aspect_ratio || '2.35:1'} cinematic`
+      });
     }
 
     // Build execution plan
     if (action === 'build') {
+      // INT/EXT detection based on location keywords
+      const EXT_KEYWORDS = ['street', 'exterior', 'driveway', 'garden', 'outside', 'ext', 'outdoor', 'yard', 'parking', 'sidewalk', 'road', 'alley'];
+      const INT_KEYWORDS = ['interior', 'int', 'inside', 'room', 'flat', 'apartment', 'house', 'pub', 'bar', 'kitchen', 'bedroom', 'bathroom', 'office', 'hall', 'corridor'];
+
+      function detectIntExt(location) {
+        if (!location) return 'INT'; // Default to interior
+        const locLower = location.toLowerCase();
+        if (EXT_KEYWORDS.some(kw => locLower.includes(kw))) return 'EXT';
+        if (INT_KEYWORDS.some(kw => locLower.includes(kw))) return 'INT';
+        return 'INT'; // Default
+      }
+
       const plan = {
         scene_id: sceneId,
         total_shots: scene.shots?.length || 0,
@@ -245,6 +362,8 @@ const server = http.createServer((req, res) => {
           inputs.prompt = shot.motion_prompt;
           inputs.duration = shot.timing?.generation_duration_sec || shot.duration || 5;
 
+          const location = shot.environment?.location || shot.location;
+
           return {
             shot_id: shot.shot_id,
             order: shot.order || i + 1,
@@ -258,7 +377,8 @@ const server = http.createServer((req, res) => {
             inputs: inputs,
             // Asset requirements
             characters_needed: extractCharacters(shot),
-            location: shot.environment?.location || shot.location,
+            location: location,
+            int_ext: detectIntExt(location),
             props: shot.props?.items || []
           };
         })

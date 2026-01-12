@@ -12,6 +12,33 @@
   "aspect_ratio": "2.35:1",
   "director": "Edgar Wright",
   "year": 2004,
+  "cinematographer": "David M. Dunlap",
+  "visual_style": {
+    "camera": "ARRI 435",
+    "lens": "Panavision Primo anamorphic",
+    "default_focal_length": "35mm",
+    "color_grade": "desaturated, teal shadows, warm highlights, slight green push",
+    "lighting_style": "practical sources, overcast daylight exteriors, warm tungsten interiors",
+    "film_stock_look": "Kodak Vision2 500T",
+    "grain": "fine film grain",
+    "contrast": "medium contrast, lifted blacks",
+    "saturation": "reduced saturation, muted palette",
+    "default_camera_height": "eye-level",
+    "default_camera_angle": "straight-on",
+    "style_suffix": "2.35:1 anamorphic, film grain, desaturated color grade, Edgar Wright style"
+  },
+  "camera_angles": {
+    "CU": { "focal_length": "85mm", "distance": "close", "height": "eye-level" },
+    "MCU": { "focal_length": "50mm", "distance": "medium-close", "height": "eye-level" },
+    "MS": { "focal_length": "35mm", "distance": "medium", "height": "eye-level" },
+    "WS": { "focal_length": "24mm", "distance": "wide", "height": "eye-level" },
+    "EWS": { "focal_length": "18mm", "distance": "extreme-wide", "height": "slightly-elevated" },
+    "LOW_ANGLE": { "focal_length": "35mm", "distance": "medium", "height": "below-eye-level", "angle": "looking-up" },
+    "HIGH_ANGLE": { "focal_length": "35mm", "distance": "medium", "height": "above-eye-level", "angle": "looking-down" },
+    "DUTCH": { "focal_length": "35mm", "distance": "medium", "height": "eye-level", "angle": "tilted-15deg" },
+    "OTS": { "focal_length": "50mm", "distance": "over-shoulder", "height": "eye-level" },
+    "POV": { "focal_length": "24mm", "distance": "character-view", "height": "character-eye-level" }
+  },
   "color_palette": "desaturated-cool",
   "generation_config": {
     "min_duration": 5,
@@ -115,6 +142,11 @@
       "needs_end_frame": true,
       "photo_prompt_start": "MCU of heavyset man with dark messy hair sitting on brown leather couch in messy British flat, wearing dirty beige 'I GOT WOOD' t-shirt, looking down contemplating, holding cricket bat at rest, zombie body in green jacket on floor behind, teal walls, soft daylight from window, 2.35:1 cinematic",
       "photo_prompt_end": "Wide two-shot in messy British flat, heavyset man on couch holding cricket bat UP explaining enthusiastically, second man visible on right edge standing, zombie on floor, teal walls, 2.35:1 cinematic",
+      "end_frame_refs": {
+        "characters": ["shaun"],
+        "props": [],
+        "note": "Shaun enters frame in END - needs ref. Ed/bat/flat visible in START - no ref needed"
+      },
       "motion_prompt": "Slow zoom out pulling back, man SPINS cricket bat in hands while speaking gesturing enthusiastically, raises bat overhead, second person revealed on right, camera settles on two-shot, then holds",
       "recommended_model": "seedance-1.5",
       "model_reason": "Ed ON SCREEN but camera moving (zoom_out)",
@@ -168,6 +200,11 @@
       "needs_end_frame": true,
       "photo_prompt_start": "MS of blonde man with receding hairline standing in flat, wearing dark grey-blue jacket over white shirt with red tie, hand on chin thinking, profile view, teal-green walls, soft daylight, 2.35:1 cinematic",
       "photo_prompt_end": "MCU of blonde man with receding hairline, blood scratch on cheek, facing camera 3/4 view, contemplative expression, teal walls behind, soft daylight, 2.35:1 cinematic",
+      "end_frame_refs": {
+        "characters": ["shaun"],
+        "props": [],
+        "note": "Shaun turns from profile to front - ref needed for facial consistency"
+      },
       "motion_prompt": "Slow push-in toward face, character TURNS from profile to face camera, lowers hand from chin, expression shifts from thinking to processing, camera settles on closeup, then holds",
       "audio": {
         "dialog": "car, we drive over to Mum's, we go",
@@ -352,6 +389,10 @@
       "subject_primary": {
         "who": "car_and_zombies",
         "description": "Red car with TWO ZOMBIES behind in plaid shirts"
+      },
+      "subject_secondary": {
+        "who": ["shaun", "ed"],
+        "description": "Visible inside car through windscreen"
       },
       "props": {
         "items": [
@@ -1099,7 +1140,7 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": "Shaun",
+        "who": "Ed",
         "body_action": "sipping from mug contentedly"
       },
       "props": {
@@ -1115,7 +1156,7 @@
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
-      "photo_prompt_start": "CU of blonde man drinking from white ceramic mug, content expression, dark jacket, pub interior background blurred, warm lighting, 2.35:1 cinematic",
+      "photo_prompt_start": "CU of man in beige t-shirt drinking from white ceramic mug, content expression, pub interior background blurred, warm lighting, 2.35:1 cinematic",
       "motion_prompt": "Character sips from mug contentedly, satisfied expression, lowers cup from lips, then holds",
       "audio": {
         "dialog": "to Liz's? Because we do. But she",
@@ -1149,7 +1190,7 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": "Ed",
+        "who": "Shaun",
         "body_position": "sitting on couch",
         "body_action": "speaking, holding cricket bat",
         "facial_expression": "skeptical, questioning"
