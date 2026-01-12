@@ -2573,9 +2573,8 @@
                 <div class="prompt-block start">
                   <div class="shot-prompt photo start" title="START Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);"><span style="color: #4ade80; font-weight: bold;">📷 START:</span> ${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).substring(0, 70)}...</div>
                   <div class="shot-assets">
-                    ${shot.int_ext ? `<span class="shot-asset-tag ${shot.int_ext === 'EXT' ? 'ext' : 'int'}">${shot.int_ext}</span>` : ''}
+                    ${shot.location ? `<span class="shot-asset-tag ${shot.int_ext === 'EXT' ? 'ext' : 'int'}">📍 ${shot.location.toUpperCase()} ${shot.int_ext || 'INT'}</span>` : ''}
                     ${(shot.characters_needed || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
-                    ${shot.location ? `<span class="shot-asset-tag loc">📍 ${shot.location}</span>` : ''}
                     ${filterAndConsolidateProps(shot.props).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
                   </div>
                 </div>
