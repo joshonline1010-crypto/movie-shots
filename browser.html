@@ -3098,10 +3098,22 @@ node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
           <div class="prompts-section">
             <h4>📝 Prompt Settings Overview</h4>
             <div class="prompts-overview">
-              ${ps.camera_overview ? `
-                <div class="overview-item">
-                  <div class="overview-title">📷 Camera</div>
-                  <div class="overview-text">${ps.camera_overview}</div>
+              ${ps.photo_prompts_overview ? `
+                <div class="overview-item" style="border-left: 3px solid #4ade80;">
+                  <div class="overview-title">📷 Photo Prompts (Image Generation)</div>
+                  <div class="overview-text">${ps.photo_prompts_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.video_prompts_overview ? `
+                <div class="overview-item" style="border-left: 3px solid #f472b6;">
+                  <div class="overview-title">🎬 Video Prompts (Motion Generation)</div>
+                  <div class="overview-text">${ps.video_prompts_overview}</div>
+                </div>
+              ` : ''}
+              ${ps.camera_movement_keywords ? `
+                <div class="overview-item" style="border-left: 3px solid #a78bfa;">
+                  <div class="overview-title">🎥 Camera Movement Keywords</div>
+                  <div class="overview-text">${ps.camera_movement_keywords}</div>
                 </div>
               ` : ''}
               ${ps.lighting_overview ? `
@@ -3132,12 +3144,6 @@ node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
                 <div class="overview-item">
                   <div class="overview-title">✂️ Transitions</div>
                   <div class="overview-text">${ps.transitions_overview}</div>
-                </div>
-              ` : ''}
-              ${ps.movement_overview ? `
-                <div class="overview-item">
-                  <div class="overview-title">🎥 Camera Movement</div>
-                  <div class="overview-text">${ps.movement_overview}</div>
                 </div>
               ` : ''}
               ${ps.audio_overview ? `

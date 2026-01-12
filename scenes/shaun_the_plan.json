@@ -60,13 +60,14 @@
     "notes": "Standard live-action film motion. Use 'stop_motion_12fps' for animation, 'jittery_handheld' for found footage, 'dreamy_slow' for ethereal sequences"
   },
   "prompt_settings": {
-    "camera_overview": "ARRI 435 with Panavision Primo anamorphic lenses. Primary focal lengths: 85mm (CU), 50mm (MCU), 35mm (MS), 24mm (WS). Eye-level default, occasional low angles for tension.",
+    "photo_prompts_overview": "Subject FIRST, technical LAST. Always include: framing, character, action, location, lens, lighting source, style_suffix. Use 'THIS EXACT CHARACTER' for consistency. 2K resolution recommended.",
+    "video_prompts_overview": "MOTION ONLY - image has visual info. ONE camera movement at a time. Always end with 'then settles' or 'then holds'. Use POWER VERBS: WALKING, BILLOWING, CHARGING.",
+    "camera_movement_keywords": "dolly in/out, push-in, pull-back, orbit around, pan left/right, tracking shot, handheld shake, slow zoom, dolly zoom (vertigo effect), static with breathing",
     "lighting_overview": "Practical source lighting. Interiors: warm tungsten from visible lamps. Exteriors: overcast British daylight, slightly flat. Night: sodium streetlight orange cast.",
     "set_design_overview": "Cluttered British domestic spaces - messy bachelor flat with pizza boxes, dated 70s decor at Mum's house, traditional English pub. Zombies as background furniture.",
     "wardrobe_overview": "Casual everyday British - Shaun in office shirt/tie, Ed in slacker t-shirt, Barbara in maternal cardigan. Philip in middle-class polo. Blood stains accumulate through scene.",
     "color_palette_overview": "Desaturated with teal push in shadows, warm highlights. Muted greens and browns. Not stylized - grounded British realism with slight comic-book flatness.",
     "transitions_overview": "Edgar Wright signature: Match cuts on action, whip pans between locations, smash cuts for comedy. Quick cutting rhythm during plan explanation.",
-    "movement_overview": "Mostly static or subtle push-ins. Handheld for running/action. Whip pans for location jumps. No Steadicam - grounded tripod work.",
     "audio_overview": "Dialogue-driven with quick-fire British wit. Sound bridges between match cuts. Diegetic music from car radio. Ambient zombie groans."
   },
   "character_references": {
