@@ -83,11 +83,38 @@ Create `scenes/[scene_id].json`:
   "director": "Director Name",
   "year": 2024,
 
+  "video_motion_style": {
+    "type": "normal",
+    "fps_style": "24fps_cinematic",
+    "motion_quality": "smooth",
+    "special_style": null,
+    "notes": "Use 'stop_motion_12fps' for animation, 'jittery_handheld' for found footage"
+  },
+
+  "prompt_settings": {
+    "camera_overview": "Camera system description and focal lengths",
+    "lighting_overview": "Overall lighting approach",
+    "set_design_overview": "Set design philosophy",
+    "wardrobe_overview": "Costume design notes",
+    "color_palette_overview": "Color grading approach",
+    "transitions_overview": "Editing style and transitions",
+    "movement_overview": "Camera movement style",
+    "audio_overview": "Audio and dialogue style"
+  },
+
   "character_references": {
     "character_id": {
       "id": "character_id",
       "name": "Character Name",
       "costume": "Description of costume",
+      "voice": {
+        "gender": "male/female",
+        "tone": "deep/medium/high",
+        "quality": "dry, soft, gravelly, etc.",
+        "accent": "British London, American, etc.",
+        "speaking_style": "How they speak - fast, slow, deadpan, etc.",
+        "tts_prompt": "TTS voice description for generation"
+      },
       "generate_prompt": "Professional character reference sheet..."
     }
   },
@@ -330,6 +357,62 @@ Each scene should have a `visual_style` block that applies to ALL prompts:
 
 ---
 
+## Video Motion Style (Scene-Level)
+
+For animations, stop-motion, or special visual styles:
+
+```json
+{
+  "video_motion_style": {
+    "type": "normal",
+    "fps_style": "24fps_cinematic",
+    "motion_quality": "smooth",
+    "special_style": null
+  }
+}
+```
+
+| Type | Use Case |
+|------|----------|
+| `normal` | Standard live-action film |
+| `stop_motion_12fps` | Claymation/puppet animation |
+| `stop_motion_15fps` | Smoother stop-motion |
+| `anime_24fps` | Japanese animation style |
+| `jittery_handheld` | Found footage, documentary |
+| `dreamy_slow` | Ethereal, dream sequences |
+| `music_video_stylized` | High contrast, rapid cuts |
+
+**Notes field** - Add prompting hints like "jerky puppet movement" or "smooth anime motion blur"
+
+---
+
+## Character Voice Definition
+
+Each character should have voice info for TTS generation:
+
+```json
+{
+  "voice": {
+    "gender": "male",
+    "tone": "deep_gravelly",
+    "quality": "slow, dim-witted",
+    "accent": "British working class",
+    "speaking_style": "Slow delivery, simple words. Enthusiastic about violence.",
+    "tts_prompt": "British male, late-20s, deep gravelly voice, slow simple delivery"
+  }
+}
+```
+
+| Tone Options | Description |
+|--------------|-------------|
+| `deep_gravelly` | Low, rough voice |
+| `medium_pitch` | Standard range |
+| `soft_warm` | Gentle, maternal |
+| `high_clear` | Bright, young |
+| `low_gruff` | Deep, dismissive |
+
+---
+
 ## Prompt Templates
 
 **ALL prompts must end with the scene's `style_suffix` for consistency!**
@@ -457,8 +540,15 @@ ffmpeg -f concat -safe 0 -i shots_list.txt -c copy scene_final.mp4
 - Speaker status (🎤 ON CAM / 🔊 V/O)
 - Model + reason
 - Photo/Video prompts (click to copy)
-- Asset tags (characters, location, props)
+- Asset tags (characters, location INT/EXT, props INT/EXT)
 - Yellow chain indicator (⛓) for linked shots
+
+### Prompts Tab (NEW)
+- **Video Motion Style** - type, fps_style, motion_quality (for animations/stop-motion)
+- **Visual Style** - camera, lens, focal length, film stock, grain, contrast
+- **Prompt Settings Overview** - camera, lighting, set design, wardrobe, color palette, transitions, movement, audio
+- **Camera Angles** - focal lengths and positions per framing type
+- **Character Voices** - gender, tone, accent, speaking style, TTS prompts (shown on character cards)
 
 ---
 
