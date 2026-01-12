@@ -1063,6 +1063,362 @@
       flex-wrap: wrap;
     }
 
+    /* Assets Panel */
+    .assets-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .assets-panel h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .assets-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .asset-tab {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 4px 4px 0 0;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .asset-tab:hover {
+      color: var(--text);
+    }
+
+    .asset-tab.active {
+      background: var(--bg-hover);
+      border-color: var(--border);
+      border-bottom-color: var(--bg-card);
+      color: var(--accent);
+    }
+
+    .asset-content {
+      display: none;
+    }
+
+    .asset-content.active {
+      display: block;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .asset-card {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .asset-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .asset-card.character {
+      border-left: 3px solid #22d3ee;
+    }
+
+    .asset-card.set {
+      border-left: 3px solid #4ade80;
+    }
+
+    .asset-card.prop {
+      border-left: 3px solid #fbbf24;
+    }
+
+    .asset-card.frame {
+      border-left: 3px solid #f472b6;
+    }
+
+    .asset-card.dialogue {
+      border-left: 3px solid #a78bfa;
+    }
+
+    .asset-card.dialogue-unknown {
+      border-left: 3px solid #ef4444;
+      opacity: 0.8;
+    }
+
+    .dialogue-text {
+      font-style: italic;
+      color: var(--text);
+      padding: 0.5rem;
+      background: var(--bg-hover);
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .dialogue-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: var(--bg-deep);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .dialogue-status.has-transcript {
+      border-left: 3px solid #4ade80;
+    }
+
+    .dialogue-status.no-transcript {
+      border-left: 3px solid #fbbf24;
+    }
+
+    .whisper-instructions {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .whisper-instructions code {
+      background: var(--bg-hover);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      color: #22d3ee;
+    }
+
+    .whisper-instructions pre {
+      background: var(--bg-hover);
+      padding: 0.75rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+    }
+
+    .asset-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 2rem;
+      overflow: hidden;
+    }
+
+    .asset-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .asset-info {
+      padding: 0.75rem;
+    }
+
+    .asset-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .asset-meta {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .asset-prompt {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding: 0.5rem;
+      background: var(--bg-hover);
+      border-radius: 3px;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      max-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.2s ease;
+    }
+
+    .asset-prompt:hover {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+    }
+
+    .asset-prompt.copied {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    /* Frames strip */
+    .frames-strip {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .frames-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .frames-strip::-webkit-scrollbar-track {
+      background: var(--bg-deep);
+    }
+
+    .frames-strip::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    .frame-thumb {
+      flex-shrink: 0;
+      width: 120px;
+      height: 68px;
+      background: var(--bg-hover);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .frame-thumb:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .frame-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .frame-number {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      font-size: 0.6rem;
+      padding: 1px 4px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+    }
+
+    /* Shot asset requirements */
+    .shot-assets {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .shot-asset-tag {
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .shot-asset-tag.char {
+      background: rgba(34, 211, 238, 0.2);
+      color: #22d3ee;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+
+    .shot-asset-tag.loc {
+      background: rgba(74, 222, 128, 0.2);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+    }
+
+    .shot-asset-tag.prop {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    /* Frame modal */
+    .frame-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .frame-modal.active {
+      display: flex;
+    }
+
+    .frame-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .frame-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 50%;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .frame-modal-info {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .frame-modal-info .frame-number {
+      position: static;
+      font-size: 1.2rem;
+      padding: 0;
+      background: none;
+    }
+
     .legend-item {
       display: flex;
       align-items: center;
@@ -1176,6 +1532,53 @@
         <!-- Scene cards populated by JS -->
       </div>
 
+      <!-- Assets Panel (shown when scene is selected) -->
+      <div class="assets-panel" id="assetsPanel" style="display: none;">
+        <h3>SCENE ASSETS</h3>
+        <div class="assets-tabs">
+          <button class="asset-tab active" data-asset="frames">Screenshots</button>
+          <button class="asset-tab" data-asset="characters">Characters</button>
+          <button class="asset-tab" data-asset="sets">Sets/Backgrounds</button>
+          <button class="asset-tab" data-asset="props">Props</button>
+          <button class="asset-tab" data-asset="dialogue">Dialogue</button>
+        </div>
+
+        <!-- Screenshots/Frames -->
+        <div class="asset-content active" id="framesContent">
+          <div class="frames-strip" id="framesStrip">
+            <!-- Frames populated by JS -->
+          </div>
+        </div>
+
+        <!-- Characters -->
+        <div class="asset-content" id="charactersContent">
+          <div class="asset-grid" id="charactersGrid">
+            <!-- Character cards populated by JS -->
+          </div>
+        </div>
+
+        <!-- Sets/Backgrounds -->
+        <div class="asset-content" id="setsContent">
+          <div class="asset-grid" id="setsGrid">
+            <!-- Set cards populated by JS -->
+          </div>
+        </div>
+
+        <!-- Props -->
+        <div class="asset-content" id="propsContent">
+          <div class="asset-grid" id="propsGrid">
+            <!-- Prop cards populated by JS -->
+          </div>
+        </div>
+
+        <!-- Dialogue -->
+        <div class="asset-content" id="dialogueContent">
+          <div id="dialoguePanel">
+            <!-- Dialogue info populated by JS -->
+          </div>
+        </div>
+      </div>
+
       <!-- Timeline View (shown when scene is selected) -->
       <div class="timeline-container" id="timelineView" style="display: none;">
         <div class="timeline-header">
@@ -1199,6 +1602,15 @@
           <div class="legend-item"><div class="legend-dot kling-26"></div> Kling 2.6 (Motion)</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Frame Modal for Screenshots -->
+  <div class="frame-modal" id="frameModal">
+    <button class="frame-modal-close" id="frameModalClose">&times;</button>
+    <img id="frameModalImage" src="" alt="">
+    <div class="frame-modal-info">
+      <span class="frame-number" id="frameModalNumber"></span>
     </div>
   </div>
 
@@ -2106,8 +2518,13 @@
                   <span>${shot.transition_in} → ${shot.transition_out}</span>
                 </div>
                 ${shot.has_dialog ? `<div class="shot-dialog">"${shot.dialog}"</div>` : ''}
-                ${sceneShot?.photo_prompt ? `<div class="shot-prompt photo" title="Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${sceneShot.photo_prompt.replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">📷 ${sceneShot.photo_prompt.substring(0, 80)}...</div>` : ''}
+                ${sceneShot?.photo_prompt_start || sceneShot?.photo_prompt ? `<div class="shot-prompt photo" title="Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">📷 ${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).substring(0, 80)}...</div>` : ''}
                 ${shot.inputs?.prompt ? `<div class="shot-prompt video" title="Video Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(shot.inputs.prompt || '').replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">🎬 ${(shot.inputs.prompt || '').substring(0, 80)}...</div>` : ''}
+                <div class="shot-assets">
+                  ${(shot.characters_needed || []).map(c => `<span class="shot-asset-tag char">👤 ${c}</span>`).join('')}
+                  ${shot.location ? `<span class="shot-asset-tag loc">📍 ${shot.location}</span>` : ''}
+                  ${(shot.props || []).map(p => `<span class="shot-asset-tag prop">🎬 ${p}</span>`).join('')}
+                </div>
               </div>
 
               <div class="shot-model ${modelClass}">${shot.model}</div>
@@ -2133,9 +2550,261 @@
     // Close timeline button
     document.getElementById('closeTimeline').addEventListener('click', () => {
       document.getElementById('timelineView').style.display = 'none';
+      document.getElementById('assetsPanel').style.display = 'none';
       document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
       currentScene = null;
     });
+
+    // ==================== ASSETS FUNCTIONALITY ====================
+    let currentAssets = null;
+
+    async function loadSceneAssets(sceneId) {
+      const assetsPanel = document.getElementById('assetsPanel');
+      const framesStrip = document.getElementById('framesStrip');
+      const charactersGrid = document.getElementById('charactersGrid');
+      const setsGrid = document.getElementById('setsGrid');
+
+      try {
+        const response = await fetch(`/api/scene/${sceneId}/assets`);
+        currentAssets = await response.json();
+
+        // Render frames strip
+        if (currentAssets.frames && currentAssets.frames.length > 0) {
+          framesStrip.innerHTML = currentAssets.frames.map((frame, i) => {
+            const frameNum = frame.match(/frame_(\d+)/)?.[1] || i + 1;
+            return `
+              <div class="frame-thumb" data-src="${frame}" data-num="${frameNum}">
+                <img src="${frame}" alt="Frame ${frameNum}" loading="lazy">
+                <span class="frame-number">#${frameNum}</span>
+              </div>
+            `;
+          }).join('');
+
+          // Add click handlers for frame modal
+          document.querySelectorAll('.frame-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+              const src = thumb.dataset.src;
+              const num = thumb.dataset.num;
+              document.getElementById('frameModalImage').src = src;
+              document.getElementById('frameModalNumber').textContent = `Frame #${num}`;
+              document.getElementById('frameModal').classList.add('active');
+            });
+          });
+        } else {
+          framesStrip.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">No frames extracted yet. Run: ffmpeg -i video.mp4 -vf "fps=3" analysis_3fps/frame_%04d.jpg</div>';
+        }
+
+        // Render characters with screenshots
+        if (currentAssets.characters && Object.keys(currentAssets.characters).length > 0) {
+          charactersGrid.innerHTML = Object.entries(currentAssets.characters).map(([id, char]) => `
+            <div class="asset-card character">
+              <div class="asset-image">
+                ${char.screenshot
+                  ? `<img src="${char.screenshot}" alt="${char.name || id}" loading="lazy">`
+                  : '👤'}
+              </div>
+              <div class="asset-info">
+                <div class="asset-name">${char.name || id}</div>
+                <div class="asset-meta">${char.costume || 'No costume defined'}</div>
+                ${char.best_shot ? `<div class="asset-meta" style="color: var(--accent);">Best shot: ${char.best_shot}</div>` : ''}
+                ${char.generate_prompt ? `
+                  <div class="asset-prompt" onclick="copyPrompt(this, '${char.generate_prompt.replace(/'/g, "\\'")}')">
+                    📋 ${char.generate_prompt.substring(0, 80)}...
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `).join('');
+        } else {
+          charactersGrid.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">No character references defined in scene JSON.</div>';
+        }
+
+        // Render sets with screenshots
+        if (currentAssets.sets && currentAssets.sets.length > 0) {
+          setsGrid.innerHTML = currentAssets.sets.map(set => `
+            <div class="asset-card set">
+              <div class="asset-image">
+                ${set.screenshot
+                  ? `<img src="${set.screenshot}" alt="${set.name}" loading="lazy">`
+                  : '🏠'}
+              </div>
+              <div class="asset-info">
+                <div class="asset-name">${set.name}</div>
+                ${set.elements && set.elements.length > 0
+                  ? `<div class="asset-meta">${set.elements.slice(0, 3).join(', ')}</div>`
+                  : ''}
+                <div class="asset-prompt" onclick="copyPrompt(this, '${set.prompt.replace(/'/g, "\\'")}')">
+                  📋 ${set.prompt.substring(0, 80)}...
+                </div>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          setsGrid.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">No sets defined. Create SET_PROMPTS.md in scene folder.</div>';
+        }
+
+        // Render props with screenshots
+        const propsGrid = document.getElementById('propsGrid');
+        if (currentAssets.props && currentAssets.props.length > 0) {
+          propsGrid.innerHTML = currentAssets.props.map(prop => `
+            <div class="asset-card prop">
+              <div class="asset-image">
+                ${prop.screenshot
+                  ? `<img src="${prop.screenshot}" alt="${prop.name}" loading="lazy">`
+                  : '🎬'}
+              </div>
+              <div class="asset-info">
+                <div class="asset-name">${prop.name.replace(/_/g, ' ')}</div>
+                ${prop.interaction ? `<div class="asset-meta">${prop.interaction}</div>` : ''}
+                <div class="asset-meta" style="color: var(--accent);">Shot: ${prop.shot_id}</div>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          propsGrid.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">No props detected in shots.</div>';
+        }
+
+        // Load dialogue info
+        await loadDialogueInfo(sceneId);
+
+        assetsPanel.style.display = 'block';
+
+      } catch (err) {
+        console.error('Failed to load assets:', err);
+        assetsPanel.style.display = 'none';
+      }
+    }
+
+    // Copy prompt helper
+    window.copyPrompt = function(el, text) {
+      navigator.clipboard.writeText(text);
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 1500);
+    };
+
+    // Load dialogue info
+    async function loadDialogueInfo(sceneId) {
+      const dialoguePanel = document.getElementById('dialoguePanel');
+
+      try {
+        const response = await fetch(`/api/scene/${sceneId}/dialogue`);
+        const data = await response.json();
+
+        let html = '';
+
+        // Status banner
+        html += `
+          <div class="dialogue-status ${data.transcript_exists ? 'has-transcript' : 'no-transcript'}">
+            ${data.transcript_exists
+              ? '✓ Whisper transcript available - timestamps synced'
+              : '⚠ No Whisper transcript - dialogue may need verification'}
+          </div>
+        `;
+
+        // Whisper instructions if no transcript
+        if (!data.transcript_exists) {
+          html += `
+            <div class="whisper-instructions">
+              <strong>Get accurate dialogue timestamps with Whisper:</strong>
+              <pre>cd tools
+set OPENAI_API_KEY=your-key-here
+node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
+              <p style="color: var(--text-muted); margin-top: 0.5rem;">This will transcribe the audio, match dialogue to frame numbers, and update shot data with accurate speaker/timing info.</p>
+            </div>
+          `;
+        }
+
+        // Shots with dialogue
+        if (data.shots_with_dialogue.length > 0) {
+          html += '<h4 style="margin: 1rem 0 0.5rem; color: var(--text);">Shots with Dialogue (${data.shots_with_dialogue.length})</h4>';
+          html += '<div class="asset-grid">';
+          data.shots_with_dialogue.forEach(shot => {
+            html += `
+              <div class="asset-card dialogue">
+                <div class="asset-info">
+                  <div class="asset-name">${shot.shot_id}</div>
+                  <div class="asset-meta">
+                    Speaker: <strong>${shot.speaker || 'Unknown'}</strong>
+                    | Frames ${shot.start_frame}-${shot.end_frame}
+                    ${shot.has_timestamp ? '✓' : ''}
+                  </div>
+                  <div class="dialogue-text">"${shot.dialog}"</div>
+                  ${shot.has_timestamp
+                    ? `<div class="asset-meta" style="color: #4ade80;">Time: ${shot.start_time?.toFixed(2)}s - ${shot.end_time?.toFixed(2)}s</div>`
+                    : '<div class="asset-meta" style="color: #fbbf24;">No timestamps - run Whisper</div>'}
+                  <div class="asset-meta" style="color: var(--accent);">Model: Seedance 1.5 (dialogue)</div>
+                </div>
+              </div>
+            `;
+          });
+          html += '</div>';
+        }
+
+        // Shots with unknown dialogue
+        if (data.shots_unknown_dialogue.length > 0) {
+          html += '<h4 style="margin: 1.5rem 0 0.5rem; color: #ef4444;">Shots Needing Dialogue (${data.shots_unknown_dialogue.length})</h4>';
+          html += '<div class="asset-grid">';
+          data.shots_unknown_dialogue.forEach(shot => {
+            html += `
+              <div class="asset-card dialogue-unknown">
+                <div class="asset-info">
+                  <div class="asset-name">${shot.shot_id}</div>
+                  <div class="asset-meta">
+                    Characters: ${shot.characters.join(', ')}
+                    | Frames ${shot.start_frame}-${shot.end_frame}
+                  </div>
+                  <div class="dialogue-text" style="color: #ef4444;">❓ Unknown dialogue - needs Whisper transcription</div>
+                </div>
+              </div>
+            `;
+          });
+          html += '</div>';
+        }
+
+        if (data.shots_with_dialogue.length === 0 && data.shots_unknown_dialogue.length === 0) {
+          html += '<div style="color: var(--text-muted); padding: 1rem;">No dialogue detected in any shots.</div>';
+        }
+
+        dialoguePanel.innerHTML = html;
+
+      } catch (err) {
+        console.error('Failed to load dialogue info:', err);
+        dialoguePanel.innerHTML = '<div style="color: var(--text-muted); padding: 1rem;">Failed to load dialogue info.</div>';
+      }
+    }
+
+    // Asset tab switching
+    document.querySelectorAll('.asset-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.asset;
+
+        // Update active tab
+        document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Update active content
+        document.querySelectorAll('.asset-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(`${target}Content`).classList.add('active');
+      });
+    });
+
+    // Frame modal close
+    document.getElementById('frameModalClose').addEventListener('click', () => {
+      document.getElementById('frameModal').classList.remove('active');
+    });
+
+    document.getElementById('frameModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('frameModal')) {
+        document.getElementById('frameModal').classList.remove('active');
+      }
+    });
+
+    // Override loadSceneTimeline to also load assets
+    const originalLoadSceneTimeline = loadSceneTimeline;
+    loadSceneTimeline = async function(sceneId) {
+      await loadSceneAssets(sceneId);
+      await originalLoadSceneTimeline(sceneId);
+    };
 
     // Initialize
     loadData();

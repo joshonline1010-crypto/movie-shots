@@ -1,0 +1,24 @@
+# Shaun of the Dead - Character Reference Prompts
+# Use these with nano-banana-pro to generate character sheets
+
+## SHAUN
+Professional character reference sheet, front and 3/4 profile. British man early 30s, short receding blonde hair, stubble, blood scratch marks on right cheek. Wearing white dress shirt with blood stains, red tie, dark grey-blue harrington jacket. Tired but determined expression. Clean white background, studio lighting, ultra detailed photorealistic, character turnaround sheet
+
+## ED
+Professional character reference sheet, front and 3/4 profile. British man late 20s, dark brown messy hair, round face, stubble, slightly overweight. Wearing dirty beige t-shirt with orange graphic text, blood stains. Holding blood-covered cricket bat. Goofy grin. Clean white background, studio lighting, ultra detailed photorealistic, character turnaround sheet
+
+## BARBARA (Mum)
+Professional character reference sheet, front and 3/4 profile. British woman early 60s, short grey-brown bob haircut, kind maternal face. Wearing purple top with grey cardigan. Worried expression. Clean white background, studio lighting, ultra detailed photorealistic, character turnaround sheet
+
+## LIZ
+Professional character reference sheet, front and 3/4 profile. British woman late 20s, blonde hair. Wearing light blue track jacket. Clean white background, studio lighting, ultra detailed photorealistic, character turnaround sheet
+
+## PHILIP (Stepfather - Zombie)
+Professional character reference sheet, front and 3/4 profile. British man late 50s, grey-brown disheveled hair, gaunt angular face, zombie makeup with pale grey complexion and dark sunken eyes. Wearing teal blue polo shirt. Clean white background, studio lighting, ultra detailed photorealistic, character turnaround sheet
+
+---
+
+# Usage:
+# 1. Copy prompt above
+# 2. Use with nano-banana-pro: type "image"
+# 3. Save output to characters/ folder

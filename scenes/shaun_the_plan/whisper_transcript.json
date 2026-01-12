@@ -1,0 +1,69 @@
+{
+  "source": "fal-ai/wizper",
+  "audio_url": "https://files.catbox.moe/f33bq1.wav",
+  "text": "So, what's the plan? Right. We take Pete's car, we drive over to Mum's, we go in, take care of Philip. I'm so sorry, Philip. Then we grab Mum, we go over to Liz's place, pull up, have a cup of tea and wait for all this to blow over. Why have we got to go to Liz's? Because we do. But she dumped you. I have to know if she's all right. Because I love her. Alright, gay. I'm not staying there though. Why not? If we hole up, I wanna be somewhere familiar, I wanna know where the exits are, and I wanna be allowed to smoke. Take Pete's car, go round Mum's, go in, deal with Philip, sorry Philip, grab Mum, go to Liz's, pick her up, bring her back here, have a cup of tea, and wait for all this to blow over. Perfect. No, no, no, no, no, wait. We can't bring her back here. Why not? Well, it's not exactly safe, is it? Yeah. Good state of it. Where's safe? Where's familiar? Where can I smoke? Take on, go to Mum's, kill Phil, grab Liz, go to the Winchester, have a nice cold pint and wait for all this to blow over. How's that for a slice of fried gold? Yeah, boy! It is vital that you stay in your homes, make no attempt to reach loved ones and avoid all physical contact with the assailants. Do you believe everything you hear on TV?",
+  "chunks": [
+    {
+      "timestamp": [0.9, 30.58],
+      "text": "So, what's the plan? Right. We take Pete's car, we drive over to Mum's, we go in, take care of Philip. I'm so sorry, Philip. Then we grab Mum, we go over to Liz's place, pull up, have a cup of tea and wait for all this to blow over. Why have we got to go to Liz's? Because we do. But she dumped you. I have to know if she's all right. Because I love her.",
+      "start_frame": 3,
+      "end_frame": 92,
+      "speakers": ["Ed", "Shaun"],
+      "lines": [
+        {"speaker": "Ed", "text": "So, what's the plan?", "approx_time": 0.9},
+        {"speaker": "Shaun", "text": "Right. We take Pete's car, we drive over to Mum's, we go in, take care of Philip.", "approx_time": 2.0},
+        {"speaker": "Shaun", "text": "I'm so sorry, Philip.", "approx_time": 12.0},
+        {"speaker": "Shaun", "text": "Then we grab Mum, we go over to Liz's place, pull up, have a cup of tea and wait for all this to blow over.", "approx_time": 15.0},
+        {"speaker": "Ed", "text": "Why have we got to go to Liz's?", "approx_time": 22.0},
+        {"speaker": "Shaun", "text": "Because we do.", "approx_time": 24.0},
+        {"speaker": "Ed", "text": "But she dumped you.", "approx_time": 25.5},
+        {"speaker": "Shaun", "text": "I have to know if she's all right. Because I love her.", "approx_time": 27.0}
+      ]
+    },
+    {
+      "timestamp": [32.76, 59.32],
+      "text": "Alright, gay. I'm not staying there though. Why not? If we hole up, I wanna be somewhere familiar, I wanna know where the exits are, and I wanna be allowed to smoke. Take Pete's car, go round Mum's, go in, deal with Philip, sorry Philip, grab Mum, go to Liz's, pick her up, bring her back here, have a cup of tea, and wait for all this to blow over. Perfect.",
+      "start_frame": 99,
+      "end_frame": 178,
+      "speakers": ["Ed", "Shaun"],
+      "lines": [
+        {"speaker": "Ed", "text": "Alright, gay. I'm not staying there though.", "approx_time": 32.76},
+        {"speaker": "Shaun", "text": "Why not?", "approx_time": 35.0},
+        {"speaker": "Ed", "text": "If we hole up, I wanna be somewhere familiar, I wanna know where the exits are, and I wanna be allowed to smoke.", "approx_time": 36.0},
+        {"speaker": "Shaun", "text": "Take Pete's car, go round Mum's, go in, deal with Philip, sorry Philip, grab Mum, go to Liz's, pick her up, bring her back here, have a cup of tea, and wait for all this to blow over.", "approx_time": 43.0},
+        {"speaker": "Ed", "text": "Perfect.", "approx_time": 58.0}
+      ]
+    },
+    {
+      "timestamp": [59.82, 75.56],
+      "text": "No, no, no, no, no, wait. We can't bring her back here. Why not? Well, it's not exactly safe, is it? Yeah. Good state of it. Where's safe? Where's familiar? Where can I smoke?",
+      "start_frame": 180,
+      "end_frame": 227,
+      "speakers": ["Ed", "Shaun"],
+      "lines": [
+        {"speaker": "Ed", "text": "No, no, no, no, no, wait. We can't bring her back here.", "approx_time": 59.82},
+        {"speaker": "Shaun", "text": "Why not?", "approx_time": 63.0},
+        {"speaker": "Ed", "text": "Well, it's not exactly safe, is it?", "approx_time": 64.0},
+        {"speaker": "Shaun", "text": "Yeah.", "approx_time": 67.0},
+        {"speaker": "Ed", "text": "Good state of it.", "approx_time": 68.0},
+        {"speaker": "Ed", "text": "Where's safe? Where's familiar? Where can I smoke?", "approx_time": 70.0}
+      ]
+    },
+    {
+      "timestamp": [76.84, 103.3],
+      "text": "Take on, go to Mum's, kill Phil, grab Liz, go to the Winchester, have a nice cold pint and wait for all this to blow over. How's that for a slice of fried gold? Yeah, boy! It is vital that you stay in your homes, make no attempt to reach loved ones and avoid all physical contact with the assailants. Do you believe everything you hear on TV?",
+      "start_frame": 231,
+      "end_frame": 310,
+      "speakers": ["Shaun", "Ed", "TV"],
+      "lines": [
+        {"speaker": "Shaun", "text": "Take Pete's car, go to Mum's, kill Phil, grab Liz, go to the Winchester, have a nice cold pint and wait for all this to blow over.", "approx_time": 76.84},
+        {"speaker": "Shaun", "text": "How's that for a slice of fried gold?", "approx_time": 88.0},
+        {"speaker": "Ed", "text": "Yeah, boy!", "approx_time": 92.0},
+        {"speaker": "TV", "text": "It is vital that you stay in your homes, make no attempt to reach loved ones and avoid all physical contact with the assailants.", "approx_time": 95.0},
+        {"speaker": "Ed", "text": "Do you believe everything you hear on TV?", "approx_time": 102.0}
+      ]
+    }
+  ],
+  "frame_rate": 3,
+  "frame_duration_sec": 0.333
+}

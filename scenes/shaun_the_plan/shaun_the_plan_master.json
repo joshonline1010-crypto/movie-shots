@@ -13,12 +13,14 @@
   "director": "Edgar Wright",
   "year": 2004,
   "color_palette": "desaturated-cool",
+
   "generation_config": {
     "min_duration": 5,
     "max_duration": 10,
     "default_resolution": "2K",
     "post_processing": "ffmpeg_cut"
   },
+
   "character_references": {
     "shaun": {
       "id": "shaun",
@@ -51,6 +53,7 @@
       "generate_prompt": "Professional character reference sheet. British man late 50s, grey-brown disheveled hair, gaunt angular face, zombie makeup with pale grey complexion and dark sunken eyes. Wearing teal blue polo shirt. Clean white background, studio lighting, 4K photorealistic"
     }
   },
+
   "shots": [
     {
       "shot_id": "shot_001",
@@ -86,28 +89,18 @@
         "action": "standing, back visible"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "Ed grips bat, SPINS it in hands, raises overhead",
         "state_change": "bat at rest -> spinning -> raised"
       },
       "environment": {
         "location": "flat",
-        "visible_elements": [
-          "leather couch",
-          "zombie body in green jacket",
-          "pizza boxes",
-          "teal walls"
-        ],
+        "visible_elements": ["leather couch", "zombie body in green jacket", "pizza boxes", "teal walls"],
         "lighting": "soft daylight from window left"
       },
       "audio": {
-        "dialog": "So, what's the plan? Right. We take Pete's car,",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 9
+        "dialog": "We take Pete's car, go round mum's...",
+        "speaker": "Ed"
       },
       "transition_in": "cut",
       "transition_out": "cut",
@@ -115,10 +108,7 @@
       "needs_end_frame": true,
       "photo_prompt_start": "MCU of heavyset man with dark messy hair sitting on brown leather couch in messy British flat, wearing dirty beige 'I GOT WOOD' t-shirt, looking down contemplating, holding cricket bat at rest, zombie body in green jacket on floor behind, teal walls, soft daylight from window, 2.35:1 cinematic",
       "photo_prompt_end": "Wide two-shot in messy British flat, heavyset man on couch holding cricket bat UP explaining enthusiastically, second man visible on right edge standing, zombie on floor, teal walls, 2.35:1 cinematic",
-      "motion_prompt": "Slow zoom out pulling back, man SPINS cricket bat in hands while speaking gesturing enthusiastically, raises bat overhead, second person revealed on right, camera settles on two-shot, then holds",
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed ON SCREEN but camera moving (zoom_out)",
-      "speaker_on_screen": true
+      "motion_prompt": "Slow zoom out pulling back, man SPINS cricket bat in hands while speaking gesturing enthusiastically, raises bat overhead, second person revealed on right, camera settles on two-shot, then holds"
     },
     {
       "shot_id": "shot_002",
@@ -127,7 +117,7 @@
         "start_frame": 11,
         "end_frame": 16,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -154,11 +144,7 @@
       },
       "environment": {
         "location": "flat",
-        "visible_elements": [
-          "teal walls",
-          "white door frame",
-          "bookshelf with globe"
-        ],
+        "visible_elements": ["teal walls", "white door frame", "bookshelf with globe"],
         "lighting": "soft diffused daylight"
       },
       "transition_in": "cut",
@@ -167,17 +153,7 @@
       "needs_end_frame": true,
       "photo_prompt_start": "MS of blonde man with receding hairline standing in flat, wearing dark grey-blue jacket over white shirt with red tie, hand on chin thinking, profile view, teal-green walls, soft daylight, 2.35:1 cinematic",
       "photo_prompt_end": "MCU of blonde man with receding hairline, blood scratch on cheek, facing camera 3/4 view, contemplative expression, teal walls behind, soft daylight, 2.35:1 cinematic",
-      "motion_prompt": "Slow push-in toward face, character TURNS from profile to face camera, lowers hand from chin, expression shifts from thinking to processing, camera settles on closeup, then holds",
-      "audio": {
-        "dialog": "car, we drive over to Mum's, we go",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun ON SCREEN but camera moving (push_in)",
-      "speaker_on_screen": true
+      "motion_prompt": "Slow push-in toward face, character TURNS from profile to face camera, lowers hand from chin, expression shifts from thinking to processing, camera settles on closeup, then holds"
     },
     {
       "shot_id": "shot_003",
@@ -199,20 +175,10 @@
       },
       "transition_in": "whip_pan",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "Extreme motion blur whip pan transition, blurred teal-green and beige colors streaking horizontally, abstract movement, 2.35:1",
-      "motion_prompt": "Rapid whip pan motion blur from left to right, colors streak across frame, then cuts",
-      "audio": {
-        "dialog": "go in, take",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 3
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Rapid whip pan motion blur from left to right, colors streak across frame, then cuts"
     },
     {
       "shot_id": "shot_004",
@@ -234,18 +200,12 @@
         "description": "Red Jaguar door handle and keyhole insert"
       },
       "props": {
-        "items": [
-          "car_door_handle",
-          "key"
-        ],
+        "items": ["car_door_handle", "key"],
         "interaction": "hand grabs handle, key turns in lock"
       },
       "environment": {
         "location": "street_exterior",
-        "visible_elements": [
-          "red car body",
-          "chrome door handle"
-        ],
+        "visible_elements": ["red car body", "chrome door handle"],
         "lighting": "daylight"
       },
       "transition_in": "cut",
@@ -253,17 +213,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "ECU of dark red Jaguar car door handle and lock mechanism, chrome handle against burgundy metallic body, daylight reflection, macro detail, 2.35:1 cinematic",
-      "motion_prompt": "Hand enters frame, grabs chrome door handle, pulls open with mechanical click, then holds",
-      "audio": {
-        "dialog": "care of Philip.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 3
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Hand enters frame, grabs chrome door handle, pulls open with mechanical click, then holds"
     },
     {
       "shot_id": "shot_005",
@@ -285,18 +235,12 @@
         "description": "Shoe/boot pressing gas pedal"
       },
       "props": {
-        "items": [
-          "gas_pedal",
-          "shoe"
-        ],
+        "items": ["gas_pedal", "shoe"],
         "interaction": "foot presses down on pedal"
       },
       "environment": {
         "location": "car_interior",
-        "visible_elements": [
-          "foot well",
-          "pedals"
-        ],
+        "visible_elements": ["foot well", "pedals"],
         "lighting": "interior daylight"
       },
       "transition_in": "cut",
@@ -304,17 +248,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "ECU of shoe/boot pressing down on car gas pedal, rubber pedal visible, foot well of car interior, daylight, macro insert shot, 2.35:1",
-      "motion_prompt": "Foot presses down firmly on gas pedal, pedal depresses, then holds",
-      "audio": {
-        "dialog": "Philip.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 1
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Foot presses down firmly on gas pedal, pedal depresses, then holds"
     },
     {
       "shot_id": "shot_006",
@@ -323,7 +257,7 @@
         "start_frame": 22,
         "end_frame": 24,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -337,18 +271,12 @@
         "description": "Red car with TWO ZOMBIES behind in plaid shirts"
       },
       "props": {
-        "items": [
-          "red_car"
-        ],
+        "items": ["red_car"],
         "interaction": "car accelerating"
       },
       "environment": {
         "location": "suburban_street",
-        "visible_elements": [
-          "red Megane",
-          "zombies in plaid",
-          "terraced houses"
-        ],
+        "visible_elements": ["red Megane", "zombies in plaid", "terraced houses"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
@@ -356,17 +284,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "WS of dark red Renault Megane on suburban street, TWO ZOMBIES in plaid shirts lurching behind vehicle, Victorian terraced houses in background, overcast daylight, 2.35:1 cinematic",
-      "motion_prompt": "Car accelerates forward, zombies lurch toward it, slight camera zoom, then holds",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Car accelerates forward, zombies lurch toward it, slight camera zoom, then holds"
     },
     {
       "shot_id": "shot_007",
@@ -375,7 +293,7 @@
         "start_frame": 25,
         "end_frame": 27,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -387,9 +305,7 @@
         "who": "car_tracking"
       },
       "props": {
-        "items": [
-          "red_car"
-        ],
+        "items": ["red_car"],
         "interaction": "wheels spinning, motion blur"
       },
       "environment": {
@@ -398,20 +314,10 @@
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "Tracking shot of red car accelerating, motion blur on wheels, suburban background streaking, 2.35:1 cinematic",
-      "motion_prompt": "Fast tracking shot following car, wheels spin, background blurs past, then settles",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "motion_prompt": "Fast tracking shot following car, wheels spin, background blurs past, then settles"
     },
     {
       "shot_id": "shot_008",
@@ -420,7 +326,7 @@
         "start_frame": 28,
         "end_frame": 30,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -433,32 +339,20 @@
         "who": "car_driving_away"
       },
       "props": {
-        "items": [
-          "red_megane"
-        ],
+        "items": ["red_megane"],
         "visible_details": "License plate T108 JVM"
       },
       "environment": {
         "location": "suburban_street",
-        "visible_elements": [
-          "tree-lined street",
-          "license plate"
-        ],
+        "visible_elements": ["tree-lined street", "license plate"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "Rear tracking shot of dark red Renault Megane hatchback driving away, yellow UK license plate visible, tree-lined suburban street, 2.35:1 cinematic",
-      "motion_prompt": "Car drives away from camera, trees pass on sides, camera holds steady, then settles",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
-      },
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "motion_prompt": "Car drives away from camera, trees pass on sides, camera holds steady, then settles"
     },
     {
       "shot_id": "shot_009",
@@ -467,7 +361,7 @@
         "start_frame": 31,
         "end_frame": 33,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -483,19 +377,12 @@
         "description": "Both carrying cricket bats"
       },
       "props": {
-        "items": [
-          "cricket_bat",
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat", "cricket_bat"],
         "interaction": "carrying, arms swinging"
       },
       "environment": {
         "location": "mums_house_driveway",
-        "visible_elements": [
-          "Tudor-style house",
-          "white garage door",
-          "topiary"
-        ],
+        "visible_elements": ["Tudor-style house", "white garage door", "topiary"],
         "lighting": "sunny daylight"
       },
       "transition_in": "cut",
@@ -503,14 +390,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "WS two men walking urgently up brick driveway toward Tudor-style house, both carrying cricket bats, white garage door, topiary bushes, sunny daylight, shot from behind, 2.35:1 cinematic",
-      "motion_prompt": "Both men stride purposefully toward front door, arms swinging with weapons, then stops at door",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Both men stride purposefully toward front door, arms swinging with weapons, then stops at door"
     },
     {
       "shot_id": "shot_010",
@@ -519,7 +399,7 @@
         "start_frame": 34,
         "end_frame": 36,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_0.7s"
       },
@@ -531,18 +411,12 @@
         "who": "finger_on_doorbell"
       },
       "props": {
-        "items": [
-          "doorbell",
-          "finger"
-        ],
+        "items": ["doorbell", "finger"],
         "interaction": "thumb presses illuminated button"
       },
       "environment": {
         "location": "mums_house_exterior",
-        "visible_elements": [
-          "white UPVC door frame",
-          "brass doorbell plate"
-        ],
+        "visible_elements": ["white UPVC door frame", "brass doorbell plate"],
         "lighting": "daylight"
       },
       "transition_in": "cut",
@@ -550,14 +424,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "ECU of thumb pressing cream-colored illuminated doorbell button on white door frame, brass plate, shallow depth of field, insert shot, 2.35:1",
-      "motion_prompt": "Thumb presses doorbell button firmly, slight compression, then releases and holds",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Thumb presses doorbell button firmly, slight compression, then releases and holds"
     },
     {
       "shot_id": "shot_011",
@@ -566,7 +433,7 @@
         "start_frame": 37,
         "end_frame": 42,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -587,11 +454,7 @@
       },
       "environment": {
         "location": "mums_house_interior",
-        "visible_elements": [
-          "living room doorway",
-          "cream walls",
-          "curtains"
-        ],
+        "visible_elements": ["living room doorway", "cream walls", "curtains"],
         "lighting": "backlit by window"
       },
       "transition_in": "cut",
@@ -599,17 +462,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "MS of gaunt man in teal polo shirt standing in living room doorway, pale grey zombie complexion, dark sunken bloodshot eyes, cream walls, brown curtains backlit, 2.35:1 cinematic",
-      "motion_prompt": "Zombie lurches forward, head tilts unnaturally, arms begin to raise menacingly, then holds",
-      "audio": {
-        "dialog": "I'm so sorry, Philip.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Zombie lurches forward, head tilts unnaturally, arms begin to raise menacingly, then holds"
     },
     {
       "shot_id": "shot_012",
@@ -618,7 +471,7 @@
         "start_frame": 43,
         "end_frame": 45,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -631,16 +484,11 @@
         "body_action": "swinging cricket bat at Philip"
       },
       "subject_secondary": {
-        "who": [
-          "Ed",
-          "Barbara"
-        ],
+        "who": ["Ed", "Barbara"],
         "action": "Ed grimacing, Barbara screaming"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "SWINGING at zombie head, motion blur on bat"
       },
       "environment": {
@@ -652,14 +500,7 @@
       "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "Action shot inside living room, blonde man swinging cricket bat from left, zombie head receiving blow center, heavyset man grimacing right, older woman screaming background, motion blur on bat, 2.35:1 cinematic",
-      "motion_prompt": "Cricket bat SWINGS through frame striking zombie head, impact motion, mum screams and recoils, then holds on aftermath",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Cricket bat SWINGS through frame striking zombie head, impact motion, mum screams and recoils, then holds on aftermath"
     },
     {
       "shot_id": "shot_013",
@@ -668,7 +509,7 @@
         "start_frame": 46,
         "end_frame": 48,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -677,18 +518,11 @@
         "movement": "tracking"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Shaun", "Barbara", "Ed"],
         "body_action": "running toward camera from house"
       },
       "props": {
-        "items": [
-          "cricket_bat",
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat", "cricket_bat"],
         "interaction": "carrying while running"
       },
       "environment": {
@@ -697,20 +531,10 @@
       },
       "transition_in": "cut",
       "transition_out": "whip_pan",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "needs_end_frame": false,
       "photo_prompt_start": "WS three people running toward camera from Tudor house, blonde man with bat left, woman in purple center, heavyset man with bat right, sunny daylight, action shot, 2.35:1 cinematic",
-      "motion_prompt": "Three figures RUN urgently toward camera, arms pumping, bats swinging, then exit frame",
-      "audio": {
-        "dialog": "Then we grab Mum,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Three figures RUN urgently toward camera, arms pumping, bats swinging, then exit frame"
     },
     {
       "shot_id": "shot_014",
@@ -728,19 +552,9 @@
       },
       "transition_in": "whip_pan",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Extreme motion blur whip pan, streaking colors, Edgar Wright transition, 2.35:1",
-      "motion_prompt": "Rapid whip pan blur, colors streak, then cuts to next shot",
-      "audio": {
-        "dialog": "Mum, we go",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 3
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Rapid whip pan blur, colors streak, then cuts to next shot"
     },
     {
       "shot_id": "shot_015",
@@ -767,28 +581,14 @@
       },
       "environment": {
         "location": "liz_apartment_exterior",
-        "visible_elements": [
-          "1930s brick building",
-          "white balconies",
-          "NO PARKING sign"
-        ],
+        "visible_elements": ["1930s brick building", "white balconies", "NO PARKING sign"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "WS of 1930s red brick London apartment building with white balconies, red car entering frame with motion blur, zombie lurching on left, NO PARKING sign foreground, overcast daylight, 2.35:1 cinematic",
-      "motion_prompt": "Red car pulls into frame rapidly, screeches to stop, zombie turns toward vehicle, then holds",
-      "audio": {
-        "dialog": "go over to Liz's place, pull",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 6
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Red car pulls into frame rapidly, screeches to stop, zombie turns toward vehicle, then holds"
     },
     {
       "shot_id": "shot_016",
@@ -797,7 +597,7 @@
         "start_frame": 55,
         "end_frame": 57,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -811,34 +611,19 @@
         "body_motion": "arms raised, stumbling forward"
       },
       "props": {
-        "items": [
-          "door"
-        ],
+        "items": ["door"],
         "interaction": "door swings open dramatically"
       },
       "environment": {
         "location": "liz_apartment_interior",
-        "visible_elements": [
-          "brown wooden double doors",
-          "frosted glass"
-        ],
+        "visible_elements": ["brown wooden double doors", "frosted glass"],
         "lighting": "hallway lighting"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "MS woman in light blue jacket bursting through brown wooden doors, arms raised, blonde hair flying, frightened expression, motion blur, 2.35:1 cinematic",
-      "motion_prompt": "Woman BURSTS through doors dramatically, stumbles forward with momentum, arms flailing, then steadies",
-      "audio": {
-        "dialog": "pull up, have a",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Woman BURSTS through doors dramatically, stumbles forward with momentum, arms flailing, then steadies"
     },
     {
       "shot_id": "shot_017",
@@ -856,43 +641,23 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Shaun", "Barbara", "Ed"],
         "body_action": "running toward building entrance"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "carrying"
       },
       "environment": {
         "location": "liz_apartment_exterior",
-        "visible_elements": [
-          "brick building",
-          "HOUSE sign",
-          "green doors"
-        ],
+        "visible_elements": ["brick building", "HOUSE sign", "green doors"],
         "lighting": "sunny daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "WS three people running toward brick building entrance marked HOUSE, blonde man with bat leading, paved courtyard, sunny daylight, 2.35:1 cinematic",
-      "motion_prompt": "Three figures SPRINT toward building entrance, woman at door waves them in, group converges, then enters",
-      "audio": {
-        "dialog": "a cup of tea and wait",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 6
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Three figures SPRINT toward building entrance, woman at door waves them in, group converges, then enters"
     },
     {
       "shot_id": "shot_018",
@@ -901,7 +666,7 @@
         "start_frame": 62,
         "end_frame": 64,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_0.7s"
       },
@@ -913,9 +678,7 @@
         "who": "hand_holding_mug"
       },
       "props": {
-        "items": [
-          "tea_mug"
-        ],
+        "items": ["tea_mug"],
         "interaction": "hand gripping handle, slight raise"
       },
       "environment": {
@@ -926,17 +689,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "ECU of hand holding white ceramic mug with green text pattern, blurred warm interior background, shallow depth of field, 2.35:1 cinematic",
-      "motion_prompt": "Hand raises cup toward camera slightly, gentle tilting motion, steam wisps rise, then holds steady",
-      "audio": {
-        "dialog": "wait for all this to",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 5
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Hand raises cup toward camera slightly, gentle tilting motion, steam wisps rise, then holds steady"
     },
     {
       "shot_id": "shot_019",
@@ -956,30 +709,16 @@
         "movement_speed": "slow"
       },
       "subject_primary": {
-        "who": [
-          "Liz",
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Liz", "Shaun", "Barbara", "Ed"],
         "body_action": "sitting on couch, raising mugs in toast"
       },
       "props": {
-        "items": [
-          "mug",
-          "mug",
-          "mug",
-          "mug"
-        ],
+        "items": ["mug", "mug", "mug", "mug"],
         "interaction": "raising in toast, smiling"
       },
       "environment": {
         "location": "winchester_pub",
-        "visible_elements": [
-          "floral couch",
-          "venetian blinds",
-          "photos on shelves"
-        ],
+        "visible_elements": ["floral couch", "venetian blinds", "photos on shelves"],
         "lighting": "warm daylight from window"
       },
       "transition_in": "cut",
@@ -988,17 +727,7 @@
       "needs_end_frame": true,
       "photo_prompt_start": "WS four people sitting on floral couch in pub interior, blonde woman far left in turquoise jacket, blonde man in dark jacket, older woman in grey cardigan center, heavyset man in beige shirt right, holding mugs, venetian blinds behind, warm lighting, 2.35:1 cinematic",
       "photo_prompt_end": "MS four people on couch raising mugs in cheerful toast, smiles on all faces, camera tighter, warm pub lighting, 2.35:1 cinematic",
-      "motion_prompt": "Slow dolly push-in toward group, characters RAISE mugs in cheerful toast, smiles and nods, camera tightens framing on faces, then settles",
-      "audio": {
-        "dialog": "to blow over. Why have we got to go to",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 10
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Slow dolly push-in toward group, characters RAISE mugs in cheerful toast, smiles and nods, camera tightens framing on faces, then settles"
     },
     {
       "shot_id": "shot_020",
@@ -1007,7 +736,7 @@
         "start_frame": 73,
         "end_frame": 78,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1020,9 +749,7 @@
         "body_action": "sipping from mug contentedly"
       },
       "props": {
-        "items": [
-          "mug"
-        ],
+        "items": ["mug"],
         "interaction": "drinking, lowering from lips"
       },
       "environment": {
@@ -1033,17 +760,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "CU of blonde man drinking from white ceramic mug, content expression, dark jacket, pub interior background blurred, warm lighting, 2.35:1 cinematic",
-      "motion_prompt": "Character sips from mug contentedly, satisfied expression, lowers cup from lips, then holds",
-      "audio": {
-        "dialog": "to Liz's? Because we do. But she",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 4,
-        "word_count": 7
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character sips from mug contentedly, satisfied expression, lowers cup from lips, then holds"
     },
     {
       "shot_id": "shot_021",
@@ -1052,7 +769,7 @@
         "start_frame": 79,
         "end_frame": 84,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1067,25 +784,18 @@
         "facial_expression": "skeptical, questioning"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "resting on shoulder"
       },
       "audio": {
-        "dialog": "she dumped you. I have to know",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 7
+        "dialog": "Why don't we go to the Winchester?",
+        "speaker": "Ed"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "CU of heavyset man with dark messy hair sitting on brown leather couch, dirty beige t-shirt, skeptical questioning expression, cricket bat visible on right, teal walls blurred background, desaturated, 2.35:1 cinematic",
-      "motion_prompt": "Character speaks with animated expression, eyebrows raise questioningly, slight head tilt, then settles",
-      "model_reason": "Ed ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Character speaks with animated expression, eyebrows raise questioningly, slight head tilt, then settles"
     },
     {
       "shot_id": "shot_022",
@@ -1094,7 +804,7 @@
         "start_frame": 85,
         "end_frame": 105,
         "duration_frames": 21,
-        "actual_duration_sec": 7,
+        "actual_duration_sec": 7.0,
         "generation_duration_sec": 10,
         "cut_strategy": "use_full_or_slight_trim"
       },
@@ -1108,19 +818,14 @@
         "hand_action": "counting off plan steps on fingers"
       },
       "audio": {
-        "dialog": "know if she's all right. Because I love her. Alright, gay. I'm not staying there though.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 16
+        "dialog": "Okay. We take Pete's car, go round Mum's, go in, deal with Philip, grab Mum, go to Liz's, pick her up, bring her back here, go to the Winchester, have a nice cold pint, and wait for all this to blow over.",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "MCU of blonde man with receding hairline standing in flat, blood scratch on cheek, dark grey jacket over white shirt with red tie, teal walls behind, speaking earnestly, soft daylight, 2.35:1 cinematic",
-      "motion_prompt": "Character speaks passionately, facial expressions shift, hand gestures counting off plan steps, subtle head movements emphasizing words, then holds with resolved expression",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Character speaks passionately, facial expressions shift, hand gestures counting off plan steps, subtle head movements emphasizing words, then holds with resolved expression"
     },
     {
       "shot_id": "shot_023",
@@ -1129,7 +834,7 @@
         "start_frame": 106,
         "end_frame": 111,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1143,26 +848,14 @@
         "facial_expression": "reluctant acceptance"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "holding"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "CU of heavyset man looking down pensively, reluctant expression, cricket bat visible, messy flat background with teal walls, soft lighting, 2.35:1 cinematic",
-      "motion_prompt": "Character's expression shifts to reluctant acceptance, looks down, slight nod, then holds",
-      "audio": {
-        "dialog": "Why not? If we hole up,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 3,
-        "word_count": 6
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character's expression shifts to reluctant acceptance, looks down, slight nod, then holds"
     },
     {
       "shot_id": "shot_024",
@@ -1171,7 +864,7 @@
         "start_frame": 112,
         "end_frame": 117,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1187,17 +880,7 @@
       "transition_out": "whip_pan",
       "model": "kling-2.6",
       "photo_prompt_start": "CU of blonde man staring ahead contemplatively, serious expression, teal walls behind, white picture frame, soft daylight, 2.35:1 cinematic",
-      "motion_prompt": "Character holds steady gaze, subtle breathing, slight eye movement in thought, then holds",
-      "audio": {
-        "dialog": "up, I wanna be somewhere familiar, I wanna",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character holds steady gaze, subtle breathing, slight eye movement in thought, then holds"
     },
     {
       "shot_id": "shot_025",
@@ -1215,19 +898,9 @@
       },
       "transition_in": "whip_pan",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Extreme motion blur whip pan, teal and beige colors streaking, Edgar Wright transition, 2.35:1",
-      "motion_prompt": "Rapid whip pan blur, colors streak across frame, then cuts",
-      "audio": {
-        "dialog": "wanna know where",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 3
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Rapid whip pan blur, colors streak across frame, then cuts"
     },
     {
       "shot_id": "shot_026",
@@ -1236,7 +909,7 @@
         "start_frame": 120,
         "end_frame": 125,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1250,19 +923,14 @@
         "hand_action": "hands pressed together in prayer gesture"
       },
       "audio": {
-        "dialog": "where the exits are, and I wanna be",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
+        "dialog": "We take Pete's car...",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "MCU of blonde man speaking with hands pressed together in prayer gesture, wearing white shirt red tie dark jacket, teal walls behind, soft daylight, 2.35:1 cinematic",
-      "motion_prompt": "Character speaks animatedly, slight head movements, mouth articulating words, then settles",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character speaks animatedly, slight head movements, mouth articulating words, then settles"
     },
     {
       "shot_id": "shot_027",
@@ -1285,25 +953,18 @@
         "hand_action": "SPINNING cricket bat while explaining"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "gripping handle, SPINNING/ROTATING, gesturing"
       },
       "audio": {
-        "dialog": "be allowed to smoke. Take Pete's car, go round Mum's, go",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 11
+        "dialog": "...go round Mum's, deal with Philip...",
+        "speaker": "Ed"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "MS of heavyset man sitting in leather armchair, wearing beige 'I GOT WOOD' t-shirt, holding cricket bat, messy flat with teal walls, zombie body visible on floor, soft overcast daylight, 2.35:1 cinematic",
-      "motion_prompt": "Character gestures with hands while speaking, SPINS cricket bat in hands, facial expressions shift from thoughtful to animated, then settles back",
-      "model_reason": "Ed ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Character gestures with hands while speaking, SPINS cricket bat in hands, facial expressions shift from thoughtful to animated, then settles back"
     },
     {
       "shot_id": "shot_028",
@@ -1326,19 +987,14 @@
         "hand_action": "prayer hands gesture"
       },
       "audio": {
-        "dialog": "go in, deal with Philip, sorry Philip,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 7
+        "dialog": "...grab Mum, go to Liz's...",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "whip_pan",
       "model": "seedance-1.5",
       "photo_prompt_start": "MCU of blonde man with hands pressed together speaking with conviction, teal walls behind, slight sheen of sweat, 2.35:1 cinematic",
-      "motion_prompt": "Character brings hands together in prayer position, speaks with conviction, slight head nod, then holds",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Character brings hands together in prayer position, speaks with conviction, slight head nod, then holds"
     },
     {
       "shot_id": "shot_029",
@@ -1358,26 +1014,14 @@
         "who": "car_blur"
       },
       "props": {
-        "items": [
-          "red_car"
-        ],
+        "items": ["red_car"],
         "interaction": "speeding past"
       },
       "transition_in": "whip_pan",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Motion blur whip pan showing red car side panel rushing past, abstract streaks of red metal, 2.35:1 cinematic",
-      "motion_prompt": "Rapid horizontal whip pan across red car surface, motion blur streaking, then cuts",
-      "audio": {
-        "dialog": "Philip, grab Mum, go to Liz's, pick",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 7
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Rapid horizontal whip pan across red car surface, motion blur streaking, then cuts"
     },
     {
       "shot_id": "shot_030",
@@ -1386,7 +1030,7 @@
         "start_frame": 146,
         "end_frame": 151,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1399,27 +1043,14 @@
       },
       "environment": {
         "location": "suburban_street",
-        "visible_elements": [
-          "tree-lined street",
-          "detached houses"
-        ],
+        "visible_elements": ["tree-lined street", "detached houses"],
         "lighting": "bright daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "WS tracking shot of dark red Renault driving down leafy suburban street, green trees, bright daylight, 2.35:1 cinematic",
-      "motion_prompt": "Car drives away from camera, trees pass by on sides, slight camera tracking, then holds",
-      "audio": {
-        "dialog": "pick her up, bring her back here, have",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Car drives away from camera, trees pass by on sides, slight camera tracking, then holds"
     },
     {
       "shot_id": "shot_031",
@@ -1428,7 +1059,7 @@
         "start_frame": 152,
         "end_frame": 154,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_0.7s"
       },
@@ -1440,26 +1071,14 @@
         "who": "doorbell_press_repeat"
       },
       "props": {
-        "items": [
-          "doorbell"
-        ],
+        "items": ["doorbell"],
         "interaction": "finger pressing"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "ECU insert shot of hand pressing brass doorbell button on white door frame, bright daylight, 2.35:1 cinematic",
-      "motion_prompt": "Finger presses down on doorbell button firmly, holds pressed, then releases",
-      "audio": {
-        "dialog": "have a cup of tea,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 5
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Finger presses down on doorbell button firmly, holds pressed, then releases"
     },
     {
       "shot_id": "shot_032",
@@ -1468,7 +1087,7 @@
         "start_frame": 155,
         "end_frame": 157,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -1488,17 +1107,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "MS profile of older man in teal polo turning to look, British suburban living room, cream walls, sheer curtains backlit, motion blur on turn, 2.35:1 cinematic",
-      "motion_prompt": "Man TURNS head sharply to look toward door, body pivoting, then settles",
-      "audio": {
-        "dialog": "tea, and wait for",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Man TURNS head sharply to look toward door, body pivoting, then settles"
     },
     {
       "shot_id": "shot_033",
@@ -1507,7 +1116,7 @@
         "start_frame": 158,
         "end_frame": 163,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1516,28 +1125,18 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Barbara",
-          "Philip",
-          "Ed"
-        ],
+        "who": ["Shaun", "Barbara", "Philip", "Ed"],
         "body_action": "confrontation scene, urgent speaking"
       },
       "audio": {
-        "dialog": "for all this to blow over.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 6
+        "dialog": "Mum!",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "MS group shot inside British living room, blonde man gesturing left, older woman shocked center, man in teal polo back to camera center, heavyset man stern right, cream walls, sheer curtains, warm daylight, 2.35:1 cinematic",
-      "motion_prompt": "Characters react to each other, speaking urgently, subtle body movements and gestures, then settles",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Characters react to each other, speaking urgently, subtle body movements and gestures, then settles"
     },
     {
       "shot_id": "shot_034",
@@ -1555,11 +1154,7 @@
         "movement": "tracking"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Shaun", "Barbara", "Ed"],
         "body_action": "bursting out running"
       },
       "environment": {
@@ -1568,19 +1163,9 @@
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "MS action shot three people running from house exterior, blonde man leading, woman in purple center, heavyset man right, red brick wall and window behind, bright daylight, motion blur, 2.35:1 cinematic",
-      "motion_prompt": "Three figures BURST out running toward camera, arms pumping, urgent movement, then exits frame",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": true
+      "motion_prompt": "Three figures BURST out running toward camera, arms pumping, urgent movement, then exits frame"
     },
     {
       "shot_id": "shot_035",
@@ -1589,7 +1174,7 @@
         "start_frame": 169,
         "end_frame": 174,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1602,27 +1187,14 @@
       },
       "environment": {
         "location": "urban_street",
-        "visible_elements": [
-          "1960s apartment block",
-          "green trees"
-        ],
+        "visible_elements": ["1960s apartment block", "green trees"],
         "lighting": "bright summer daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "WS establishing shot of red Renault driving past brown brick 1960s apartment block with white balconies, green trees, bright summer daylight, blue sky, 2.35:1 cinematic",
-      "motion_prompt": "Car speeds through frame from left to right, wheels turning, then car exits frame",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Car speeds through frame from left to right, wheels turning, then car exits frame"
     },
     {
       "shot_id": "shot_036",
@@ -1644,35 +1216,19 @@
         "description": "Shaun carrying Liz, Barbara and Ed following"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "Ed carrying"
       },
       "environment": {
         "location": "liz_apartment_exterior",
-        "visible_elements": [
-          "brick building",
-          "HOUSE sign",
-          "green doors"
-        ],
+        "visible_elements": ["brick building", "HOUSE sign", "green doors"],
         "lighting": "bright daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "WS group exiting red brick building entrance, blonde man carrying blonde woman in blue left, older woman following, heavyset man with bat right, HOUSE sign above, green doors, bright daylight, 2.35:1 cinematic",
-      "motion_prompt": "Group rushes out of building entrance, man carrying woman, others following quickly, movement toward camera, then settles",
-      "audio": {
-        "dialog": "Perfect.",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 1
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Group rushes out of building entrance, man carrying woman, others following quickly, movement toward camera, then settles"
     },
     {
       "shot_id": "shot_037",
@@ -1681,7 +1237,7 @@
         "start_frame": 180,
         "end_frame": 185,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1699,19 +1255,9 @@
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "MS two-shot of blonde man carrying blonde woman bridal-style, both laughing, brick building with green doors behind, motion blur, bright daylight, 2.35:1 cinematic, warm romantic tone",
-      "motion_prompt": "Man SPINS while carrying woman, both laughing, joyful movement, then settles to stop",
-      "audio": {
-        "dialog": "No, no, no, no, no, wait. We",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 7
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Man SPINS while carrying woman, both laughing, joyful movement, then settles to stop"
     },
     {
       "shot_id": "shot_038",
@@ -1720,7 +1266,7 @@
         "start_frame": 186,
         "end_frame": 188,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_0.7s"
       },
@@ -1732,9 +1278,7 @@
         "who": "mug_COOL"
       },
       "props": {
-        "items": [
-          "COOL_mug"
-        ],
+        "items": ["COOL_mug"],
         "interaction": "hand gripping, raising slightly"
       },
       "environment": {
@@ -1745,17 +1289,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "ECU insert shot of male hand gripping white ceramic mug with blue COOL COOL COOL text, dark moody pub interior, slight steam rising, 2.35:1 cinematic",
-      "motion_prompt": "Hand raises mug slightly, liquid shifts inside, then holds steady",
-      "audio": {
-        "dialog": "We can't bring her",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Hand raises mug slightly, liquid shifts inside, then holds steady"
     },
     {
       "shot_id": "shot_039",
@@ -1773,45 +1307,23 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Liz",
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Liz", "Shaun", "Barbara", "Ed"],
         "body_action": "laughing together on couch"
       },
       "props": {
-        "items": [
-          "COOL_mug",
-          "mug"
-        ],
+        "items": ["COOL_mug", "mug"],
         "interaction": "raised in toast"
       },
       "environment": {
         "location": "winchester_pub",
-        "visible_elements": [
-          "leather couch",
-          "teal walls",
-          "pub decor"
-        ],
+        "visible_elements": ["leather couch", "teal walls", "pub decor"],
         "lighting": "warm ambient mixed with daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "MS group shot four people on dark leather couch in pub, blonde woman in blue left laughing, blonde man holding COOL mug center smiling, older woman in purple laughing center-right, heavyset man in beige grinning right, teal walls, warm lighting, 2.35:1 cinematic",
-      "motion_prompt": "Group laughing together, heads tilting back, genuine joy, mug raised in toast gesture, then settles into smiles",
-      "audio": {
-        "dialog": "her back here. Why not? Well, it's not exactly",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 3,
-        "word_count": 9
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Group laughing together, heads tilting back, genuine joy, mug raised in toast gesture, then settles into smiles"
     },
     {
       "shot_id": "shot_040",
@@ -1820,7 +1332,7 @@
         "start_frame": 196,
         "end_frame": 201,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1833,9 +1345,7 @@
         "body_action": "drinking from COOL mug"
       },
       "props": {
-        "items": [
-          "COOL_mug"
-        ],
+        "items": ["COOL_mug"],
         "interaction": "sipping, lowering"
       },
       "environment": {
@@ -1846,17 +1356,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "MCU of blonde man in dark jacket drinking from white COOL mug, pub interior with teal walls, older woman's hair visible right edge, warm lighting, 2.35:1 cinematic",
-      "motion_prompt": "Man sips from mug, head tilts, swallows, lowers mug and exhales contentedly, then holds",
-      "audio": {
-        "dialog": "exactly safe, is it?",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 4
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Man sips from mug, head tilts, swallows, lowers mug and exhales contentedly, then holds"
     },
     {
       "shot_id": "shot_041",
@@ -1879,25 +1379,18 @@
         "facial_expression": "doubt shifting to consideration"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "resting on shoulder"
       },
       "audio": {
-        "dialog": "Yeah. Good state of it.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 5
+        "dialog": "What about David and Di?",
+        "speaker": "Ed"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "CU of heavyset man with dark messy hair in leather armchair, dirty beige t-shirt, cricket bat on shoulder, skeptical doubtful expression, messy flat with teal walls blurred, 2.35:1 cinematic",
-      "motion_prompt": "Character raises eyebrow skeptically, slight head shake, expression shifts from doubt to consideration, then settles",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character raises eyebrow skeptically, slight head shake, expression shifts from doubt to consideration, then settles"
     },
     {
       "shot_id": "shot_042",
@@ -1906,7 +1399,7 @@
         "start_frame": 209,
         "end_frame": 217,
         "duration_frames": 9,
-        "actual_duration_sec": 3,
+        "actual_duration_sec": 3.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_3s"
       },
@@ -1920,19 +1413,14 @@
         "hand_action": "arms raised, hands spread, then lowering"
       },
       "audio": {
-        "dialog": "Where's safe? Where's familiar? Where can I smoke?",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 8
+        "dialog": "We could pick them up, too!",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "MCU of blonde man in white shirt red tie dark jacket, arms raised with motion blur from animated gesture, teal walls, bookshelf with globe and Heineken bottle visible right, overcast daylight, 2.35:1 cinematic",
-      "motion_prompt": "Character gestures EMPHATICALLY with both hands raised, speaking passionately, arms lower, then settles into calm pose",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Character gestures EMPHATICALLY with both hands raised, speaking passionately, arms lower, then settles into calm pose"
     },
     {
       "shot_id": "shot_043",
@@ -1955,26 +1443,14 @@
         "facial_expression": "slightly confused"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "on shoulder"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "CU of heavyset man in leather armchair, beige I GOT WOOD t-shirt, cricket bat on shoulder, slightly confused squinting expression, messy flat teal walls background, 2.35:1 cinematic",
-      "motion_prompt": "Character squints slightly, processing information, subtle facial micro-expressions, then settles",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Character squints slightly, processing information, subtle facial micro-expressions, then settles"
     },
     {
       "shot_id": "shot_044",
@@ -1983,7 +1459,7 @@
         "start_frame": 222,
         "end_frame": 227,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -1992,24 +1468,18 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Ed"
-        ],
+        "who": ["Shaun", "Ed"],
         "body_action": "Shaun standing over seated Ed"
       },
       "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
+        "dialog": "Perfect!",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "MS two-shot in messy flat, blonde man standing center-right looking down at seated heavyset man in armchair lower-left, cricket bat visible, teal walls, bookshelf with Heineken bottle, CRT TV showing news in corner, 2.35:1 cinematic",
-      "motion_prompt": "Standing man speaks while gesturing toward seated friend, slight body movement, TV flickers, then settles",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Standing man speaks while gesturing toward seated friend, slight body movement, TV flickers, then settles"
     },
     {
       "shot_id": "shot_045",
@@ -2018,7 +1488,7 @@
         "start_frame": 228,
         "end_frame": 233,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2035,19 +1505,14 @@
         "visibility": "back visible in foreground"
       },
       "audio": {
-        "dialog": "Take Pete's car,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 3
+        "dialog": "Yeah!",
+        "speaker": "Ed"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "OTS from behind blonde man in dark jacket showing heavyset man in leather armchair, beige I GOT WOOD t-shirt, cricket bat, speaking and gesturing, messy flat with teal walls, zombie body on floor left, 2.35:1 cinematic",
-      "motion_prompt": "Seated character speaks and makes small hand gestures, slight lean forward, then settles back",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Seated character speaks and makes small hand gestures, slight lean forward, then settles back"
     },
     {
       "shot_id": "shot_046",
@@ -2056,7 +1521,7 @@
         "start_frame": 234,
         "end_frame": 242,
         "duration_frames": 9,
-        "actual_duration_sec": 3,
+        "actual_duration_sec": 3.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_3s"
       },
@@ -2073,19 +1538,14 @@
         "visibility": "back of head in foreground"
       },
       "audio": {
-        "dialog": "car, go to Mum's, kill Phil, grab Liz, go to the Winchester,",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 12
+        "dialog": "How's that for a slice of fried gold?",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "MS two-shot, blonde man standing hands on hips center-right, authoritative pose, seated man's back lower-left, teal walls, bookshelf with globe, CRT TV showing news anchor in corner, 2.35:1 cinematic",
-      "motion_prompt": "Standing man shifts weight, speaks with authority, hands remain on hips, slight head movements for emphasis, TV flickers, then holds pose",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Standing man shifts weight, speaks with authority, hands remain on hips, slight head movements for emphasis, TV flickers, then holds pose"
     },
     {
       "shot_id": "shot_047",
@@ -2094,7 +1554,7 @@
         "start_frame": 243,
         "end_frame": 248,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2111,19 +1571,14 @@
         "visibility": "back of head in foreground"
       },
       "audio": {
-        "dialog": "Winchester, have a nice cold pint and wait",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
+        "dialog": "Yeah, boyyyy!",
+        "speaker": "Ed (response)"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "seedance-1.5",
       "photo_prompt_start": "MS of blonde man standing with hands on hips, white shirt blood stains, red tie, dark jacket, speaking confidently, teal walls, CRT TV showing news, Ed's back of head in foreground, 2.35:1 cinematic",
-      "motion_prompt": "Character speaks with slight head movements and hand gestures, subtle breathing, then settles",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Character speaks with slight head movements and hand gestures, subtle breathing, then settles"
     },
     {
       "shot_id": "shot_048",
@@ -2132,7 +1587,7 @@
         "start_frame": 249,
         "end_frame": 254,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2149,26 +1604,14 @@
         "visibility": "back visible right foreground"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "in hand"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "seedance-1.5",
+      "model": "kling-2.6",
       "photo_prompt_start": "MW shot of heavyset man in leather armchair, dirty beige t-shirt, holding cricket bat, looking up listening, blonde man's back visible right foreground, messy flat teal walls, window with blinds, 2.35:1 cinematic",
-      "motion_prompt": "Seated man shifts while listening, cricket bat moves subtly, then holds position",
-      "audio": {
-        "dialog": "wait for all this to blow over.",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 7
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Seated man shifts while listening, cricket bat moves subtly, then holds position"
     },
     {
       "shot_id": "shot_049",
@@ -2177,7 +1620,7 @@
         "start_frame": 255,
         "end_frame": 260,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2190,19 +1633,14 @@
         "body_action": "speaking earnestly"
       },
       "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
+        "dialog": "Right then.",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-2.6",
+      "model": "seedance-1.5",
       "photo_prompt_start": "CU of blonde man speaking earnestly, stubble, blood marks on cheek, white shirt red tie dark jacket, teal wall behind, blurred bookshelf with globe right edge, shallow depth of field, 2.35:1 cinematic",
-      "motion_prompt": "Man speaks with subtle mouth movements and micro-expressions, head tilts slightly, then settles",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Man speaks with subtle mouth movements and micro-expressions, head tilts slightly, then settles"
     },
     {
       "shot_id": "shot_050",
@@ -2224,26 +1662,14 @@
         "body_action": "listening with concerned expression"
       },
       "props": {
-        "items": [
-          "cricket_bat"
-        ],
+        "items": ["cricket_bat"],
         "interaction": "visible on right, covered in dark red gore"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "CU of heavyset man with dark messy hair, concerned expression, dirty beige t-shirt, bloody cricket bat visible right side covered in dark red gore, blurred messy flat background, 2.35:1 cinematic",
-      "motion_prompt": "Man's eyes shift slightly as he listens, subtle reaction on face, cricket bat held steady, then holds",
-      "audio": {
-        "dialog": "How's that",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 2
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Shaun OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Man's eyes shift slightly as he listens, subtle reaction on face, cricket bat held steady, then holds"
     },
     {
       "shot_id": "shot_051",
@@ -2252,7 +1678,7 @@
         "start_frame": 266,
         "end_frame": 271,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2266,19 +1692,14 @@
         "facial_expression": "slightly smiling, mouth open"
       },
       "audio": {
-        "dialog": "that for a slice of fried gold?",
-        "speaker": "Shaun",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 7
+        "dialog": "Let's do this!",
+        "speaker": "Shaun"
       },
       "transition_in": "cut",
       "transition_out": "whip_pan",
       "model": "seedance-1.5",
       "photo_prompt_start": "CU of blonde man slightly smiling mouth open mid-speech, enthusiastic expression, stubble blood marks on cheek, white shirt red tie dark jacket, teal wall, blurred bookshelf with globe right, 2.35:1 cinematic",
-      "motion_prompt": "Man speaks animatedly with eyebrow raises and smile, head moves with emphasis, then expression settles",
-      "model_reason": "Shaun ON SCREEN, static camera - lip sync",
-      "speaker_on_screen": true
+      "motion_prompt": "Man speaks animatedly with eyebrow raises and smile, head moves with emphasis, then expression settles"
     },
     {
       "shot_id": "shot_052",
@@ -2296,19 +1717,9 @@
       },
       "transition_in": "whip_pan",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Motion-blurred CU of blonde man, face blurred from rapid camera movement, teal wall streaked with motion blur, Edgar Wright whip pan transition, 2.35:1 cinematic",
-      "motion_prompt": "Rapid whip pan motion blur across frame, then settles on next shot",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "motion_prompt": "Rapid whip pan motion blur across frame, then settles on next shot"
     },
     {
       "shot_id": "shot_053",
@@ -2337,17 +1748,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "ECU insert of dark brown leather couch texture, stitching visible, very dark moody lighting, hint of beige fabric edge, abstract transition shot, 2.35:1",
-      "motion_prompt": "Static frame with subtle texture detail, slight camera shake, then holds",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Static frame with subtle texture detail, slight camera shake, then holds"
     },
     {
       "shot_id": "shot_054",
@@ -2356,7 +1757,7 @@
         "start_frame": 276,
         "end_frame": 278,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -2365,36 +1766,19 @@
         "movement": "tracking"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Ed"
-        ],
+        "who": ["Shaun", "Ed"],
         "body_action": "running toward house"
       },
       "environment": {
         "location": "mums_house_exterior",
-        "visible_elements": [
-          "Tudor-style house",
-          "white door",
-          "potted topiary"
-        ],
+        "visible_elements": ["Tudor-style house", "white door", "potted topiary"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Motion-blurred MS two men running toward Tudor house, heavyset man in beige left, blonde man in dark jacket right, white door, potted topiary, overcast daylight, 2.35:1 cinematic",
-      "motion_prompt": "Two figures RUSH forward toward camera, arms pumping, motion blur trails, then freezes on arrival",
-      "audio": {
-        "dialog": "Yeah, boy!",
-        "speaker": "Ed",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 2
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "Ed OFF SCREEN - voiceover",
-      "speaker_on_screen": false
+      "motion_prompt": "Two figures RUSH forward toward camera, arms pumping, motion blur trails, then freezes on arrival"
     },
     {
       "shot_id": "shot_055",
@@ -2417,17 +1801,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "Completely overexposed flash frame, washed out white/cream with slight ghosting of shapes, Edgar Wright signature punctuation, 2.35:1",
-      "motion_prompt": "Bright flash whip across entire frame, rapid transition effect, then cuts",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "dialog_source": "whisper",
-        "dialog_lines": 1,
-        "word_count": 0
-      },
-      "recommended_model": "seedance-1.5",
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Bright flash whip across entire frame, rapid transition effect, then cuts"
     },
     {
       "shot_id": "shot_056",
@@ -2436,7 +1810,7 @@
         "start_frame": 280,
         "end_frame": 285,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2445,35 +1819,19 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Shaun",
-          "Barbara",
-          "Philip",
-          "Ed"
-        ],
+        "who": ["Shaun", "Barbara", "Philip", "Ed"],
         "body_action": "confrontation scene, Shaun gesturing animatedly"
       },
       "environment": {
         "location": "mums_house_interior",
-        "visible_elements": [
-          "bright window",
-          "sheer curtains",
-          "cream walls"
-        ],
+        "visible_elements": ["bright window", "sheer curtains", "cream walls"],
         "lighting": "bright natural daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "MW shot inside bright British suburban home, blonde man gesturing animatedly left, older woman screaming center, person in teal sweater back to camera center, heavyset man stern right, bright window with sheer curtains, chaotic energy, 2.35:1 cinematic",
-      "motion_prompt": "Multiple characters gesturing and reacting simultaneously, chaotic movement, blonde man pointing emphatically, then action freezes",
-      "audio": {
-        "dialog": null,
-        "speaker": null,
-        "word_count": 0
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": true
+      "motion_prompt": "Multiple characters gesturing and reacting simultaneously, chaotic movement, blonde man pointing emphatically, then action freezes"
     },
     {
       "shot_id": "shot_057",
@@ -2496,26 +1854,14 @@
       },
       "environment": {
         "location": "mums_house_exterior_back",
-        "visible_elements": [
-          "brick wall",
-          "green wooden doors/garage"
-        ],
+        "visible_elements": ["brick wall", "green wooden doors/garage"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "MS of blonde man in dark jacket carrying older woman in light blue jacket bridal-style, both laughing widely, brick wall with green doors behind, overcast daylight, motion blur, comedy moment, 2.35:1 cinematic",
-      "motion_prompt": "Man SPINS while carrying woman, both laughing, joyful bounce in step, movement across frame, then settles",
-      "audio": {
-        "dialog": "It is vital that you stay",
-        "speaker": "TV",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 6
-      },
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "motion_prompt": "Man SPINS while carrying woman, both laughing, joyful bounce in step, movement across frame, then settles"
     },
     {
       "shot_id": "shot_058",
@@ -2524,7 +1870,7 @@
         "start_frame": 291,
         "end_frame": 296,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2537,27 +1883,14 @@
       },
       "environment": {
         "location": "winchester_pub_exterior",
-        "visible_elements": [
-          "WINCHESTER TAVERN sign",
-          "heraldic coat of arms",
-          "gold lettering"
-        ],
+        "visible_elements": ["WINCHESTER TAVERN sign", "heraldic coat of arms", "gold lettering"],
         "lighting": "overcast daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
-      "model": "kling-o1",
+      "model": "kling-2.6",
       "photo_prompt_start": "Insert shot of WINCHESTER TAVERN pub sign, gold serif lettering, heraldic coat of arms with red and white checkered pattern, teal/sage green background, ornate gold frame, brick building blurred behind, 2.35:1 cinematic",
-      "motion_prompt": "Static shot of pub sign with subtle swing in breeze, slight camera push-in, then holds steady",
-      "audio": {
-        "dialog": "stay in your homes, make no attempt to",
-        "speaker": "TV",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
-      },
-      "model_reason": "Camera movement needs start+end frame",
-      "speaker_on_screen": false
+      "motion_prompt": "Static shot of pub sign with subtle swing in breeze, slight camera push-in, then holds steady"
     },
     {
       "shot_id": "shot_059",
@@ -2566,7 +1899,7 @@
         "start_frame": 297,
         "end_frame": 299,
         "duration_frames": 3,
-        "actual_duration_sec": 1,
+        "actual_duration_sec": 1.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_1s"
       },
@@ -2579,27 +1912,14 @@
       },
       "environment": {
         "location": "winchester_pub_exterior",
-        "visible_elements": [
-          "dark red Jaguar",
-          "chrome trim",
-          "pub sign partially visible"
-        ],
+        "visible_elements": ["dark red Jaguar", "chrome trim", "pub sign partially visible"],
         "lighting": "daylight"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "Insert shot of dark red Jaguar sedan parked on street, side profile, chrome trim visible, brick pub building behind, pub sign partially visible, daylight, 2.35:1 cinematic",
-      "motion_prompt": "Static shot of parked car, subtle reflection movement on windows from passing clouds, then holds",
-      "audio": {
-        "dialog": "to reach loved ones and",
-        "speaker": "TV",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 5
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "motion_prompt": "Static shot of parked car, subtle reflection movement on windows from passing clouds, then holds"
     },
     {
       "shot_id": "shot_060",
@@ -2608,7 +1928,7 @@
         "start_frame": 300,
         "end_frame": 305,
         "duration_frames": 6,
-        "actual_duration_sec": 2,
+        "actual_duration_sec": 2.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_2s"
       },
@@ -2620,10 +1940,7 @@
         "who": "pint_of_beer"
       },
       "props": {
-        "items": [
-          "pint_glass",
-          "lager"
-        ],
+        "items": ["pint_glass", "lager"],
         "interaction": "hand gripping, raising"
       },
       "environment": {
@@ -2634,16 +1951,7 @@
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "ECU of hand holding pint glass of golden lager with white foam head, dark jacket sleeve visible, white shirt cuff and red tie glimpsed, dark pub interior, warm amber lighting on glass, 2.35:1 cinematic",
-      "motion_prompt": "Hand raises pint glass slightly, beer sloshes gently with foam settling, golden liquid catches light, then holds steady",
-      "audio": {
-        "dialog": "and avoid all physical contact with the assailants.",
-        "speaker": "TV",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 1,
-        "word_count": 8
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "motion_prompt": "Hand raises pint glass slightly, beer sloshes gently with foam settling, golden liquid catches light, then holds steady"
     },
     {
       "shot_id": "shot_061",
@@ -2652,7 +1960,7 @@
         "start_frame": 306,
         "end_frame": 314,
         "duration_frames": 9,
-        "actual_duration_sec": 3,
+        "actual_duration_sec": 3.0,
         "generation_duration_sec": 5,
         "cut_strategy": "trim_to_3s"
       },
@@ -2661,49 +1969,26 @@
         "movement": "static"
       },
       "subject_primary": {
-        "who": [
-          "Liz",
-          "Shaun",
-          "Barbara",
-          "Ed"
-        ],
+        "who": ["Liz", "Shaun", "Barbara", "Ed"],
         "body_action": "seated at pub table, raising glasses in toast"
       },
       "props": {
-        "items": [
-          "pint_glass",
-          "wine_glass",
-          "cricket_bat"
-        ],
+        "items": ["pint_glass", "wine_glass", "cricket_bat"],
         "interaction": "raising in toast, clinking"
       },
       "environment": {
         "location": "winchester_pub_interior",
-        "visible_elements": [
-          "dark wood bar",
-          "beer taps",
-          "mirrors",
-          "bartender",
-          "old man in checkered shirt"
-        ],
+        "visible_elements": ["dark wood bar", "beer taps", "mirrors", "bartender", "old man in checkered shirt"],
         "lighting": "warm pub lighting"
       },
       "transition_in": "cut",
       "transition_out": "cut",
       "model": "kling-2.6",
       "photo_prompt_start": "WS four people at pub table raising glasses in celebration, blonde woman in light blue left, blonde man with pint center, older woman with wine glass laughing center-right, heavyset man with pint right, traditional British pub interior behind with dark wood bar, beer taps, bartender, old man in checkered shirt, cricket bat on table, warm lighting, 2.35:1 cinematic",
-      "motion_prompt": "Group RAISES glasses together in toast, laughing and cheering, glasses clink, then everyone settles back",
-      "audio": {
-        "dialog": "assailants. Do you believe everything you hear on TV?",
-        "speaker": "TV",
-        "dialog_source": "whisper_split",
-        "dialog_lines": 2,
-        "word_count": 9
-      },
-      "model_reason": "No dialogue or static shot",
-      "speaker_on_screen": false
+      "motion_prompt": "Group RAISES glasses together in toast, laughing and cheering, glasses clink, then everyone settles back"
     }
   ],
+
   "summary": {
     "total_shots": 61,
     "dialog_shots": 18,
@@ -2726,6 +2011,7 @@
       "total": "$23.18"
     }
   },
+
   "edgar_wright_techniques": [
     "Whip pan transitions between scenes (8 instances)",
     "Flash frame punctuation (1 instance)",
@@ -2735,6 +2021,7 @@
     "Prop manipulation (Ed spinning cricket bat)",
     "Camera push-in with character turn combo"
   ],
+
   "post_processing": {
     "concat_command": "ffmpeg -f concat -safe 0 -i shots_list.txt -c copy final_scene.mp4",
     "cut_template": "ffmpeg -i shot_XXX_raw.mp4 -t [DURATION] -c copy shot_XXX.mp4",
