@@ -910,7 +910,7 @@
         "movement": "handheld"
       },
       "subject_primary": {
-        "who": "Liz",
+        "who": "Barbara",
         "body_action": "bursting through doors",
         "body_motion": "arms raised, stumbling forward"
       },
@@ -921,7 +921,7 @@
         "interaction": "door swings open dramatically"
       },
       "environment": {
-        "location": "liz_apartment_interior",
+        "location": "mums_house_interior",
         "visible_elements": [
           "brown wooden double doors",
           "frosted glass"
@@ -1891,8 +1891,12 @@
         "movement": "tracking"
       },
       "subject_primary": {
-        "who": "Shaun_carrying_Liz",
-        "body_action": "spinning while carrying, both laughing"
+        "who": "Liz",
+        "body_action": "being carried bridal-style, laughing"
+      },
+      "subject_secondary": {
+        "who": "Shaun",
+        "body_action": "carrying Liz, spinning"
       },
       "environment": {
         "location": "liz_apartment_exterior",
