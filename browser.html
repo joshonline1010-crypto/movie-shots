@@ -2513,11 +2513,16 @@
               <div class="shot-info">
                 <div class="shot-id">${shot.shot_id}</div>
                 <div class="shot-details">
-                  <span>${sceneShot?.shot_type || 'Unknown'}</span>
-                  <span>${sceneShot?.camera_angle || ''}</span>
+                  <span>Frames ${sceneShot?.timing?.start_frame || '?'}-${sceneShot?.timing?.end_frame || '?'}</span>
                   <span>${shot.transition_in} → ${shot.transition_out}</span>
+                  ${sceneShot?.speaker_on_screen !== undefined ? `<span style="color: ${sceneShot.speaker_on_screen ? '#4ade80' : '#fbbf24'};">${sceneShot.speaker_on_screen ? '🎤 ON CAM' : '🔊 V/O'}</span>` : ''}
                 </div>
-                ${shot.has_dialog ? `<div class="shot-dialog">"${shot.dialog}"</div>` : ''}
+                ${shot.has_dialog ? `<div class="shot-dialog" style="display:flex; gap:0.5rem; align-items:center;">
+                  <span style="color: #a78bfa; font-weight: bold;">${sceneShot?.audio?.speaker || 'Unknown'}:</span>
+                  <span>"${shot.dialog}"</span>
+                  ${sceneShot?.audio?.word_count ? `<span style="color: var(--text-muted); font-size: 0.7rem;">(${sceneShot.audio.word_count} words)</span>` : ''}
+                </div>` : ''}
+                ${sceneShot?.model_reason ? `<div class="shot-prompt" style="background: rgba(168, 139, 250, 0.1); border-left: 2px solid #a78bfa;">📋 ${sceneShot.model_reason}</div>` : ''}
                 ${sceneShot?.photo_prompt_start || sceneShot?.photo_prompt ? `<div class="shot-prompt photo" title="Photo Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">📷 ${(sceneShot.photo_prompt_start || sceneShot.photo_prompt).substring(0, 80)}...</div>` : ''}
                 ${shot.inputs?.prompt ? `<div class="shot-prompt video" title="Video Prompt - Click to copy" onclick="navigator.clipboard.writeText('${(shot.inputs.prompt || '').replace(/'/g, "\\'")}'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 1500);">🎬 ${(shot.inputs.prompt || '').substring(0, 80)}...</div>` : ''}
                 <div class="shot-assets">
