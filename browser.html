@@ -3067,13 +3067,19 @@ node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
             <h4>📷 Visual Style</h4>
             <div class="prompts-grid">
               <div class="prompt-item"><strong>Camera:</strong> ${vs.camera || 'N/A'}</div>
+              <div class="prompt-item"><strong>Sensor:</strong> ${vs.camera_sensor || 'N/A'}</div>
               <div class="prompt-item"><strong>Lens:</strong> ${vs.lens || 'N/A'}</div>
-              <div class="prompt-item"><strong>Focal Length:</strong> ${vs.default_focal_length || 'N/A'}</div>
+              <div class="prompt-item"><strong>Lens Series:</strong> ${vs.lens_series || 'N/A'}</div>
+              <div class="prompt-item"><strong>Default Focal:</strong> ${vs.default_focal_length || 'N/A'}</div>
+              <div class="prompt-item"><strong>Default Aperture:</strong> ${vs.default_aperture || 'N/A'}</div>
+              <div class="prompt-item"><strong>Anamorphic:</strong> ${vs.anamorphic_squeeze || 'N/A'}</div>
               <div class="prompt-item"><strong>Film Stock:</strong> ${vs.film_stock_look || 'N/A'}</div>
               <div class="prompt-item"><strong>Grain:</strong> ${vs.grain || 'N/A'}</div>
               <div class="prompt-item"><strong>Contrast:</strong> ${vs.contrast || 'N/A'}</div>
               <div class="prompt-item"><strong>Saturation:</strong> ${vs.saturation || 'N/A'}</div>
             </div>
+            ${vs.focal_lengths_available ? `<div class="prompt-notes"><strong>Focal Lengths:</strong> ${vs.focal_lengths_available.join(', ')}</div>` : ''}
+            ${vs.aperture_range ? `<div class="prompt-notes"><strong>Aperture Range:</strong> ${vs.aperture_range.join(', ')}</div>` : ''}
             ${vs.color_grade ? `<div class="prompt-notes"><strong>Color Grade:</strong> ${vs.color_grade}</div>` : ''}
             ${vs.lighting_style ? `<div class="prompt-notes"><strong>Lighting Style:</strong> ${vs.lighting_style}</div>` : ''}
             ${vs.style_suffix ? `
@@ -3155,7 +3161,7 @@ node whisper-transcribe.js ${sceneId} path/to/source-video.mp4</pre>
                 <div class="angle-item">
                   <div class="angle-name">${name}</div>
                   <div class="angle-details">
-                    ${angle.focal_length || ''} | ${angle.distance || ''} | ${angle.height || ''}
+                    ${angle.focal_length || ''} ${angle.aperture ? `@ ${angle.aperture}` : ''} | ${angle.distance || ''} | ${angle.height || ''}
                     ${angle.angle ? ` | ${angle.angle}` : ''}
                   </div>
                 </div>

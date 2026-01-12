@@ -15,8 +15,14 @@
   "cinematographer": "David M. Dunlap",
   "visual_style": {
     "camera": "ARRI 435",
+    "camera_sensor": "Super 35mm film",
     "lens": "Panavision Primo anamorphic",
+    "lens_series": "Primo Anamorphic",
+    "focal_lengths_available": ["18mm", "24mm", "35mm", "50mm", "85mm", "100mm"],
     "default_focal_length": "35mm",
+    "default_aperture": "f/2.8",
+    "aperture_range": ["f/1.4", "f/2", "f/2.8", "f/4", "f/5.6", "f/8"],
+    "anamorphic_squeeze": "2x",
     "color_grade": "desaturated, teal shadows, warm highlights, slight green push",
     "lighting_style": "practical sources, overcast daylight exteriors, warm tungsten interiors",
     "film_stock_look": "Kodak Vision2 500T",
@@ -28,16 +34,16 @@
     "style_suffix": "2.35:1 anamorphic, film grain, desaturated color grade, Edgar Wright style"
   },
   "camera_angles": {
-    "CU": { "focal_length": "85mm", "distance": "close", "height": "eye-level" },
-    "MCU": { "focal_length": "50mm", "distance": "medium-close", "height": "eye-level" },
-    "MS": { "focal_length": "35mm", "distance": "medium", "height": "eye-level" },
-    "WS": { "focal_length": "24mm", "distance": "wide", "height": "eye-level" },
-    "EWS": { "focal_length": "18mm", "distance": "extreme-wide", "height": "slightly-elevated" },
-    "LOW_ANGLE": { "focal_length": "35mm", "distance": "medium", "height": "below-eye-level", "angle": "looking-up" },
-    "HIGH_ANGLE": { "focal_length": "35mm", "distance": "medium", "height": "above-eye-level", "angle": "looking-down" },
-    "DUTCH": { "focal_length": "35mm", "distance": "medium", "height": "eye-level", "angle": "tilted-15deg" },
-    "OTS": { "focal_length": "50mm", "distance": "over-shoulder", "height": "eye-level" },
-    "POV": { "focal_length": "24mm", "distance": "character-view", "height": "character-eye-level" }
+    "CU": { "focal_length": "85mm", "aperture": "f/2", "distance": "close", "height": "eye-level" },
+    "MCU": { "focal_length": "50mm", "aperture": "f/2.8", "distance": "medium-close", "height": "eye-level" },
+    "MS": { "focal_length": "35mm", "aperture": "f/2.8", "distance": "medium", "height": "eye-level" },
+    "WS": { "focal_length": "24mm", "aperture": "f/4", "distance": "wide", "height": "eye-level" },
+    "EWS": { "focal_length": "18mm", "aperture": "f/5.6", "distance": "extreme-wide", "height": "slightly-elevated" },
+    "LOW_ANGLE": { "focal_length": "35mm", "aperture": "f/2.8", "distance": "medium", "height": "below-eye-level", "angle": "looking-up" },
+    "HIGH_ANGLE": { "focal_length": "35mm", "aperture": "f/4", "distance": "medium", "height": "above-eye-level", "angle": "looking-down" },
+    "DUTCH": { "focal_length": "35mm", "aperture": "f/2.8", "distance": "medium", "height": "eye-level", "angle": "tilted-15deg" },
+    "OTS": { "focal_length": "50mm", "aperture": "f/2", "distance": "over-shoulder", "height": "eye-level" },
+    "POV": { "focal_length": "24mm", "aperture": "f/2.8", "distance": "character-view", "height": "character-eye-level" }
   },
   "color_palette": "desaturated-cool",
   "generation_config": {
